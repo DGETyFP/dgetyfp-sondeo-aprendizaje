@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sondeo de detección de estilos de aprendizaje · DGETyFP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&display=swap">
+<script>
+/* Íconos (Font Awesome Free, licencia CC BY 4.0) incrustados para que la página funcione sin conexión externa */
+const FA_ICONS={"arrow-right":[512,512,"M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"],"arrows-left-right":[576,512,"M470.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l41.4 41.4-357.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-41.4-41.4 357.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"],"book-open":[512,512,"M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"],"bookmark":[384,512,"M64 0C28.7 0 0 28.7 0 64L0 480c0 11.5 6.2 22.2 16.2 27.8s22.3 5.5 32.2-.4L192 421.3 335.5 507.4c9.9 5.9 22.2 6.1 32.2 .4S384 491.5 384 480l0-416c0-35.3-28.7-64-64-64L64 0z"],"brain":[512,512,"M120 56c0-30.9 25.1-56 56-56l24 0c17.7 0 32 14.3 32 32l0 448c0 17.7-14.3 32-32 32l-32 0c-29.8 0-54.9-20.4-62-48-.7 0-1.3 0-2 0-44.2 0-80-35.8-80-80 0-18 6-34.6 16-48-19.4-14.6-32-37.8-32-64 0-30.9 17.6-57.8 43.2-71.1-7.1-12-11.2-26-11.2-40.9 0-44.2 35.8-80 80-80l0-24zm272 0l0 24c44.2 0 80 35.8 80 80 0 15-4.1 29-11.2 40.9 25.7 13.3 43.2 40.1 43.2 71.1 0 26.2-12.6 49.4-32 64 10 13.4 16 30 16 48 0 44.2-35.8 80-80 80-.7 0-1.3 0-2 0-7.1 27.6-32.2 48-62 48l-32 0c-17.7 0-32-14.3-32-32l0-448c0-17.7 14.3-32 32-32l24 0c30.9 0 56 25.1 56 56z"],"caret-right":[256,512,"M249.3 235.8c10.2 12.6 9.5 31.1-2.2 42.8l-128 128c-9.2 9.2-22.9 11.9-34.9 6.9S64.5 396.9 64.5 384l0-256c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l128 128 2.2 2.4z"],"chart-simple":[512,512,"M192 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM432 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"],"check":[448,512,"M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"],"chevron-left":[320,512,"M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"],"chevron-right":[320,512,"M311.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L243.2 256 73.9 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"],"clipboard-question":[384,512,"M311.4 32l8.6 0c35.3 0 64 28.7 64 64l0 352c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l8.6 0C83.6 12.9 104.3 0 128 0L256 0c23.7 0 44.4 12.9 55.4 32zM248 112c13.3 0 24-10.7 24-24s-10.7-24-24-24L136 64c-13.3 0-24 10.7-24 24s10.7 24 24 24l112 0zM192 248c16.1 0 29.2 13.1 29.2 29.2 0 8.7-3.1 13.9-6.9 17.7-4.5 4.4-10.7 7.5-16.8 9.5-14.9 5-29.5 19.3-29.5 39.5 0 13.3 10.7 24 24 24 11.5 0 21.2-8.1 23.5-19 19.2-7.1 53.7-26.3 53.7-71.8 0-42.6-34.6-77.2-77.2-77.2s-77.2 34.6-77.2 77.2c0 13.3 10.7 24 24 24s24-10.7 24-24c0-16.1 13.1-29.2 29.2-29.2zm28 168c0-15.5-12.5-28-28-28s-28 12.5-28 28 12.5 28 28 28 28-12.5 28-28z"],"door-open":[448,512,"M288 64l64 0 0 416c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-384c0-35.3-28.7-64-64-64l-96 0 0 0-160 0C60.7 0 32 28.7 32 64l0 384c-17.7 0-32 14.3-32 32s14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-416zM160 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"],"ear-listen":[512,512,"M379.6 .3c-8.9 1.2-17.2 6.2-22.4 14.1-6.8 10.4-7 24.1-.4 34.6 5.6 8.9 15.5 12.7 23.8 18.5 7.5 5.2 17.6 13.2 27.7 24.2 20 21.7 39.5 54.3 39.5 100.3 0 17.7 14.3 32 32 32s32-14.3 32-32c0-66-28.5-113.4-56.5-143.7-13.9-15.1-27.8-26.1-38.3-33.3-11-7.6-23.5-16.6-37.6-14.7zM240 128c-57.6 0-105.1 43.6-111.3 99.5-1.9 17.6-17.8 30.2-35.3 28.3s-30.2-17.8-28.3-35.3c9.7-88 84.3-156.5 174.9-156.5 97.2 0 176 78.8 176 176 0 46-17.7 87.9-46.6 119.3-12 13-17.4 24.8-17.4 34.7l0 6.1c0 61.9-50.1 112-112 112-17.7 0-32-14.3-32-32s14.3-32 32-32c26.5 0 48-21.5 48-48l0-6.1c0-32.9 17.4-59.6 34.4-78 18.4-20 29.6-46.6 29.6-75.9 0-61.9-50.1-112-112-112zM0 480a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm160-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM86.6 361.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64zM240 208c-17.7 0-32 14.3-32 32 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-44.2 35.8-80 80-80s80 35.8 80 80c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-17.7-14.3-32-32-32z"],"expand":[448,512,"M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"],"eye":[576,512,"M288 32c-80.8 0-145.5 36.8-192.6 80.6-46.8 43.5-78.1 95.4-93 131.1-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1 47.1 43.7 111.8 80.6 192.6 80.6s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1-47.1-43.7-111.8-80.6-192.6-80.6zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64-11.5 0-22.3-3-31.7-8.4-1 10.9-.1 22.1 2.9 33.2 13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-12.2-45.7-55.5-74.8-101.1-70.8 5.3 9.3 8.4 20.1 8.4 31.7z"],"hand":[512,512,"M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 272c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4S-3.6 325.7 12.4 341L124.8 448c43.1 41.1 100.4 64 160 64l19.2 0c97.2 0 176-78.8 176-176l0-208c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 176c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208z"],"hand-holding-heart":[576,512,"M279.6 31C265.5 11.5 242.9 0 218.9 0 177.5 0 144 33.5 144 74.9l0 2.4c0 64.4 82 133.4 122.2 163.3 13 9.7 30.5 9.7 43.5 0 40.2-30 122.2-98.9 122.2-163.3l0-2.4c0-41.4-33.5-74.9-74.9-74.9-24 0-46.6 11.5-60.7 31L288 42.7 279.6 31zM109.3 341.5L66.7 384 32 384c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l320.5 0c29 0 57.3-9.3 80.7-26.5l126.6-93.3c17.8-13.1 21.6-38.1 8.5-55.9s-38.1-21.6-55.9-8.5L392.6 416 280 416c-13.3 0-24-10.7-24-24s10.7-24 24-24l72 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-152.2 0c-33.9 0-66.5 13.5-90.5 37.5z"],"layer-group":[512,512,"M232.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L13.9 149.8C5.4 145.8 0 137.3 0 128s5.4-17.9 13.9-21.8L232.5 5.2zM48.1 218.4l164.3 75.9c27.7 12.8 59.6 12.8 87.3 0l164.3-75.9 34.1 15.8c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L13.9 277.8C5.4 273.8 0 265.3 0 256s5.4-17.9 13.9-21.8l34.1-15.8zM13.9 362.2l34.1-15.8 164.3 75.9c27.7 12.8 59.6 12.8 87.3 0l164.3-75.9 34.1 15.8c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L13.9 405.8C5.4 401.8 0 393.3 0 384s5.4-17.9 13.9-21.8z"],"lightbulb":[384,512,"M292.9 384c7.3-22.3 21.9-42.5 38.4-59.9 32.7-34.4 52.7-80.9 52.7-132.1 0-106-86-192-192-192S0 86 0 192c0 51.2 20 97.7 52.7 132.1 16.5 17.4 31.2 37.6 38.4 59.9l201.7 0zM288 432l-192 0 0 16c0 44.2 35.8 80 80 80l32 0c44.2 0 80-35.8 80-80l0-16zM184 112c-39.8 0-72 32.2-72 72 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-66.3 53.7-120 120-120 13.3 0 24 10.7 24 24s-10.7 24-24 24z"],"list":[512,512,"M40 48C26.7 48 16 58.7 16 72l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24L40 48zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L192 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zM16 232l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0z"],"lock":[384,512,"M128 96l0 64 128 0 0-64c0-35.3-28.7-64-64-64s-64 28.7-64 64zM64 160l0-64C64 25.3 121.3-32 192-32S320 25.3 320 96l0 64c35.3 0 64 28.7 64 64l0 224c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 224c0-35.3 28.7-64 64-64z"],"magnifying-glass":[512,512,"M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"],"people-group":[512,512,"M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128zm96 312c0 25-12.7 47-32 59.9l0 92.1c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-92.1C172.7 359 160 337 160 312l0-40c0-53 43-96 96-96s96 43 96 96l0 40zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112zm16 240l0 32c0 32.5 12.1 62.1 32 84.7l0 75.3c0 1.2 0 2.5 .1 3.7-8.5 7.6-19.7 12.3-32.1 12.3l-32 0c-26.5 0-48-21.5-48-48l0-56.6C12.9 364.4 0 343.7 0 320l0-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1zM368 464l0-75.3c19.9-22.5 32-52.2 32-84.7l0-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96l0 32c0 23.7-12.9 44.4-32 55.4l0 56.6c0 26.5-21.5 48-48 48l-32 0c-12.3 0-23.6-4.6-32.1-12.3 0-1.2 .1-2.5 .1-3.7zM416 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"],"person-chalkboard":[640,512,"M192 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zM176 512l0-160c0-8.8 7.2-16 16-16s16 7.2 16 16l0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-336 128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-16 0 0-48 192 0 0 192-192 0 0-32-64 0 0 48c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-224c0-26.5-21.5-48-48-48L368 0c-26.5 0-48 21.5-48 48l0 64-122.7 0c-45.6 0-88.5 21.6-115.6 58.2L14.3 260.9c-10.5 14.2-7.6 34.2 6.6 44.8s34.2 7.6 44.8-6.6L112 236.7 112 512c0 17.7 14.3 32 32 32s32-14.3 32-32z"],"play":[448,512,"M91.2 36.9c-12.4-6.8-27.4-6.5-39.6 .7S32 57.9 32 72l0 368c0 14.1 7.5 27.2 19.6 34.4s27.2 7.5 39.6 .7l336-184c12.8-7 20.8-20.5 20.8-35.1s-8-28.1-20.8-35.1l-336-184z"],"rotate":[512,512,"M480.1 192l7.9 0c13.3 0 24-10.7 24-24l0-144c0-9.7-5.8-18.5-14.8-22.2S477.9 .2 471 7L419.3 58.8C375 22.1 318 0 256 0 127 0 20.3 95.4 2.6 219.5 .1 237 12.2 253.2 29.7 255.7s33.7-9.7 36.2-27.1C79.2 135.5 159.3 64 256 64 300.4 64 341.2 79 373.7 104.3L327 151c-6.9 6.9-8.9 17.2-5.2 26.2S334.3 192 344 192l136.1 0zm29.4 100.5c2.5-17.5-9.7-33.7-27.1-36.2s-33.7 9.7-36.2 27.1c-13.3 93-93.4 164.5-190.1 164.5-44.4 0-85.2-15-117.7-40.3L185 361c6.9-6.9 8.9-17.2 5.2-26.2S177.7 320 168 320L24 320c-13.3 0-24 10.7-24 24L0 488c0 9.7 5.8 18.5 14.8 22.2S34.1 511.8 41 505l51.8-51.8C137 489.9 194 512 256 512 385 512 491.7 416.6 509.4 292.5z"],"shapes":[512,512,"M256 0c11.2 0 21.7 5.9 27.4 15.5l96 160c5.9 9.9 6.1 22.2 .4 32.2S363.5 224 352 224l-192 0c-11.5 0-22.2-6.2-27.8-16.2s-5.5-22.3 .4-32.2l96-160C234.3 5.9 244.8 0 256 0zM128 272a112 112 0 1 1 0 224 112 112 0 1 1 0-224zm200 16l112 0c22.1 0 40 17.9 40 40l0 112c0 22.1-17.9 40-40 40l-112 0c-22.1 0-40-17.9-40-40l0-112c0-22.1 17.9-40 40-40z"],"trash":[448,512,"M136.7 5.9L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-8.7-26.1C306.9-7.2 294.7-16 280.9-16L167.1-16c-13.8 0-26 8.8-30.4 21.9zM416 144L32 144 53.1 467.1C54.7 492.4 75.7 512 101 512L347 512c25.3 0 46.3-19.6 47.9-44.9L416 144z"],"universal-access":[512,512,"M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0zm161.5-86.1c-12.2-5.2-26.3 .4-31.5 12.6s.4 26.3 12.6 31.5l11.9 5.1c17.3 7.4 35.2 12.9 53.6 16.3l0 50.1c0 4.3-.7 8.6-2.1 12.6l-28.7 86.1c-4.2 12.6 2.6 26.2 15.2 30.4s26.2-2.6 30.4-15.2l24.4-73.2c1.3-3.8 4.8-6.4 8.8-6.4s7.6 2.6 8.8 6.4l24.4 73.2c4.2 12.6 17.8 19.4 30.4 15.2S339 397 334.8 384.4l-28.7-86.1c-1.4-4.1-2.1-8.3-2.1-12.6l0-50.1c18.4-3.5 36.3-8.9 53.6-16.3l11.9-5.1c12.2-5.2 17.8-19.3 12.6-31.5s-19.3-17.8-31.5-12.6L338.7 175c-26.1 11.2-54.2 17-82.7 17s-56.5-5.8-82.7-17l-11.9-5.1zM256 160a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"],"user-check":[640,512,"M286 304c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7L78 512c-16.4 0-29.7-13.3-29.7-29.7 0-98.5 79.8-178.3 178.3-178.3l59.4 0zM585.7 105.9c7.8-10.7 22.8-13.1 33.5-5.3s13.1 22.8 5.3 33.5L522.1 274.9c-4.2 5.7-10.7 9.4-17.7 9.8s-14-2.2-18.9-7.3l-46.4-48c-9.2-9.5-9-24.7 .6-33.9 9.5-9.2 24.7-8.9 33.9 .6l26.5 27.4 85.6-117.7zM256.3 248a120 120 0 1 1 0-240 120 120 0 1 1 0 240z"],"user-plus":[640,512,"M285.7 304c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7L77.7 512C61.3 512 48 498.7 48 482.3 48 383.8 127.8 304 226.3 304l59.4 0zM528 80c13.3 0 24 10.7 24 24l0 48 48 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-48 0 0 48c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-48-48 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0 0-48c0-13.3 10.7-24 24-24zM256 248a120 120 0 1 1 0-240 120 120 0 1 1 0 240z"],"volume-high":[640,512,"M533.6 32.5c-10.3-8.4-25.4-6.8-33.8 3.5s-6.8 25.4 3.5 33.8C557.5 113.8 592 180.8 592 256s-34.5 142.2-88.7 186.3c-10.3 8.4-11.8 23.5-3.5 33.8s23.5 11.8 33.8 3.5C598.5 426.7 640 346.2 640 256S598.5 85.2 533.6 32.5zM473.1 107c-10.3-8.4-25.4-6.8-33.8 3.5s-6.8 25.4 3.5 33.8C475.3 170.7 496 210.9 496 256s-20.7 85.3-53.2 111.8c-10.3 8.4-11.8 23.5-3.5 33.8s23.5 11.8 33.8 3.5c43.2-35.2 70.9-88.9 70.9-149s-27.7-113.8-70.9-149zm-60.5 74.5c-10.3-8.4-25.4-6.8-33.8 3.5s-6.8 25.4 3.5 33.8C393.1 227.6 400 241 400 256s-6.9 28.4-17.7 37.3c-10.3 8.4-11.8 23.5-3.5 33.8s23.5 11.8 33.8 3.5C434.1 312.9 448 286.1 448 256s-13.9-56.9-35.4-74.5zM80 352l48 0 134.1 119.2c6.4 5.7 14.6 8.8 23.1 8.8 19.2 0 34.8-15.6 34.8-34.8l0-378.4c0-19.2-15.6-34.8-34.8-34.8-8.5 0-16.7 3.1-23.1 8.8L128 160 80 160c-26.5 0-48 21.5-48 48l0 96c0 26.5 21.5 48 48 48z"],"xmark":[384,512,"M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"],"chart-pie":[576,512,"M512.4 240l-176 0c-17.7 0-32-14.3-32-32l0-176c0-17.7 14.4-32.2 31.9-29.9 107 14.2 191.8 99 206 206 2.3 17.5-12.2 31.9-29.9 31.9zM222.6 37.2c18.1-3.8 33.8 11 33.8 29.5l0 197.3c0 5.6 2 11 5.5 15.3L394 438.7c11.7 14.1 9.2 35.4-6.9 44.1-34.1 18.6-73.2 29.2-114.7 29.2-132.5 0-240-107.5-240-240 0-115.5 81.5-211.9 190.2-234.8zM477.8 288l64 0c18.5 0 33.3 15.7 29.5 33.8-10.2 48.4-35 91.4-69.6 124.2-12.3 11.7-31.6 9.2-42.4-3.9L374.9 340.4c-17.3-20.9-2.4-52.4 24.6-52.4l78.2 0z"],"clock":[512,512,"M256 0a256 256 0 1 1 0 512 256 256 0 1 1 0-512zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"],"comment":[512,512,"M512 240c0 132.5-114.6 240-256 240-37.1 0-72.3-7.4-104.1-20.7L33.5 510.1c-9.4 4-20.2 1.7-27.1-5.8S-2 485.8 2.8 476.8l48.8-92.2C19.2 344.3 0 294.3 0 240 0 107.5 114.6 0 256 0S512 107.5 512 240z"],"comments":[576,512,"M384 144c0 97.2-86 176-192 176-26.7 0-52.1-5-75.2-14L35.2 349.2c-9.3 4.9-20.7 3.2-28.2-4.2s-9.2-18.9-4.2-28.2l35.6-67.2C14.3 220.2 0 183.6 0 144 0 46.8 86-32 192-32S384 46.8 384 144zm0 368c-94.1 0-172.4-62.1-188.8-144 120-1.5 224.3-86.9 235.8-202.7 83.3 19.2 145 88.3 145 170.7 0 39.6-14.3 76.2-38.4 105.6l35.6 67.2c4.9 9.3 3.2 20.7-4.2 28.2s-18.9 9.2-28.2 4.2L459.2 498c-23.1 9-48.5 14-75.2 14z"],"earth-americas":[512,512,"M55.7 199.7l30.9 30.9c6 6 14.1 9.4 22.6 9.4l21.5 0c8.5 0 16.6 3.4 22.6 9.4l29.3 29.3c6 6 9.4 14.1 9.4 22.6l0 37.5c0 8.5 3.4 16.6 9.4 22.6l13.3 13.3c6 6 9.4 14.1 9.4 22.6l0 18.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-2.7c0-8.5 3.4-16.6 9.4-22.6l45.3-45.3c6-6 9.4-14.1 9.4-22.6l0-34.7c0-17.7-14.3-32-32-32l-82.7 0c-8.5 0-16.6-3.4-22.6-9.4l-16-16c-4.2-4.2-6.6-10-6.6-16 0-12.5 10.1-22.6 22.6-22.6l34.7 0c12.5 0 22.6-10.1 22.6-22.6 0-6-2.4-11.8-6.6-16l-19.7-19.7C242 130 240 125.1 240 120s2-10 5.7-13.7l17.3-17.3c5.8-5.8 9.1-13.7 9.1-21.9 0-7.2-2.4-13.7-6.4-18.9-3.2-.1-6.4-.2-9.6-.2-95.4 0-175.7 64.2-200.3 151.7zM464 256c0-34.6-8.4-67.2-23.4-95.8-6.4 .9-12.7 3.9-17.9 9.1l-13.4 13.4c-6 6-9.4 14.1-9.4 22.6l0 34.7c0 17.7 14.3 32 32 32l24.1 0c2.5 0 5-.3 7.3-.8 .4-5 .5-10.1 .5-15.2zM0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"],"handshake":[576,512,"M268.9 85.2L152.3 214.8c-4.6 5.1-4.4 13 .5 17.9 30.5 30.5 80 30.5 110.5 0l31.8-31.8c4.2-4.2 9.5-6.5 14.9-6.9 6.8-.6 13.8 1.7 19 6.9L505.6 376 576 320 576 32 464 96 440.2 80.1C424.4 69.6 405.9 64 386.9 64l-70.4 0c-1.1 0-2.3 0-3.4 .1-16.9 .9-32.8 8.5-44.2 21.1zM116.6 182.7L223.4 64 183.8 64c-25.5 0-49.9 10.1-67.9 28.1L112 96 0 32 0 320 156.4 450.3c23 19.2 52 29.7 81.9 29.7l15.7 0-7-7c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l41 41 9 0c19.1 0 37.8-4.3 54.8-12.3L359 441c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l32 32 17.5-17.5c8.9-8.9 11.5-21.8 7.6-33.1l-137.9-136.8-14.9 14.9c-49.3 49.3-129.1 49.3-178.4 0-23-23-23.9-59.9-2.2-84z"],"house-chimney-user":[512,512,"M234.2 8.6c12.3-11.4 31.3-11.4 43.5 0L368 92.3 368 80c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32l0 101.5 37.8 35.1c9.6 9 12.8 22.9 8 35.1S493.2 272 480 272l-16 0 0 176c0 35.3-28.7 64-64 64l-288 0c-35.3 0-64-28.7-64-64l0-176-16 0c-13.2 0-25-8.1-29.8-20.3s-1.6-26.2 8-35.1l224-208zM312 256a56 56 0 1 0 -112 0 56 56 0 1 0 112 0zM144 432c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16 0-44.2-35.8-80-80-80l-64 0c-44.2 0-80 35.8-80 80z"],"puzzle-piece":[512,512,"M224 0c35.3 0 64 21.5 64 48 0 10.4-4.4 20-12 27.9-6.6 6.9-12 15.3-12 24.9 0 15 12.2 27.2 27.2 27.2l44.8 0c26.5 0 48 21.5 48 48l0 44.8c0 15 12.2 27.2 27.2 27.2 9.5 0 18-5.4 24.9-12 7.9-7.5 17.5-12 27.9-12 26.5 0 48 28.7 48 64s-21.5 64-48 64c-10.4 0-20.1-4.4-27.9-12-6.9-6.6-15.3-12-24.9-12-15 0-27.2 12.2-27.2 27.2L384 464c0 26.5-21.5 48-48 48l-56.8 0c-12.8 0-23.2-10.4-23.2-23.2 0-9.2 5.8-17.3 13.2-22.8 11.6-8.7 18.8-20.7 18.8-34 0-26.5-28.7-48-64-48s-64 21.5-64 48c0 13.3 7.2 25.3 18.8 34 7.4 5.5 13.2 13.5 13.2 22.8 0 12.8-10.4 23.2-23.2 23.2L48 512c-26.5 0-48-21.5-48-48L0 343.2c0-12.8 10.4-23.2 23.2-23.2 9.2 0 17.3 5.8 22.8 13.2 8.7 11.6 20.7 18.8 34 18.8 26.5 0 48-28.7 48-64s-21.5-64-48-64c-13.3 0-25.3 7.2-34 18.8-5.5 7.4-13.5 13.2-22.8 13.2-12.8 0-23.2-10.4-23.2-23.2L0 176c0-26.5 21.5-48 48-48l108.8 0c15 0 27.2-12.2 27.2-27.2 0-9.5-5.4-18-12-24.9-7.5-7.9-12-17.5-12-27.9 0-26.5 28.7-48 64-48z"],"scale-balanced":[640,512,"M384 32l128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L398.4 96c-5.2 25.8-22.9 47.1-46.4 57.3l0 294.7 160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-384 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l160 0 0-294.7c-23.5-10.3-41.2-31.6-46.4-57.3L128 96c-17.7 0-32-14.3-32-32s14.3-32 32-32l128 0c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288L584.4 320 512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9zM126.8 195.8L54.4 320 199.3 320 126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9S11.7 382 .9 337.1z"],"users":[640,512,"M320 16a104 104 0 1 1 0 208 104 104 0 1 1 0-208zM96 88a72 72 0 1 1 0 144 72 72 0 1 1 0-144zM0 416c0-70.7 57.3-128 128-128 12.8 0 25.2 1.9 36.9 5.4-32.9 36.8-52.9 85.4-52.9 138.6l0 16c0 11.4 2.4 22.2 6.7 32L32 480c-17.7 0-32-14.3-32-32l0-32zm521.3 64c4.3-9.8 6.7-20.6 6.7-32l0-16c0-53.2-20-101.8-52.9-138.6 11.7-3.5 24.1-5.4 36.9-5.4 70.7 0 128 57.3 128 128l0 32c0 17.7-14.3 32-32 32l-86.7 0zM472 160a72 72 0 1 1 144 0 72 72 0 1 1 -144 0zM160 432c0-88.4 71.6-160 160-160s160 71.6 160 160l0 16c0 17.7-14.3 32-32 32l-256 0c-17.7 0-32-14.3-32-32l0-16z"],"wheelchair":[512,512,"M136 40a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zM117.9 197.6l12.6 63c-38.6 12.4-66.5 48.7-66.5 91.4 0 53 43 96 96 96 35.6 0 66.7-19.4 83.3-48.2 2.3 .1 4.6 .2 7 .2l4.1 0c1 0 2.1 0 3.1 0l55.2 0c-20.4 64.9-81 112-152.7 112-88.4 0-160-71.6-160-160 0-73.8 50-135.9 117.9-154.4zm148.6-28.1l23.7 118.5 60.5 0c33.3 0 63.2 20.7 74.9 51.9l25.5 68 18.7-6.2c16.8-5.6 34.9 3.5 40.5 20.2s-3.5 34.9-20.2 40.5l-48 16c-16.3 5.4-34-3-40.1-19.1l-36.3-96.9c-2.3-6.2-8.3-10.4-15-10.4l-86.1 0c-.4 0-.8 0-1.3 0l-13.1 0c-30.5 0-56.8-21.5-62.8-51.4L165.3 189.7c-6.4-31.9 18-61.7 50.6-61.7 24.6 0 45.8 17.4 50.6 41.5z"],"calculator":[384,512,"M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM96 64l192 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32L96 160c-17.7 0-32-14.3-32-32l0-32c0-17.7 14.3-32 32-32zm16 168a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zm80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm128-24a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm128-24a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zm80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM64 424c0-13.3 10.7-24 24-24l112 0c13.3 0 24 10.7 24 24s-10.7 24-24 24L88 448c-13.3 0-24-10.7-24-24zm232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24z"],"palette":[512,512,"M512 256c0 .9 0 1.8 0 2.7-.4 36.5-33.6 61.3-70.1 61.3L344 320c-26.5 0-48 21.5-48 48 0 3.4 .4 6.7 1 9.9 2.1 10.2 6.5 20 10.8 29.9 6.1 13.8 12.1 27.5 12.1 42 0 31.8-21.6 60.7-53.4 62-3.5 .1-7 .2-10.6 .2-141.4 0-256-114.6-256-256S114.6 0 256 0 512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"],"list-check":[512,512,"M133.8 36.3c10.9 7.6 13.5 22.6 5.9 33.4l-56 80c-4.1 5.8-10.5 9.5-17.6 10.1S52 158 47 153L7 113C-2.3 103.6-2.3 88.4 7 79S31.6 69.7 41 79l19.8 19.8 39.6-56.6c7.6-10.9 22.6-13.5 33.4-5.9zm0 160c10.9 7.6 13.5 22.6 5.9 33.4l-56 80c-4.1 5.8-10.5 9.5-17.6 10.1S52 318 47 313L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l19.8 19.8 39.6-56.6c7.6-10.9 22.6-13.5 33.4-5.9zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM64 376a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"],"quote-left":[448,512,"M0 216C0 149.7 53.7 96 120 96l8 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-8 0c-30.9 0-56 25.1-56 56l0 8 64 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-64 0c-35.3 0-64-28.7-64-64L0 216zm256 0c0-66.3 53.7-120 120-120l8 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-8 0c-30.9 0-56 25.1-56 56l0 8 64 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-64 0c-35.3 0-64-28.7-64-64l0-136z"],"circle-nodes":[512,512,"M418.4 157.9c35.3-8.3 61.6-40 61.6-77.9 0-44.2-35.8-80-80-80-43.4 0-78.7 34.5-80 77.5L136.2 151.1C121.7 136.8 101.9 128 80 128 35.8 128 0 163.8 0 208s35.8 80 80 80c12.2 0 23.8-2.7 34.1-7.6L259.7 407.8c-2.4 7.6-3.7 15.8-3.7 24.2 0 44.2 35.8 80 80 80s80-35.8 80-80c0-27.7-14-52.1-35.4-66.4l37.8-207.7zM156.3 232.2c2.2-6.9 3.5-14.2 3.7-21.7l183.8-73.5c3.6 3.5 7.4 6.7 11.6 9.5L317.6 354.1c-5.5 1.3-10.8 3.1-15.8 5.5L156.3 232.2z"],"r-copy":[448,512,"M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l133.5 0c4.2 0 8.3 1.7 11.3 4.7l58.5 58.5c3 3 4.7 7.1 4.7 11.3L400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-197.5c0-17-6.7-33.3-18.7-45.3L370.7 18.7C358.7 6.7 342.5 0 325.5 0L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-48 0 0 16c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l16 0 0-48-16 0z"]};
+function faSwap(root){(root.querySelectorAll?root:document).querySelectorAll("i[class*='fa-']").forEach(el=>{
+  const reg=el.classList.contains("fa-regular");const m=[...el.classList].find(c=>c.startsWith("fa-")&&!["fa-solid","fa-regular"].includes(c));
+  const d=FA_ICONS[(reg?"r-":"")+(m||"").slice(3)]||FA_ICONS[(m||"").slice(3)];if(!d)return;
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.setAttribute("viewBox",`0 0 ${d[0]} ${d[1]}`);svg.setAttribute("aria-hidden","true");
+  svg.setAttribute("style","height:1em;width:auto;vertical-align:-0.125em;fill:currentColor;overflow:visible");
+  const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d",d[2]);svg.appendChild(p);
+  if(el.getAttribute("style"))svg.setAttribute("style",svg.getAttribute("style")+";"+el.getAttribute("style"));el.replaceWith(svg);});}
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)faSwap(n.parentNode||n);}))).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener("DOMContentLoaded",()=>faSwap(document));
+</script>
+<style>
+:root{
+  --navy:#00427F; --green:#54A450; --red:#C0092C; --lblue:#69ABDE; --gold:#D6A552;
+  --pblue:#CBE2F3; --pgreen:#D2E7D1; --text:#1F2A44; --gray:#6B7280; --pgray:#EEF2F7; --white:#fff;
+  --fs:1;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Roboto,Arial,sans-serif;color:var(--text);background:#F6F8FB;font-size:calc(16px*var(--fs));line-height:1.5}
+body.hc{--text:#000;--gray:#222;background:#fff}
+body.hc .card,body.hc .panel{border:2px solid #000}
+a{color:var(--navy)}
+button{font-family:inherit;font-size:inherit}
+.sr{position:absolute;left:-9999px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* ---------- Encabezado ---------- */
+header.top{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.top-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{width:42px;height:42px;flex:none}
+.brand b{display:block;font-size:1.05em;line-height:1.2}
+.brand span{display:block;font-size:.78em;opacity:.85}
+nav.tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav.tabs a{color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;font-weight:500;font-size:.92em;white-space:nowrap}
+nav.tabs a:hover{background:rgba(255,255,255,.12)}
+nav.tabs a.on{background:#fff;color:var(--navy)}
+.a11y{background:#003566;}
+.a11y-in{max-width:1200px;margin:0 auto;display:flex;gap:8px;align-items:center;padding:6px 20px;color:#fff;font-size:.85em;flex-wrap:wrap}
+.a11y button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:6px;padding:3px 10px;cursor:pointer}
+.a11y button[aria-pressed=true]{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+
+main{max-width:1200px;margin:0 auto;padding:24px 20px 60px}
+section.view{display:none}
+section.view.on{display:block}
+h1,h2,h3{color:var(--navy);line-height:1.2}
+h2.sec{font-size:1.7em;margin:.2em 0 .4em;display:flex;align-items:center;gap:12px}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:999px;padding:6px 18px 6px 22px;font-weight:700;position:relative}
+.pill::before{content:"";position:absolute;left:-6px;top:50%;transform:translateY(-50%);border-left:12px solid var(--red);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.pill.g{background:var(--green)}
+.lead{font-size:1.1em;max-width:850px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,66,127,.08)}
+.card.b{background:var(--pblue)}
+.card.gr{background:var(--pgreen)}
+.ic{width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:24px;flex:none}
+.bg-navy{background:var(--navy)}.bg-green{background:var(--green)}.bg-red{background:var(--red)}.bg-gold{background:var(--gold)}.bg-lblue{background:var(--lblue)}
+.key{background:var(--pgray);border-left:6px solid var(--red);border-radius:10px;padding:14px 18px;font-weight:700;color:var(--navy);margin:18px 0}
+.key.g{border-left-color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:11px 22px;font-weight:700;cursor:pointer;background:var(--navy);color:#fff;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.g{background:var(--green)}.btn.o{background:#fff;color:var(--navy);border:2px solid var(--navy)}.btn.r{background:var(--red)}
+.btn:disabled{opacity:.45;cursor:default}
+table.t{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:.95em}
+table.t th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700}
+table.t td{padding:9px 12px;border-bottom:1px solid #E3E8EF;vertical-align:top}
+table.t tr:nth-child(even) td{background:#F8FAFD}
+.tw{overflow-x:auto;border-radius:10px;box-shadow:0 2px 10px rgba(0,66,127,.06)}
+
+/* ---------- Héroe ---------- */
+.hero{position:relative;background:var(--navy);color:#fff;border-radius:18px;overflow:hidden;padding:44px 40px 70px 40px;min-height:300px}
+.hero .rib{position:absolute;right:0;top:0;height:100%;width:260px}
+.hero .sun{position:absolute;right:170px;top:-70px;width:200px;opacity:.95}
+.hero .band{position:absolute;left:0;right:0;bottom:0;height:44px;background:var(--green);display:flex;align-items:center;padding:0 40px;font-weight:700;font-size:.9em;letter-spacing:.02em}
+.hero .kick{color:var(--gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.85em}
+.hero h1{color:#fff;font-size:2.4em;margin:.25em 0 .3em;max-width:720px}
+.hero p{max-width:640px;font-size:1.1em;opacity:.95}
+.hero .inner{position:relative;z-index:2;max-width:760px}
+
+/* ---------- Diapositivas ---------- */
+.deck{display:grid;grid-template-columns:1fr;gap:14px}
+.stage{background:#1d2633;border-radius:16px;padding:16px}
+.slide{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#fff;container-type:inline-size;border-radius:6px;font-size:1.7cqw;color:var(--text)}
+.stage:fullscreen{display:flex;align-items:center;justify-content:center;background:#000;padding:0}
+.stage:fullscreen .slide{width:min(100vw,177.78vh);border-radius:0}
+.ctrl{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:12px;color:#fff;flex-wrap:wrap}
+.ctrl button{background:rgba(255,255,255,.12);border:none;color:#fff;border-radius:999px;padding:8px 16px;cursor:pointer}
+.ctrl button:hover{background:rgba(255,255,255,.22)}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px}
+.thumbs button{flex:none;border:2px solid transparent;background:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.8em;color:var(--navy);max-width:180px;text-align:left}
+.thumbs button.on{border-color:var(--red);font-weight:700}
+.notes{background:#fff;border-radius:12px;padding:12px 16px;font-size:.92em;border-left:5px solid var(--gold)}
+
+/* Elementos internos (unidades relativas al ancho de la diapositiva: 1in = 7.5cqw) */
+.s-hdr{position:absolute;left:0;top:0;width:83.25cqw;height:8.63cqw;background:var(--green)}
+.s-title{position:absolute;left:4.5cqw;top:0;height:8.63cqw;width:76cqw;display:flex;align-items:center;color:#fff;font-weight:700;font-size:3.1cqw;line-height:1.1}
+.s-corner{position:absolute;right:0;top:0;width:18cqw;height:12.8cqw}
+.s-foot{position:absolute;left:4.5cqw;bottom:1.4cqw;font-size:1.04cqw;color:var(--gray)}
+.s-num{position:absolute;right:4cqw;bottom:1.4cqw;font-size:1.04cqw;color:var(--navy);font-weight:700}
+.s-body{position:absolute;left:4.5cqw;right:4.5cqw;top:11cqw;bottom:5.2cqw;display:flex;flex-direction:column}
+.s-card{background:var(--pblue);border-radius:.9cqw;box-shadow:0 .2cqw .6cqw rgba(143,163,191,.45);position:relative}
+.s-card.ns{box-shadow:none}
+.s-ic{border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.s-key{margin-top:auto;background:var(--pgray);border-left:.6cqw solid var(--red);border-radius:.7cqw;padding:1cqw 1.6cqw;font-weight:700;color:var(--navy);font-size:1.9cqw;text-align:center}
+.s-key.g{border-left-color:var(--green)}
+.s-tag{display:inline-flex;align-items:center;position:relative;background:var(--navy);color:#fff;font-weight:700;border-radius:99cqw;padding:.6cqw 1.6cqw .6cqw 2.4cqw;font-size:1.6cqw}
+.s-tag::before{content:"";position:absolute;left:-.6cqw;top:50%;transform:translateY(-50%);border-left:1.6cqw solid var(--red);border-top:1.1cqw solid transparent;border-bottom:1.1cqw solid transparent}
+.s-tag.g{background:var(--green)}
+.s-phrase{margin-top:auto;text-align:center;color:var(--green);font-weight:700;font-style:italic;font-size:2.2cqw}
+
+/* ---------- Sondeo ---------- */
+.steps{display:flex;gap:8px;margin:6px 0 18px;flex-wrap:wrap}
+.steps span{padding:6px 14px;border-radius:999px;background:#E4EAF2;color:var(--gray);font-weight:500;font-size:.88em}
+.steps span.on{background:var(--navy);color:#fff}
+.inst{cursor:pointer;border:3px solid transparent;text-align:left;width:100%;font:inherit;color:inherit}
+.inst:hover{border-color:var(--lblue)}
+.inst.sel{border-color:var(--red)}
+.inst h3{margin:.4em 0 .2em}
+.meta{font-size:.85em;color:var(--gray)}
+label.f{display:block;font-weight:700;color:var(--navy);margin:10px 0 4px}
+input.f,select.f{width:100%;padding:10px 12px;border:1px solid #C9D3E0;border-radius:10px;font:inherit}
+.qbox{background:#fff;border-radius:18px;padding:28px;box-shadow:0 4px 18px rgba(0,66,127,.1);max-width:820px;margin:0 auto}
+.prog{height:10px;background:#E4EAF2;border-radius:999px;overflow:hidden;margin:10px 0 22px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--navy));transition:width .25s}
+.qn{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.qn .num{width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.4em;flex:none}
+.qn h3{margin:0;font-size:1.35em}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--pblue);border:3px solid transparent;border-radius:14px;padding:14px 16px;margin:10px 0;cursor:pointer;font-size:1.08em;color:var(--text)}
+.opt:hover{border-color:var(--lblue)}
+.opt.sel{border-color:var(--navy);background:#fff;box-shadow:0 0 0 3px var(--pblue)}
+.opt .l{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px;flex-wrap:wrap}
+.bars{display:grid;gap:12px;margin:16px 0}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:12px}
+.bar .tr{height:28px;background:#E4EAF2;border-radius:999px;overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:999px}
+.bar b{color:var(--navy)}
+.res-head{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.chip{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.8em;font-weight:700;color:#fff}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:50;display:none}
+.dlg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:60}
+.dlg .card{max-width:420px}
+
+/* ---------- Material ---------- */
+.mat{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start}
+.toc{position:sticky;top:120px;background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,66,127,.08)}
+.toc a{display:block;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--text);font-size:.93em}
+.toc a:hover{background:var(--pblue)}
+.toc b{display:block;color:var(--navy);padding:4px 10px 8px}
+.mat article{background:#fff;border-radius:14px;padding:24px 28px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,66,127,.06);scroll-margin-top:130px}
+.mat article h3{font-size:1.4em;margin-top:0;display:flex;align-items:center;gap:12px}
+.mat article h4{color:var(--green);margin:1.2em 0 .4em}
+.quote{font-style:italic;color:var(--navy);border-left:4px solid var(--gold);padding-left:14px}
+footer.bot{background:var(--green);color:#fff;font-size:.85em}
+footer.bot div{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:860px){.mat{grid-template-columns:1fr}.toc{position:static}.hero h1{font-size:1.8em}.hero .rib,.hero .sun{opacity:.35}.bar{grid-template-columns:100px 1fr 54px}}
+@media print{header.top,.a11y,footer.bot,.no-print{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <div><b>Sondeo de detección de estilos de aprendizaje</b><span>Equipo de Inclusión · DGETyFP · Ministerio de Educación de Córdoba</span></div>
+    </div>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="#inicio" data-v="inicio">Inicio</a>
+      <a href="#presentacion" data-v="presentacion">Presentación</a>
+      <a href="#sondeo" data-v="sondeo">Sondeo</a>
+      <a href="#registro" data-v="registro">Registro del grupo</a>
+      <a href="#material" data-v="material">Material de consulta</a>
+    </nav>
+  </div>
+  <div class="a11y" role="toolbar" aria-label="Accesibilidad">
+    <div class="a11y-in">
+      <span><i class="fa-solid fa-universal-access"></i> Accesibilidad:</span>
+      <button id="fsMinus" aria-label="Achicar texto">A−</button>
+      <button id="fsPlus" aria-label="Agrandar texto">A+</button>
+      <button id="hcBtn" aria-pressed="false">Alto contraste</button>
+      <button id="ttsBtn" aria-pressed="false" title="Lee en voz alta cada pregunta del sondeo">Lectura en voz alta</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= INICIO ================= -->
+<section class="view" id="v-inicio">
+  <div class="hero">
+    <div id="heroRib" class="rib" aria-hidden="true"></div>
+    <div id="heroSun" class="sun" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="kick">Jornada de Inclusión · 24 de noviembre de 2026</div>
+      <h1>Sondeo de detección de estilos de aprendizaje</h1>
+      <p>Una herramienta para que docentes y equipos de las escuelas técnicas detecten tendencias en la forma de aprender de cada estudiante y planifiquen propuestas con más puertas de entrada.</p>
+    </div>
+    <div class="band">Inclusión educativa en la escuela técnica · Modelos PNL (V.A.K.) y Hemisferios cerebrales</div>
+  </div>
+
+  <h2 class="sec" style="margin-top:30px"><span class="pill">¿Por qué “sondeo” y no “diagnóstico”?</span></h2>
+  <div class="grid g2">
+    <div class="card gr">
+      <div style="display:flex;gap:14px;align-items:center"><span class="ic bg-green"><i class="fa-solid fa-magnifying-glass"></i></span><h3 style="margin:0">Sondeo de detección</h3></div>
+      <p>Se hace <b>en un solo encuentro</b>, con instrumentos breves. Permite <b>detectar tendencias</b> en el estilo de aprendizaje de la persona que tenemos enfrente.</p>
+      <p>Es un punto de partida para conversar y planificar. Es lo que proponemos en esta jornada.</p>
+    </div>
+    <div class="card b">
+      <div style="display:flex;gap:14px;align-items:center"><span class="ic bg-navy"><i class="fa-solid fa-layer-group"></i></span><h3 style="margin:0">Diagnóstico</h3></div>
+      <p>Es un proceso <b>más exhaustivo y global</b>: requiere <b>varios encuentros</b>, otros tiempos, observación sostenida y la mirada desde distintos modelos.</p>
+      <p>No se puede hacer un diagnóstico con un solo encuentro: para eso, el sondeo es apenas un primer insumo.</p>
+    </div>
+  </div>
+  <div class="key g">Detectamos tendencias para diseñar mejores propuestas, nunca para etiquetar a nadie.</div>
+
+  <h2 class="sec"><span class="pill g">¿Qué ofrece esta herramienta?</span></h2>
+  <div class="grid g3">
+    <a class="card" href="#presentacion" style="text-decoration:none;color:inherit"><span class="ic bg-navy"><i class="fa-solid fa-person-chalkboard"></i></span><h3>Presentación</h3><p>Las diapositivas de la jornada: aulas heterogéneas, barreras, modelo VAK y hemisferios cerebrales.</p></a>
+    <a class="card" href="#sondeo" style="text-decoration:none;color:inherit"><span class="ic bg-red"><i class="fa-solid fa-clipboard-question"></i></span><h3>Sondeo</h3><p>Tres instrumentos para responder en pantalla, con el resultado al instante y sugerencias para el aula y el taller.</p></a>
+    <a class="card" href="#registro" style="text-decoration:none;color:inherit"><span class="ic bg-green"><i class="fa-solid fa-people-group"></i></span><h3>Registro del grupo</h3><p>Reúne los resultados de un curso para ver su diversidad y planificar con múltiples formas de presentar y de mostrar lo aprendido.</p></a>
+    <a class="card" href="#material" style="text-decoration:none;color:inherit"><span class="ic bg-gold"><i class="fa-solid fa-book-open"></i></span><h3>Material de consulta</h3><p>Qué es un estilo de aprendizaje, los modelos, estrategias de enseñanza y cuidados al sondear.</p></a>
+  </div>
+
+  <h2 class="sec" style="margin-top:28px"><span class="pill">Cómo usarla en la escuela</span></h2>
+  <div class="card">
+    <ol style="margin:0;padding-left:22px;line-height:1.9">
+      <li>Explicá al grupo qué es un sondeo y que <b>no hay respuestas correctas ni incorrectas</b>.</li>
+      <li>Elegí el instrumento: <b>VAK (PNL)</b> o <b>hemisférico</b> para estudiantes, o la <b>versión docente</b> para el equipo.</li>
+      <li>Cada persona responde en la pantalla. Si alguien lo necesita, activá la <b>lectura en voz alta</b> o el texto grande.</li>
+      <li>Compartí el resultado con quien respondió: es una <b>tendencia</b>, no una etiqueta.</li>
+      <li>Sumá el resultado al <b>registro del grupo</b> y usalo para diversificar la planificación.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PRESENTACIÓN ================= -->
+<section class="view" id="v-presentacion">
+  <h2 class="sec"><span class="pill">Presentación de la jornada</span></h2>
+  <p class="lead">Diapositivas 1 a 15. La parte de actividades se hace con el <a href="#sondeo">sondeo interactivo</a> de esta herramienta.</p>
+  <div class="deck">
+    <div class="stage" id="stage">
+      <div class="slide" id="slide" role="region" aria-roledescription="diapositiva" aria-live="polite"></div>
+      <div class="ctrl no-print">
+        <button id="prevS" aria-label="Diapositiva anterior"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+        <span id="sCount">1 / 15</span>
+        <button id="nextS" aria-label="Diapositiva siguiente">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
+        <button id="fullS"><i class="fa-solid fa-expand"></i> Pantalla completa</button>
+      </div>
+    </div>
+    <div class="thumbs no-print" id="thumbs" aria-label="Índice de diapositivas"></div>
+    <div class="notes" id="sNotes" hidden></div>
+  </div>
+</section>
+
+<!-- ================= SONDEO ================= -->
+<section class="view" id="v-sondeo">
+  <h2 class="sec"><span class="pill">Sondeo de detección del estilo de aprendizaje</span></h2>
+  <div class="steps" id="steps"><span>1 · Instrumento</span><span>2 · Datos</span><span>3 · Preguntas</span><span>4 · Tendencia</span></div>
+  <div id="sondeoArea"></div>
+</section>
+
+<!-- ================= REGISTRO ================= -->
+<section class="view" id="v-registro">
+  <h2 class="sec"><span class="pill g">Registro del grupo</span></h2>
+  <p class="lead">Cada resultado que sumás desde el sondeo aparece acá. Sirve para ver la diversidad del grupo y planificar con varias formas de presentar los contenidos y de mostrar lo aprendido.</p>
+  <div class="card b" style="margin-bottom:16px"><i class="fa-solid fa-lock"></i> Los datos quedan solo en este navegador y no se envían a ningún lado. Si cambiás de equipo o borrás el navegador, se pierden: usá <b>Copiar tabla</b> para pegarlos en una planilla.</div>
+  <div id="regArea"></div>
+</section>
+
+<!-- ================= MATERIAL ================= -->
+<section class="view" id="v-material">
+  <h2 class="sec"><span class="pill">Material de consulta</span></h2>
+  <div class="mat">
+    <nav class="toc" aria-label="Temas">
+      <b>Temas</b>
+      <a href="#material" data-go="m-que">¿Qué es un estilo de aprendizaje?</a>
+      <a href="#material" data-go="m-sondeo">Sondeo y diagnóstico</a>
+      <a href="#material" data-go="m-vak">Modelo PNL (V.A.K.)</a>
+      <a href="#material" data-go="m-hemi">Modelo de los hemisferios</a>
+      <a href="#material" data-go="m-otros">Otros modelos</a>
+      <a href="#material" data-go="m-estr">Estrategias de enseñanza</a>
+      <a href="#material" data-go="m-aula">Del sondeo al aula inclusiva</a>
+      <a href="#material" data-go="m-cuid">Cuidados al sondear</a>
+      <a href="#material" data-go="m-fuen">Fuentes</a>
+    </nav>
+    <div>
+      <article id="m-que">
+        <h3><span class="ic bg-navy"><i class="fa-solid fa-user-check"></i></span>¿Qué es un estilo de aprendizaje?</h3>
+        <p>Cada persona usa su propio método o sus propias estrategias para aprender. Aunque esas estrategias cambian según lo que se quiere aprender, cada uno tiende a desarrollar ciertas <b>preferencias o tendencias globales</b>: esas tendencias definen un estilo de aprendizaje.</p>
+        <p>Son rasgos <b>cognitivos, afectivos y fisiológicos</b> que funcionan como indicadores relativamente estables de cómo cada persona percibe, interactúa y responde en sus ambientes de aprendizaje:</p>
+        <ul>
+          <li><b>Cognitivos:</b> cómo organiza los contenidos, forma conceptos, interpreta la información, resuelve problemas y elige medios de representación (visual, auditivo, kinestésico).</li>
+          <li><b>Afectivos:</b> las motivaciones y expectativas que influyen en el aprendizaje.</li>
+          <li><b>Fisiológicos:</b> los ritmos biológicos, como el de sueño y vigilia.</li>
+        </ul>
+        <div class="key g">Los estilos son relativamente estables, pero pueden cambiar, variar según la situación y mejorarse. Por eso hablamos de tendencias, no de etiquetas.</div>
+      </article>
+
+      <article id="m-sondeo">
+        <h3><span class="ic bg-green"><i class="fa-solid fa-magnifying-glass"></i></span>Sondeo y diagnóstico</h3>
+        <div class="tw"><table class="t">
+          <tr><th></th><th>Sondeo de detección</th><th>Diagnóstico</th></tr>
+          <tr><td><b>Tiempo</b></td><td>Un encuentro</td><td>Varios encuentros, otros tiempos</td></tr>
+          <tr><td><b>Alcance</b></td><td>Detecta tendencias</td><td>Mirada exhaustiva y global</td></tr>
+          <tr><td><b>Instrumentos</b></td><td>Cuestionarios breves de uno o dos modelos</td><td>Observación sostenida, varios modelos y fuentes</td></tr>
+          <tr><td><b>Para qué</b></td><td>Abrir la conversación y ajustar la planificación</td><td>Definir apoyos y configuraciones con el equipo</td></tr>
+        </table></div>
+        <p>En esta jornada hacemos un <b>sondeo</b>: detectamos tendencias del estilo de aprendizaje de la persona que tenemos enfrente, desde el modelo PNL y el modelo de los hemisferios cerebrales.</p>
+      </article>
+
+      <article id="m-vak">
+        <h3><span class="ic bg-red"><i class="fa-solid fa-eye"></i></span>Modelo de Programación Neurolingüística (V.A.K.)</h3>
+        <p>Propuesto a partir de los trabajos de Bandler y Grinder, considera que tenemos <b>tres grandes sistemas para representar mentalmente la información</b>: visual, auditivo y kinestésico (también se dice cinestésico o cenestésico).</p>
+        <p>La mayoría usamos esos sistemas de forma desigual: potenciamos unos y usamos menos otros. <b>Un sistema se desarrolla más cuanto más se usa.</b> Si una persona no está acostumbrada a prestar atención a un canal, le cuesta aprender lo que llega por ese canal, no por falta de interés, sino por falta de hábito. Ningún sistema es mejor o peor: cada uno es más o menos eficaz para ciertos procesos.</p>
+        <div class="grid g3">
+          <div class="card b"><span class="ic bg-navy"><i class="fa-solid fa-eye"></i></span><h4 style="color:var(--navy)">Visual</h4><p>Aprende mejor cuando lee o ve la información. Pensar en imágenes permite traer mucha información a la vez y relacionar ideas. La capacidad de abstraer y de planificar se vincula con la de visualizar.</p></div>
+          <div class="card gr"><span class="ic bg-green"><i class="fa-solid fa-ear-listen"></i></span><h4>Auditivo</h4><p>Recuerda de manera secuencial y ordenada. Aprende mejor cuando recibe explicaciones orales y cuando puede explicar a otros. Si se saltea un paso, puede perder el hilo.</p></div>
+          <div class="card" style="background:#F9E1E6"><span class="ic bg-red"><i class="fa-solid fa-hand"></i></span><h4 style="color:var(--red)">Kinestésico</h4><p>Asocia la información a sensaciones y movimientos. Aprende más despacio, pero en profundidad: lo que se aprende con el cuerpo difícilmente se olvida. Esa lentitud no tiene que ver con la capacidad, sino con otra manera de aprender.</p></div>
+        </div>
+        <h4>Rasgos que se pueden observar</h4>
+        <div class="tw"><table class="t">
+          <tr><th></th><th>Visual</th><th>Auditivo</th><th>Kinestésico</th></tr>
+          <tr><td><b>Conducta</b></td><td>Organizado, observador y tranquilo. Las emociones se le ven en la cara.</td><td>Habla, se distrae con facilidad, mueve los labios al leer. Expresa sus emociones con palabras y modula la voz.</td><td>Se mueve y gesticula mucho, le gusta tocar. Expresa sus emociones con movimientos.</td></tr>
+          <tr><td><b>Aprendizaje</b></td><td>Aprende lo que ve. Necesita una visión detallada y saber hacia dónde va. Le cuesta recordar lo que oye.</td><td>Aprende lo que oye, repitiéndose el proceso paso a paso. Le cuesta tener una visión global.</td><td>Aprende lo que experimenta directamente. Le cuesta comprender lo que no puede poner en práctica.</td></tr>
+          <tr><td><b>Actividades</b></td><td>Ver, leer, imaginar; videos, mapas, carteles, diagramas, fotos, bocetos, microscopio.</td><td>Escuchar, debatir, cantar, leer en voz alta, entrevistas, grupos pequeños, hablar en público.</td><td>Tocar, mover, armar y reparar; trabajo de campo, laboratorio, maquetas, dramatizar.</td></tr>
+        </table></div>
+        <h4>Expresiones frecuentes</h4>
+        <div class="grid g3">
+          <div class="card b"><b>Visuales:</b> “Ya veo lo que querés decir”, “esto da luz al tema”, “el futuro se ve brillante”.</div>
+          <div class="card gr"><b>Auditivas:</b> “Estamos en la misma onda”, “me suena a chino”, “alto y claro”.</div>
+          <div class="card" style="background:#F9E1E6"><b>Kinestésicas:</b> “Estamos en contacto”, “pisar fuerte”, “romper el hielo”.</div>
+        </div>
+      </article>
+
+      <article id="m-hemi">
+        <h3><span class="ic bg-gold"><i class="fa-solid fa-brain"></i></span>Modelo de los hemisferios cerebrales</h3>
+        <p>Cada hemisferio se especializa en ciertas tareas. El <b>izquierdo</b> maneja mejor los símbolos de todo tipo (lenguaje, álgebra, partituras): es más analítico, lineal y lógico. El <b>derecho</b> es más eficaz en la percepción del espacio: es más global, sintético, intuitivo, imaginativo y emocional.</p>
+        <p>Todas las personas usamos todo el cerebro, y los hemisferios interactúan de manera continua, aunque en general uno está más activo. En esa preferencia también influyen factores sociales.</p>
+        <div class="tw"><table class="t">
+          <tr><th>Hemisferio lógico (en general, el izquierdo)</th><th>Hemisferio holístico (en general, el derecho)</th></tr>
+          <tr><td>Lógico, analítico, abstracto</td><td>Holístico, intuitivo, concreto</td></tr>
+          <tr><td>De la parte al todo, lineal, secuencial</td><td>Del todo a la parte, global, simultáneo</td></tr>
+          <tr><td>Verbal, simbólico, cuantitativo</td><td>No verbal, analógico, cualitativo</td></tr>
+          <tr><td>Escritura, lectura, ortografía, oratoria, escucha</td><td>Relaciones espaciales, formas, color, música, expresión artística</td></tr>
+          <tr><td>Procesa una cosa por vez; “sabe cómo hacer algo”</td><td>Procesa todo al mismo tiempo; “descubre qué puede hacerse”</td></tr>
+        </table></div>
+        <h4>En el aula y el taller</h4>
+        <div class="grid g2">
+          <div class="card b"><b style="color:var(--navy)">Con tendencia lógica</b><ul><li>Necesita consignas claras, escritas y específicas.</li><li>Aprende de la parte al todo y analiza paso a paso.</li><li>Le preocupa el resultado final y quiere verificar su trabajo.</li><li>Se incomoda con actividades abiertas y poco estructuradas.</li></ul></div>
+          <div class="card gr"><b style="color:var(--green)">Con tendencia holística</b><ul><li>Necesita partir de la imagen global para entender las partes.</li><li>Piensa en imágenes y sensaciones, aunque no siempre las verbaliza.</li><li>Prefiere actividades abiertas y creativas.</li><li>Le importa más el proceso que el resultado.</li></ul></div>
+        </div>
+        <div class="key">Ningún hemisferio es más importante que el otro: juntas, palabras e imágenes comunican con más claridad. Buscamos el equilibrio.</div>
+      </article>
+
+      <article id="m-otros">
+        <h3><span class="ic bg-lblue"><i class="fa-solid fa-shapes"></i></span>Otros modelos de referencia</h3>
+        <p>Los modelos tienen marcos distintos, pero comparten una idea: hay muchas formas de aprender, y conocerlas ayuda a elegir estrategias de enseñanza.</p>
+        <div class="grid g2">
+          <div class="card b"><h4 style="color:var(--navy);margin-top:0">Cuadrantes cerebrales (Herrmann)</h4><p>Cruza los dos hemisferios con el sistema cortical y el límbico, y define cuatro cuadrantes: cortical izquierdo (lógico), límbico izquierdo (organizado), límbico derecho (interpersonal) y cortical derecho (creativo).</p></div>
+          <div class="card b"><h4 style="color:var(--navy);margin-top:0">Felder y Silverman</h4><p>Describe cinco dimensiones con dos polos cada una: sensitivo–intuitivo, visual–verbal, inductivo–deductivo, secuencial–global y activo–reflexivo.</p></div>
+          <div class="card b"><h4 style="color:var(--navy);margin-top:0">Kolb</h4><p>Aprender es un ciclo de cuatro fases: actuar (activo), reflexionar (reflexivo), teorizar (teórico) y experimentar (pragmático). El aprendizaje óptimo recorre las cuatro.</p></div>
+          <div class="card b"><h4 style="color:var(--navy);margin-top:0">Inteligencias múltiples (Gardner)</h4><p>Todas las personas conocemos el mundo de varias maneras: lingüística, lógico-matemática, espacial, musical, corporal-kinestésica, interpersonal e intrapersonal. Nos diferenciamos en la intensidad y en cómo las combinamos.</p></div>
+        </div>
+      </article>
+
+      <article id="m-estr">
+        <h3><span class="ic bg-green"><i class="fa-solid fa-lightbulb"></i></span>Estrategias de enseñanza</h3>
+        <p>Diversificar las estrategias permite llegar a más estudiantes y, a la vez, ayuda a cada uno a desarrollar los canales que usa menos.</p>
+        <div class="tw"><table class="t">
+          <tr><th>Estrategia</th><th>De qué se trata</th><th>En la escuela técnica</th></tr>
+          <tr><td><b>Metáfora</b></td><td>Conecta un concepto nuevo con algo que ya se conoce. Es un lenguaje de ambos hemisferios.</td><td>“La corriente eléctrica es como el agua en una cañería.”</td></tr>
+          <tr><td><b>Pensamiento visual</b></td><td>Observar, leer y producir representaciones gráficas y visualizar mentalmente.</td><td>Planos, diagramas de flujo, despieces, mapas conceptuales del proceso.</td></tr>
+          <tr><td><b>Fantasía</b></td><td>Usar la imaginación para explorar lo que no se puede ver o tocar. Aumenta la motivación.</td><td>“Imaginá que sos una gota de aceite recorriendo el motor.”</td></tr>
+          <tr><td><b>Aprendizaje multisensorial</b></td><td>Integrar vista, oído, tacto y movimiento: los sentidos son la base del pensamiento abstracto.</td><td>Reconocer materiales por el tacto, el sonido de una máquina bien calibrada.</td></tr>
+          <tr><td><b>Experiencia directa</b></td><td>Aprender haciendo, con materiales reales. Estimula la implicación personal.</td><td>Prácticas de taller, laboratorio, visitas a empresas, proyectos productivos.</td></tr>
+        </table></div>
+      </article>
+
+      <article id="m-aula">
+        <h3><span class="ic bg-navy"><i class="fa-solid fa-door-open"></i></span>Del sondeo al aula inclusiva</h3>
+        <p>El sondeo nos muestra que en cada grupo conviven tendencias distintas. La respuesta no es armar una clase para cada estudiante, sino <b>diseñar desde el inicio con varias puertas de entrada</b>, como propone el Diseño Universal para el Aprendizaje (DUA).</p>
+        <div class="tw"><table class="t">
+          <tr><th>Canal</th><th>Presento…</th><th>El estudiante muestra…</th></tr>
+          <tr><td><b style="color:var(--navy)">Visual</b></td><td>Esquema, plano, video, código de colores</td><td>Diagrama, boceto, maqueta</td></tr>
+          <tr><td><b style="color:var(--green)">Auditivo</b></td><td>Explicación oral, ejemplo, debate</td><td>Exposición oral, defensa del proyecto</td></tr>
+          <tr><td><b style="color:var(--red)">Kinestésico</b></td><td>Demostración y práctica guiada</td><td>La tarea resuelta en el taller</td></tr>
+        </table></div>
+        <h4>Preguntas para planificar</h4>
+        <ul>
+          <li>¿Presento el contenido de más de una forma (ver, escuchar, hacer)?</li>
+          <li>¿Las consignas están por escrito y también se explican en voz alta?</li>
+          <li>¿Hay un momento para ver el todo y otro para ir paso a paso?</li>
+          <li>¿Ofrezco más de una manera de mostrar lo aprendido?</li>
+          <li>¿Qué barreras (de acceso, de comunicación, didácticas o actitudinales) puede encontrar alguien en esta propuesta?</li>
+        </ul>
+        <div class="key">Un mismo contenido, varias puertas de entrada.</div>
+      </article>
+
+      <article id="m-cuid">
+        <h3><span class="ic bg-red"><i class="fa-solid fa-hand-holding-heart"></i></span>Cuidados al sondear</h3>
+        <ul>
+          <li><b>Es voluntario.</b> Explicá para qué se hace y que no hay respuestas correctas ni incorrectas.</li>
+          <li><b>Es una tendencia, no una etiqueta.</b> Nadie “es” visual o auditivo: todos usamos los tres canales.</li>
+          <li><b>No se califica.</b> El resultado orienta la planificación; no se usa para clasificar, agrupar de forma fija ni evaluar.</li>
+          <li><b>Se comparte.</b> Conversá el resultado con quien respondió: ¿se reconoce en él?</li>
+          <li><b>Se cuida la información.</b> Podés usar un alias en lugar del nombre. Los datos quedan solo en este navegador.</li>
+          <li><b>Se adapta.</b> Leé las preguntas en voz alta, agrandá el texto o acompañá con apoyos cuando alguien lo necesite.</li>
+          <li><b>Es un primer insumo.</b> Para conocer en profundidad a un estudiante hacen falta varios encuentros, observación y trabajo con el equipo.</li>
+        </ul>
+      </article>
+
+      <article id="m-fuen">
+        <h3><span class="ic bg-gold"><i class="fa-solid fa-bookmark"></i></span>Fuentes</h3>
+        <ul>
+          <li>Dirección General del Bachillerato (2004). <i>Manual de estilos de aprendizaje. Material autoinstruccional para docentes y orientadores educativos.</i> SEP, México.</li>
+          <li>De la Parra Paz, E. (2004). <i>Herencia de vida para tus hijos. Crecimiento integral con técnicas PNL.</i> Grijalbo. Fuente de los cuestionarios PNL y de predominancia hemisférica.</li>
+          <li>Verlee Williams, L. (1995). <i>Aprender con todo el cerebro.</i> Martínez Roca.</li>
+          <li>O’Connor, J. y Seymour, J. (1995). <i>Introducción a la PNL.</i> Urano.</li>
+          <li>Cuestionario VAK para docentes: versión situada de uso interno, adaptada del modelo PNL.</li>
+          <li>Equipo de Inclusión DGETyFP (2026). <i>Inclusión educativa en la escuela técnica</i> (presentación de la jornada).</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bot"><div><span>Ministerio de Educación · Provincia de Córdoba</span><span>Dirección General de Educación Técnica y Formación Profesional · Equipo de Inclusión</span></div></footer>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="dlg" id="dlg" role="dialog" aria-modal="true"><div class="card"><p id="dlgMsg"></p><div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn o" id="dlgNo">Cancelar</button><button class="btn r" id="dlgYes">Sí, borrar</button></div></div></div>
+
+<script>
+/* ================== Utilidades ================== */
+const $ = s => document.querySelector(s);
+const C = {navy:"#00427F",green:"#54A450",red:"#C0092C",lblue:"#69ABDE",gold:"#D6A552",white:"#F5F5F5"};
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(t._h);t._h=setTimeout(()=>t.style.display="none",2600);}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+
+/* Ondas institucionales (rojo, blanco, celeste) y sol */
+function ribbons(W,H,x0,d,sw,yb1=.32,yb2=.62,order=[C.red,C.white,C.lblue]){
+  let o="";order.forEach((c,i)=>{const x=x0+i*sw*.98;
+    o+=`<path d="M ${x} ${-sw} L ${x} ${H*yb1} C ${x} ${H*(yb1+.12)} ${x+d} ${H*(yb2-.12)} ${x+d} ${H*yb2} L ${x+d} ${H+sw}" fill="none" stroke="${c}" stroke-width="${sw}"/>`;});
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" aria-hidden="true">${o}</svg>`;
+}
+function sun(){const S=1000,cx=500,cy=500,r1=240,r2=480,n=28;let r="";
+  for(let i=0;i<n;i++){const a=i/n*2*Math.PI,w=.08;const P=(rr,aa)=>[cx+rr*Math.cos(aa),cy+rr*Math.sin(aa)].join(",");
+    r+=`<polygon points="${P(r1,a-w)} ${P(r2,a-w*.55)} ${P(r2,a+w*.55)} ${P(r1,a+w)}" fill="${C.gold}"/>`;}
+  return `<svg viewBox="0 0 ${S} ${S}" width="100%" height="100%" aria-hidden="true">${r}</svg>`;}
+$("#heroRib").innerHTML=ribbons(800,1500,300,-220,130,.25,.6);
+$("#heroSun").innerHTML=sun();
+
+/* Accesibilidad */
+let fs=store.get("fs",1);
+function applyFs(){document.documentElement.style.setProperty("--fs",fs);store.set("fs",fs);}
+applyFs();
+$("#fsPlus").onclick=()=>{fs=Math.min(1.5,+(fs+.1).toFixed(2));applyFs();};
+$("#fsMinus").onclick=()=>{fs=Math.max(.85,+(fs-.1).toFixed(2));applyFs();};
+$("#hcBtn").onclick=e=>{const on=document.body.classList.toggle("hc");e.currentTarget.setAttribute("aria-pressed",on);};
+let tts=false;
+$("#ttsBtn").onclick=e=>{tts=!tts;e.currentTarget.setAttribute("aria-pressed",tts);if(tts){toast("Lectura en voz alta activada");speakCurrent();}else{try{speechSynthesis.cancel();}catch(_){}}};
+function speak(text){if(!tts)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="es-AR";u.rate=.95;speechSynthesis.speak(u);}catch(_){toast("Este navegador no permite la lectura en voz alta");}}
+
+/* ================== Navegación ================== */
+const VIEWS=["inicio","presentacion","sondeo","registro","material"];
+function route(){const h=location.hash.slice(1);const v=VIEWS.includes(h)?h:"inicio";
+  document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("on",s.id==="v-"+v));
+  document.querySelectorAll("nav.tabs a").forEach(a=>a.classList.toggle("on",a.dataset.v===v));
+  if(v==="registro")renderReg();
+  window.scrollTo({top:0});}
+window.addEventListener("hashchange",route);
+document.querySelectorAll(".toc a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.getElementById(a.dataset.go).scrollIntoView({behavior:"smooth"});}));
+
+/* ================== Diapositivas 1–15 ================== */
+const FOOT=`<div class="s-foot">Inclusión educativa en la escuela técnica · DGETyFP</div>`;
+const corner=()=>`<div class="s-corner">${ribbons(420,300,170,120,50,.05,.75)}</div>`;
+function content(title,body,n){return `<div class="s-hdr"></div>${corner()}<div class="s-title">${title}</div><div class="s-body">${body}</div>${FOOT}<div class="s-num">${n}</div>`;}
+const ic=(name,bg,d=7.5,fs=3.2,fg="#fff")=>`<span class="s-ic" style="width:${d}cqw;height:${d}cqw;background:${bg};font-size:${fs}cqw;color:${fg}"><i class="fa-solid fa-${name}"></i></span>`;
+const key=(t,g)=>`<div class="s-key${g?" g":""}">${t}</div>`;
+function dotsSvg(kind){
+  const U=[[0,0],[-.5,-.45],[.5,-.45],[-.55,.35],[.55,.35],[0,-.7],[0,.65],[-.25,.1],[.28,-.12]];
+  const ring=(cx,cy,R,f="#fff")=>`<circle cx="${cx}" cy="${cy}" r="${R}" fill="${f}" stroke="${C.navy}" stroke-width=".05"/>`;
+  const dots=(cx,cy,R,cols,n)=>{let o="";for(let i=0;i<n;i++){const[ux,uy]=U[i%9];o+=`<circle cx="${cx+ux*R}" cy="${cy+uy*R}" r=".1" fill="${cols[i%cols.length]}"/>`;}return o;};
+  const DIV=[C.red,C.gold,C.green];let o="";const cx=1.425,cy=1.35;
+  if(kind===0){o=ring(cx,cy,1)+dots(cx,cy,.95,[C.navy],9)+dots(cx-1.08,cy-1,.25,DIV,2)+dots(cx+1.05,cy+.9,.25,DIV,2);}
+  if(kind===1){o=ring(cx-.3,cy+.1,.95)+dots(cx-.3,cy+.1,.9,[C.navy],9)+ring(cx+.92,cy-.78,.42)+dots(cx+.92,cy-.78,.38,DIV,3);}
+  if(kind===2){o=ring(cx,cy,1.05)+dots(cx-.2,cy-.15,.85,[C.navy],7)+ring(cx+.45,cy+.48,.36,"#CBE2F3")+dots(cx+.45,cy+.48,.32,DIV,3);}
+  if(kind===3){o=ring(cx,cy,1.05)+dots(cx,cy,.95,[C.navy,C.red,C.gold,C.navy,C.green,C.navy,C.red,C.gold,C.green],9);}
+  return `<svg viewBox="0 0 2.85 2.7" style="width:100%;height:20cqw">${o}</svg>`;}
+
+const SLIDES=[
+ {t:"Portada",html:()=>`<div style="position:absolute;inset:0;background:${C.navy}"></div>
+   <div style="position:absolute;left:0;top:0;width:26cqw;height:100%">${ribbons(700,1500,120,260,120)}</div>
+   <div style="position:absolute;right:-8cqw;top:-10cqw;width:28cqw;height:28cqw;opacity:.95">${sun()}</div>
+   <div style="position:absolute;left:31.5cqw;top:11cqw;width:60cqw;color:#fff">
+     <div style="color:${C.gold};font-weight:700;letter-spacing:.15cqw;font-size:1.7cqw;text-transform:uppercase">Jornada de Capacitación · Regiones 1A y 1C</div>
+     <div style="font-size:5cqw;font-weight:900;line-height:1.05;margin:1.5cqw 0">Inclusión educativa en la escuela técnica</div>
+     <div style="font-size:2.2cqw;color:#CBE2F3;line-height:1.3">Detección de estilos de aprendizaje desde el Diseño Universal para el Aprendizaje (DUA)</div>
+     <div style="font-size:1.45cqw;margin-top:3cqw">Equipo de Inclusión · Dirección General de Educación Técnica y Formación Profesional</div>
+   </div>
+   <div style="position:absolute;left:0;right:0;bottom:0;height:6.5cqw;background:${C.green};display:flex;align-items:center;justify-content:flex-end;padding:0 4.5cqw;color:#fff;font-weight:700;font-size:1.6cqw">Ministerio de Educación · Provincia de Córdoba</div>`,
+  notes:"Presentación del Equipo de Inclusión de la DGETyFP. Ejes: aulas heterogéneas, estilos de aprendizaje y Diseño Universal para el Aprendizaje (DUA)."},
+ {t:"Bienvenida a la diversidad",html:n=>content("Damos la bienvenida a la diversidad",`
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;height:30cqw">
+   ${[["puzzle-piece","Enriquece el aprendizaje","Más miradas, más soluciones a los problemas del taller.",C.navy],["handshake","Amplía la empatía","Aprendemos reciprocidad y trabajo colaborativo.",C.green],["scale-balanced","Es un derecho","Todas y todos tenemos derecho a aprender en nuestra localidad.",C.red]]
+   .map(([i,t,d,c])=>`<div class="s-card" style="padding:2.6cqw 3cqw">${ic(i,c,8.6,3.6)}<div style="font-size:2.3cqw;font-weight:700;color:${C.navy};margin:2cqw 0 1cqw">${t}</div><div style="font-size:1.7cqw">${d}</div></div>`).join("")}
+   </div><div class="s-phrase">Porque la diversidad nos hace mejores</div>`,n)},
+ {t:"Cuatro formas de mirar la escuela",html:n=>content("Cuatro formas de mirar la escuela",`
+   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.25cqw;height:33cqw">
+   ${[["Exclusión","Se niega el acceso"],["Segregación","Entornos separados"],["Integración","El estudiante debe adaptarse"],["Inclusión","La escuela se transforma"]].map(([t,d],i)=>`
+     <div class="s-card ns" style="background:${i===3?"#D2E7D1":"#CBE2F3"};padding:1.5cqw 1.5cqw;display:flex;flex-direction:column;align-items:center">
+     ${dotsSvg(i)}<span class="s-tag${i===3?" g":""}" style="margin-top:1cqw">${t}</span><div style="font-size:1.55cqw;text-align:center;margin-top:1.4cqw">${d}</div></div>`).join("")}
+   </div>${key("En la inclusión no hay “adentro” y “afuera”: hay un solo grupo diverso.")}`,n)},
+ {t:"Integración vs. inclusión",html:n=>content("Integración vs. inclusión",`
+   <div style="display:grid;grid-template-columns:1fr 4.5cqw 1fr;gap:1cqw 0;align-items:center">
+     <div class="s-card ns" style="background:${C.lblue};color:#fff;text-align:center;font-weight:700;font-size:2cqw;letter-spacing:.2cqw;padding:1cqw">INTEGRACIÓN</div><div></div>
+     <div class="s-card ns" style="background:${C.green};color:#fff;text-align:center;font-weight:700;font-size:2cqw;letter-spacing:.2cqw;padding:1cqw">INCLUSIÓN</div>
+     ${[["El estudiante se adapta a la escuela","La escuela se adapta a la diversidad"],["El “problema” está en la persona","El “problema” está en las barreras del contexto"],["Apoyos externos, fuera del aula","Apoyos dentro del aula, para todos"],["Adaptaciones puntuales para casos específicos","Currículum flexible, accesible para todos"]].map(([a,b])=>`
+     <div class="s-card ns" style="padding:1.6cqw 2.2cqw;font-size:1.75cqw;min-height:6.9cqw;display:flex;align-items:center">${a}</div>
+     <div style="text-align:center;color:${C.red};font-size:3cqw"><i class="fa-solid fa-arrow-right"></i></div>
+     <div class="s-card ns" style="background:#D2E7D1;padding:1.6cqw 2.2cqw;font-size:1.75cqw;font-weight:700;color:${C.navy};min-height:6.9cqw;display:flex;align-items:center">${b}</div>`).join("")}
+   </div>`,n)},
+ {t:"Detectar la heterogeneidad",html:n=>content("Detectar la heterogeneidad",`
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.8cqw 3cqw">
+   ${[["book-open","Saberes previos","¿Qué traen y qué experiencia tienen?",C.navy],["comments","Modos de comunicarse","Oral, escrito, gestual, con pictogramas.",C.green],["clock","Ritmos y estilos","Cómo y cuánto tiempo necesitan para aprender.",C.green],["house-chimney-user","Intereses y contexto","Su historia, su familia, su territorio.",C.navy]].map(([i,t,d,c])=>`
+   <div class="s-card" style="display:flex;gap:2.4cqw;align-items:center;padding:2.4cqw 2.6cqw;height:14.6cqw">${ic(i,c,8.2,3.4)}<div><div style="font-size:2.3cqw;font-weight:700;color:${C.navy}">${t}</div><div style="font-size:1.75cqw;margin-top:.6cqw">${d}</div></div></div>`).join("")}
+   </div>${key("Detectar para diseñar, no para etiquetar.",1)}`,n)},
+ {t:"Detectar barreras",html:n=>content("Detectar barreras",`
+   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.25cqw;height:32cqw">
+   ${[["wheelchair","Acceso físico","Falta de rampa, taller o máquina inaccesible."],["comment","Comunicación","Consigna única, sin pictogramas ni apoyos."],["person-chalkboard","Didácticas","No se consideran saberes previos, ritmos ni estilos."],["users","Actitudinales","Prejuicios, sobreprotección, falta de información."]].map(([i,t,d])=>`
+   <div class="s-card" style="display:flex;flex-direction:column;align-items:center;padding:2.2cqw 1.8cqw">${ic(i,C.red,9,3.8)}<span class="s-tag" style="margin:2cqw 0 1.6cqw">${t}</span><div style="font-size:1.65cqw;text-align:center">${d}</div></div>`).join("")}
+   </div>${key("Barrera detectada = configuración de apoyo diseñada.")}`,n)},
+ {t:"Modelo VAK",html:n=>content("Modelo VAK: tres canales",`
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;height:32cqw">
+   ${[["eye","Visual","Aprende mirando",["Esquemas, mapas, colores","Videos y demostraciones","Necesita “ver” el proceso"],C.navy],["ear-listen","Auditivo","Aprende escuchando",["Explicaciones orales","Debates y consignas habladas","Recuerda voces y sonidos"],C.green],["hand","Kinestésico","Aprende haciendo",["Manipular, probar, practicar","Movimiento y trabajo en taller","Recuerda sensaciones"],C.red]].map(([i,t,s,it,c])=>`
+   <div class="s-card" style="padding:2.4cqw 2.6cqw"><div style="display:flex;gap:1.8cqw;align-items:center">${ic(i,c,8.2,3.4)}<div><div style="font-size:2.5cqw;font-weight:700;color:${C.navy}">${t}</div><div style="font-size:1.7cqw;font-style:italic;color:${c}">${s}</div></div></div>
+   <ul style="font-size:1.75cqw;padding-left:2.2cqw;margin-top:2.6cqw;line-height:1.7">${it.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}
+   </div><div class="s-phrase" style="font-size:2cqw">Son preferencias, no etiquetas: todos usamos los tres canales.</div>`,n)},
+ {t:"VAK en el taller técnico",html:n=>content("VAK en el taller técnico",`
+   <div style="display:grid;grid-template-columns:20.6cqw 33cqw 2.6cqw 33cqw;gap:1.5cqw .4cqw;align-items:center">
+    <div></div><div style="font-size:2.1cqw;font-weight:700;color:${C.green};padding-left:2cqw">Presento…</div><div></div><div style="font-size:2.1cqw;font-weight:700;color:${C.green};padding-left:2cqw">El estudiante muestra…</div>
+   ${[["eye","Visual","Esquema, plano, video, código de colores","Diagrama, boceto, maqueta",C.navy],["ear-listen","Auditivo","Explicación oral, ejemplo, debate","Exposición oral, defensa del proyecto",C.green],["hand","Kinestésico","Demostración y práctica guiada","La tarea resuelta en el taller",C.red]].map(([i,t,a,b,c])=>`
+    <div class="s-card ns" style="background:${c};color:#fff;height:8.25cqw;display:flex;align-items:center;gap:1.6cqw;padding:0 2cqw;font-size:2cqw;font-weight:700"><i class="fa-solid fa-${i}" style="font-size:3cqw"></i>${t}</div>
+    <div class="s-card ns" style="height:8.25cqw;display:flex;align-items:center;padding:0 2cqw;font-size:1.8cqw">${a}</div>
+    <div style="color:${C.red};font-size:2.4cqw;text-align:center"><i class="fa-solid fa-caret-right"></i></div>
+    <div class="s-card ns" style="background:#D2E7D1;height:8.25cqw;display:flex;align-items:center;padding:0 2cqw;font-size:1.8cqw">${b}</div>`).join("")}
+   </div>${key("Un mismo contenido, varias puertas de entrada.")}`,n)},
+ {t:"Hemisferios cerebrales",html:n=>content("Hemisferios cerebrales",`
+   <div style="display:grid;grid-template-columns:1fr 14cqw 1fr;gap:0;align-items:center;height:31.5cqw">
+   ${[["Hemisferio izquierdo",["Analítico y lineal","Lógica, símbolos, lenguaje","Paso a paso, detalle"],C.navy,"calculator"],["Hemisferio derecho",["Global e intuitivo","Imaginación y emoción","Espacio, imagen, creatividad"],C.green,"palette"]].map(([t,it,c,i],k)=>`
+    <div class="s-card" style="padding:2.4cqw 2.6cqw;height:100%;grid-column:${k?3:1};grid-row:1"><div style="display:flex;gap:1.8cqw;align-items:center">${ic(i,c,6.8,2.8)}<div style="font-size:2.5cqw;font-weight:700;color:${C.navy}">${t}</div></div>
+    ${it.map(x=>`<div style="background:#fff;border-radius:.7cqw;padding:1.3cqw 1.8cqw;font-size:1.9cqw;margin-top:1.4cqw">${x}</div>`).join("")}</div>`).join("")}
+    <div style="grid-column:2;grid-row:1;display:flex;justify-content:center">${ic("brain",C.gold,9.8,4.4)}</div>
+   </div>${key("Ambos hemisferios trabajan juntos, solo que hay una “tendencia”.")}`,n)},
+ {t:"Parte práctica",html:()=>`<div style="position:absolute;inset:0;background:${C.green}"></div>
+   <div style="position:absolute;right:0;top:0;width:30cqw;height:100%">${ribbons(800,1500,300,-220,130,.25,.6)}</div>
+   <div style="position:absolute;left:6cqw;top:12cqw;width:58cqw;color:#fff">
+     <div style="font-size:1.9cqw;font-weight:700;letter-spacing:.2cqw;text-transform:uppercase;color:${C.navy}">Parte práctica</div>
+     <div style="font-size:5.4cqw;font-weight:900;line-height:1.05;margin:1.6cqw 0 2cqw">¿Cómo aprendemos?</div>
+     <div style="font-size:2.4cqw;line-height:1.3">Estilos de aprendizaje: qué son y cómo detectarlos en el aula y en el taller</div>
+   </div><div class="s-num" style="color:#fff">10</div>`},
+ {t:"Estilo de aprendizaje… ¿qué es?",html:n=>content("Estilo de aprendizaje… ¿qué es?",`
+   <div style="display:grid;grid-template-columns:42cqw 1fr;gap:4cqw;height:100%">
+    <div style="padding-top:1.5cqw">${ic("quote-left",C.gold,6.8,2.8)}<div style="font-size:4.2cqw;font-weight:700;color:${C.navy};line-height:1.15;margin-top:2.5cqw">Cada persona aprende a su manera.</div></div>
+    <div style="display:flex;flex-direction:column;gap:2cqw">${[["eye","Visual","Aprende mirando",C.navy],["ear-listen","Auditivo","Aprende escuchando",C.green],["hand","Kinestésico","Aprende haciendo",C.red]].map(([i,t,d,c])=>`
+     <div class="s-card" style="display:flex;gap:2.4cqw;align-items:center;padding:1.6cqw 2.2cqw;height:10.5cqw">${ic(i,c,7.5,3.2)}<div><div style="font-size:2.5cqw;font-weight:700;color:${C.navy}">${t}</div><div style="font-size:1.9cqw;font-style:italic;color:${c}">${d}</div></div></div>`).join("")}</div>
+   </div>`,n)},
+ {t:"Definición",html:n=>content("Estilo de aprendizaje: definición",`
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3cqw;height:32cqw">
+   ${[["user-check","Preferencias propias","Cada persona utiliza su propio método o estrategias para aprender y tiende a desarrollar ciertas preferencias o tendencias globales. Esas tendencias definen un estilo de aprendizaje.",C.navy],["magnifying-glass","Rasgos que se perciben","Son los rasgos cognitivos, afectivos y fisiológicos que sirven como indicadores relativamente estables de cómo las personas perciben interacciones y responden a sus ambientes de aprendizaje.",C.green]].map(([i,t,d,c])=>`
+   <div class="s-card" style="padding:2.6cqw 3cqw"><div style="display:flex;gap:2cqw;align-items:center">${ic(i,c,7.5,3.2)}<div style="font-size:2.5cqw;font-weight:700;color:${C.navy}">${t}</div></div><div style="font-size:1.9cqw;margin-top:2.4cqw;line-height:1.45">${d}</div></div>`).join("")}
+   </div>${key("Relativamente estables: son tendencias, no etiquetas.",1)}`,n)},
+ {t:"Algunos modelos",html:n=>content("Estilos de aprendizaje: algunos modelos",`
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.2cqw 3cqw">
+   ${[["earth-americas","Programación neurolingüística (V.A.K.)",1],["brain","Hemisferios cerebrales",1],["chart-pie","Cuadrantes cerebrales",0],["shapes","Inteligencias múltiples",0]].map(([i,t,h])=>`
+   <div class="s-card" style="background:${h?C.navy:"#CBE2F3"};display:flex;gap:2.4cqw;align-items:center;padding:2cqw 2.6cqw;height:15.4cqw">${ic(i,h?"#fff":C.lblue,7.9,3.4,h?C.navy:"#fff")}
+   <div><div style="font-size:2.3cqw;font-weight:700;color:${h?"#fff":C.navy};line-height:1.2">${t}</div>${h?`<span style="display:inline-block;margin-top:1.3cqw;background:${C.gold};color:${C.navy};font-weight:700;border-radius:99cqw;padding:.5cqw 1.8cqw;font-size:1.55cqw">Hoy lo practicamos</span>`:""}</div></div>`).join("")}
+   </div>`,n),notes:"Hoy trabajamos dos modelos en la práctica: VAK (programación neurolingüística) y hemisferios cerebrales. Los cuadrantes cerebrales y las inteligencias múltiples quedan como referencia en el material de consulta."},
+ {t:"Modelo de los hemisferios",html:n=>content("Modelo de los hemisferios cerebrales",`
+   <div style="display:grid;grid-template-columns:1fr 9.6cqw 1fr;align-items:center;height:30.4cqw">
+   ${[["Hemisferio izquierdo","Está más especializado en el manejo de los símbolos de cualquier tipo. Es más analítico y lineal. Procede de forma lógica.",C.navy,"list-check"],["Hemisferio derecho","Es más efectivo en la percepción del espacio. Es más global, sintético e intuitivo. Es imaginativo y emocional.",C.green,"lightbulb"]].map(([t,d,c,i],k)=>`
+   <div class="s-card" style="padding:2.6cqw 3cqw;height:100%;grid-column:${k?3:1};grid-row:1"><div style="display:flex;gap:2cqw;align-items:center">${ic(i,c,7.5,3.2)}<div style="font-size:2.5cqw;font-weight:700;color:${C.navy}">${t}</div></div><div style="font-size:2cqw;margin-top:2.6cqw;line-height:1.45">${d}</div></div>`).join("")}
+   <div style="grid-column:2;grid-row:1;text-align:center;color:${C.gold};font-size:5cqw"><i class="fa-solid fa-arrows-left-right"></i></div>
+   </div>${key("Los dos hemisferios se comunican todo el tiempo.")}`,n)},
+ {t:"Especialización de los hemisferios",html:n=>content("Especialización de los hemisferios",`
+   <div style="display:grid;grid-template-columns:36cqw 1fr 36cqw;gap:0 2cqw;height:100%">
+    <div><span class="s-tag" style="font-size:1.8cqw;margin-left:1.5cqw">Hemisferio izquierdo</span>
+     ${["Razonamiento","Lenguaje hablado","Lenguaje escrito","Habilidad científica","Habilidad numérica","Control de la mano derecha"].map(t=>`<div class="s-card ns" style="margin-top:1cqw;padding:0 2.2cqw;height:4.35cqw;display:flex;align-items:center;font-size:1.75cqw">${t}</div>`).join("")}</div>
+    <div class="s-card ns" style="background:${C.gold};margin-top:5.6cqw;display:flex;flex-direction:column;align-items:center;padding:2.6cqw 1cqw;text-align:center">${ic("circle-nodes","#fff",7.5,3.2,C.gold)}<div style="font-size:1.9cqw;font-weight:700;color:${C.navy};margin-top:2cqw">Cuerpo calloso</div><div style="font-size:1.55cqw;color:${C.navy};margin-top:1cqw">comunica ambos hemisferios</div></div>
+    <div><span class="s-tag g" style="font-size:1.8cqw;margin-left:1.5cqw">Hemisferio derecho</span>
+     ${["Intuición","Imaginación","Sentido artístico","Sentido musical","Percepción tridimensional","Control de la mano izquierda"].map(t=>`<div class="s-card ns" style="background:#D2E7D1;margin-top:1cqw;padding:0 2.2cqw;height:4.35cqw;display:flex;align-items:center;font-size:1.75cqw">${t}</div>`).join("")}</div>
+   </div>`,n)},
+];
+let cur=0;
+function showSlide(i){cur=Math.max(0,Math.min(SLIDES.length-1,i));const s=SLIDES[cur];
+  $("#slide").innerHTML=s.html(cur+1);$("#slide").setAttribute("aria-label",`Diapositiva ${cur+1}: ${s.t}`);
+  $("#sCount").textContent=`${cur+1} / ${SLIDES.length}`;
+  $("#prevS").disabled=cur===0;
+  $("#nextS").innerHTML=cur===SLIDES.length-1?`Ir al sondeo <i class="fa-solid fa-clipboard-question"></i>`:`Siguiente <i class="fa-solid fa-chevron-right"></i>`;
+  document.querySelectorAll("#thumbs button").forEach((b,k)=>b.classList.toggle("on",k===cur));
+  const nt=$("#sNotes");if(s.notes){nt.hidden=false;nt.innerHTML=`<b>Nota para quien presenta:</b> ${s.notes}`;}else nt.hidden=true;}
+$("#thumbs").innerHTML=SLIDES.map((s,k)=>`<button>${k+1}. ${s.t}</button>`).join("");
+document.querySelectorAll("#thumbs button").forEach((b,k)=>b.onclick=()=>showSlide(k));
+$("#prevS").onclick=()=>showSlide(cur-1);
+$("#nextS").onclick=()=>{if(cur===SLIDES.length-1){if(document.fullscreenElement)try{document.exitFullscreen();}catch(_){}location.hash="sondeo";}else showSlide(cur+1);};
+$("#fullS").onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $("#stage").requestFullscreen();}catch(_){toast("La pantalla completa no está disponible en esta vista");}};
+document.addEventListener("keydown",e=>{if(!$("#v-presentacion").classList.contains("on"))return;
+  if(e.key==="ArrowRight"||e.key==="PageDown"){showSlide(cur+1);}if(e.key==="ArrowLeft"||e.key==="PageUp"){showSlide(cur-1);}});
+showSlide(0);
+
+/* ================== Instrumentos ================== */
+const CH={V:{n:"Visual",c:C.navy,i:"eye",s:"Aprende mirando"},A:{n:"Auditivo",c:C.green,i:"ear-listen",s:"Aprende escuchando"},K:{n:"Kinestésico",c:C.red,i:"hand",s:"Aprende haciendo"},
+ I:{n:"Hemisferio izquierdo (lógico)",c:C.navy,i:"list-check",s:"Analítico, lineal, paso a paso"},D:{n:"Hemisferio derecho (holístico)",c:C.green,i:"lightbulb",s:"Global, intuitivo, en imágenes"}};
+const INST={
+ vak:{t:"Sondeo VAK · modelo PNL",who:"Para estudiantes (y para practicar entre docentes)",icon:"eye",col:C.red,type:"vak",
+  intro:"Elegí la opción con la que más te identifiques en cada pregunta. No hay respuestas correctas ni incorrectas.",
+  q:[
+   ["¿Cuál de estas actividades disfrutás más?",[["Escuchar música","A"],["Ver películas","V"],["Bailar con buena música","K"]]],
+   ["¿Qué programa de televisión preferís?",[["Reportajes de descubrimientos y lugares","V"],["Cómico y de entretenimiento","K"],["Noticias del mundo","A"]]],
+   ["Cuando conversás con otra persona, vos…",[["La escuchás atentamente","A"],["La observás","V"],["Tendés a tocarla","K"]]],
+   ["¿Qué tipo de examen se te facilita más?",[["Examen oral","A"],["Examen escrito","V"],["Examen de opción múltiple","K"]]],
+   ["¿Cómo te orientás más fácilmente?",[["Mediante el uso de un mapa","V"],["Pidiendo indicaciones","A"],["A través de la intuición","K"]]],
+   ["¿Qué te halaga más?",[["Que te digan que tenés buen aspecto","V"],["Que te digan que tenés un trato muy agradable","K"],["Que te digan que tenés una conversación interesante","A"]]],
+   ["¿De qué manera se te facilita aprender algo?",[["Repitiéndolo en voz alta","A"],["Escribiéndolo varias veces","V"],["Relacionándolo con algo divertido","K"]]],
+   ["¿De qué manera te formás una opinión de otras personas?",[["Por la sinceridad en su voz","A"],["Por la forma de estrecharte la mano","K"],["Por su aspecto","V"]]],
+   ["Si no encontrás las llaves en un bolso…",[["Las buscás mirando","V"],["Sacudís el bolso para oír el ruido","A"],["Las buscás al tacto","K"]]],
+   ["Cuando tratás de recordar algo, ¿cómo lo hacés?",[["A través de imágenes","V"],["A través de emociones","K"],["A través de sonidos","A"]]],
+  ]},
+ hemi:{t:"Sondeo hemisférico · modelo de los hemisferios",who:"Para estudiantes (y para practicar entre docentes)",icon:"brain",col:C.gold,type:"hemi",
+  intro:"Leé cada pregunta y elegí la opción que más se acerca a tu forma de actuar. No hay respuestas correctas ni incorrectas.",
+  q:[
+   ["¿Qué te pasa más seguido?",[["Me pongo tenso o tensa porque quiero que todo salga bien siempre","I"],["Me alejo y dejo que las cosas sucedan","D"]]],
+   ["Por lo general, ¿tenés un lugar para todo, un sistema para hacer las cosas y facilidad para organizar la información y los objetos?",[["Sí","I"],["No","D"]]],
+   ["¿Qué forma de aprender se te facilita más?",[["Con libros y clases","I"],["Con talleres y salidas","D"]]],
+   ["¿Cómo comprás algo habitualmente?",[["Pienso en el costo y en el uso que le voy a dar","I"],["Simplemente compro lo que deseo","D"]]],
+   ["Cuando comprás algo, ¿te asegurás de que te den bien el vuelto?",[["Sí, lo cuento","I"],["No","D"]]],
+   ["¿Te expresás bien de forma oral?",[["Sí","I"],["No","D"]]],
+   ["¿Disfrutás correr riesgos?",[["No","I"],["Sí","D"]]],
+   ["¿Con qué frecuencia tenés corazonadas?",[["Nunca o casi nunca","I"],["Con frecuencia","D"]]],
+   ["¿Qué preferís hacer?",[["Leer","I"],["Dibujar","D"]]],
+   ["¿Te resulta fácil expresar lo que sentís?",[["Sí","I"],["No, me cuesta","D"]]],
+   ["En una conversación, ¿cómo te sentís más cómodo o cómoda?",[["Hablando","I"],["Escuchando","D"]]],
+   ["¿Cómo preferís estudiar?",[["Solo o sola","I"],["En grupo","D"]]],
+  ]},
+ doc:{t:"Sondeo VAK · versión docente",who:"Para docentes: cómo aprendo y cómo enseño",icon:"person-chalkboard",col:C.navy,type:"vak",
+  intro:"Pensá en tu forma de aprender y de enseñar. Elegí la opción con la que más te identifiques.",
+  q:[
+   ["¿Cuál de las siguientes actividades disfrutás más?",[["Escuchar música","A"],["Ver películas","V"],["Bailar con buena música","K"]]],
+   ["¿De qué manera te formás una opinión sobre otras personas?",[["Por la sinceridad que percibís en su voz","A"],["Por su aspecto y presencia","V"],["Por la forma de saludarte o estrecharte la mano","K"]]],
+   ["¿Cuál de las siguientes frases te representa mejor?",[["Me importa que mi vehículo se sienta bien al conducirlo","K"],["Noto hasta el más leve ruido que hace mi vehículo","A"],["Para mí es importante que mi vehículo esté limpio y ordenado por dentro y por fuera","V"]]],
+   ["Si no encontrás las llaves en tu bolso o mochila, ¿qué hacés?",[["Abrís el bolso y mirás adentro para ver dónde están","V"],["Sacudís el bolso para escuchar si suenan","A"],["Metés la mano y las buscás al tacto","K"]]],
+   ["¿Con cuál de estas frases te identificás más?",[["Reconozco a las personas por su voz","A"],["No recuerdo bien el aspecto físico de la gente","K"],["Recuerdo el aspecto de alguien pero no su nombre","V"]]],
+   ["¿Cómo se te facilita más entender algo nuevo?",[["Cuando alguien te lo explica verbalmente","A"],["Cuando se usan recursos visuales (imágenes, esquemas, videos)","V"],["Cuando lo aprendés a través de una actividad o experiencia concreta","K"]]],
+   ["¿Qué te resulta más cómodo al aprender algo complejo?",[["Moverme, manipular objetos o realizar alguna actividad práctica","K"],["Escuchar explicaciones detalladas o grabaciones","A"],["Leer o ver imágenes que lo representen","V"]]],
+   ["Cuando querés recordar una información importante, ¿qué hacés?",[["La escribís o subrayás para recordarla visualmente","V"],["La repetís en voz alta varias veces","A"],["La asociás con una emoción, movimiento o experiencia concreta","K"]]],
+   ["Cuando explicás algo a otra persona, ¿cómo lo hacés generalmente?",[["Con ejemplos y situaciones que hayas vivido o experimentado","K"],["Con un esquema, diagrama o ilustración","V"],["Con una explicación oral clara y ordenada","A"]]],
+   ["Cuando planificás tus clases o actividades, ¿qué es lo primero que hacés?",[["Pensás en dinámicas, juegos o actividades que involucren el movimiento y la acción","K"],["Buscás imágenes, videos o recursos visuales atractivos","V"],["Preparás la explicación oral o buscás audios y podcasts relacionados","A"]]],
+  ]},
+};
+
+/* Sugerencias pedagógicas por tendencia */
+const TIPS={
+ V:{que:"Tiende a procesar la información en imágenes: puede traer mucha información a la vez y relacionar ideas con facilidad. Necesita “ver” hacia dónde va.",
+    aula:["Planos, esquemas, diagramas de flujo y código de colores","Consignas escritas y visibles durante toda la actividad","Demostraciones donde se vea cada paso","Videos cortos y fotos del proceso en el taller"],
+    ampliar:"Invitalo a explicar en voz alta lo que ve y a probar con las manos antes de mirar el plano."},
+ A:{que:"Tiende a recordar de forma secuencial y ordenada. Aprende cuando escucha explicaciones y cuando puede explicarle a otra persona.",
+    aula:["Explicaciones orales paso a paso, con ejemplos","Debates, puestas en común y preguntas en voz alta","Leer en voz alta las consignas y las normas de seguridad","Explicar el procedimiento a un compañero o compañera"],
+    ampliar:"Ofrecele un esquema del proceso completo para que no se pierda si se saltea un paso."},
+ K:{que:"Tiende a aprender asociando la información al cuerpo y al movimiento. Aprende más despacio pero en profundidad: lo que hace con las manos no se le olvida. Esa lentitud no tiene que ver con la capacidad.",
+    aula:["Demostración seguida de práctica guiada","Manipular piezas, materiales, prototipos y maquetas","Proyectos y tareas reales en el taller y el laboratorio","Pausas activas y cambios de espacio"],
+    ampliar:"Dale tiempo para practicar y sumá un registro visual (foto o boceto) de lo que hizo."},
+ I:{que:"Tendencia lógica: analiza paso a paso, de la parte al todo. Se siente cómodo con la organización y le preocupa el resultado.",
+    aula:["Consignas claras, escritas y específicas","Secuencias paso a paso y listas de control","Tiempo para verificar el propio trabajo"],
+    ampliar:"Para estimular el otro hemisferio: partir de la imagen global, usar metáforas, mapas mentales y algunas actividades abiertas."},
+ D:{que:"Tendencia holística: necesita ver el todo para entender las partes. Piensa en imágenes y sensaciones, y le importa más el proceso que el resultado.",
+    aula:["Mostrar primero el objetivo o el producto terminado","Actividades abiertas y creativas","Imágenes, metáforas y relaciones entre las partes"],
+    ampliar:"Para estimular el otro hemisferio: ayudarlo a ordenar el proceso en pasos, con listas de control y tiempos."},
+ E:{que:"Equilibrio: usa ambos modos de pensar de forma pareja.",aula:["Alternar momentos de visión global y de trabajo paso a paso","Combinar consignas escritas con propuestas abiertas"],ampliar:"Sostener el equilibrio con actividades que estimulen ambos hemisferios."},
+};
+
+/* ================== Flujo del sondeo ================== */
+let S={step:0,inst:null,alias:"",grupo:"",ans:[],qi:0,res:null};
+function setSteps(){document.querySelectorAll("#steps span").forEach((s,k)=>s.classList.toggle("on",k===S.step));}
+function renderSondeo(){setSteps();const A=$("#sondeoArea");
+ if(S.step===0){
+  A.innerHTML=`<p class="lead">Elegí el instrumento. Cada uno lleva unos 5 minutos.</p><div class="grid g3">${Object.entries(INST).map(([k,v])=>`
+   <button class="card inst${S.inst===k?" sel":""}" data-k="${k}"><span class="ic" style="background:${v.col}"><i class="fa-solid fa-${v.icon}"></i></span><h3>${v.t}</h3><div class="meta">${v.q.length} preguntas · ${v.who}</div>
+   <p style="margin-bottom:0">${v.type==="vak"?"Detecta la tendencia entre los canales visual, auditivo y kinestésico.":"Detecta la tendencia entre el modo lógico (izquierdo) y el holístico (derecho)."}</p></button>`).join("")}</div>
+   <div class="key g">Recordá: es un sondeo. Muestra una tendencia en este momento, no define a la persona.</div>`;
+  A.querySelectorAll(".inst").forEach(b=>b.onclick=()=>{S.inst=b.dataset.k;S.step=1;renderSondeo();});
+ }
+ if(S.step===1){const I=INST[S.inst];
+  A.innerHTML=`<div class="qbox"><h3 style="margin-top:0"><i class="fa-solid fa-${I.icon}"></i> ${I.t}</h3>
+   <p>${I.intro}</p>
+   <form id="fDatos"><label class="f" for="fAlias">Nombre o alias (opcional)</label><input class="f" id="fAlias" maxlength="60" value="${esc(S.alias)}" placeholder="Ej.: Juan P. o Estudiante 7">
+   <label class="f" for="fGrupo">Curso, grupo o institución (opcional)</label><input class="f" id="fGrupo" maxlength="80" value="${esc(S.grupo)}" placeholder="Ej.: 3.º B · IPET 49">
+   <p class="meta"><i class="fa-solid fa-lock"></i> Podés usar un alias. Los datos no salen de este navegador.</p>
+   <div class="qnav"><button type="button" class="btn o" id="bBack"><i class="fa-solid fa-chevron-left"></i> Cambiar instrumento</button><button class="btn g" type="submit">Comenzar <i class="fa-solid fa-play"></i></button></div></form></div>`;
+  $("#bBack").onclick=()=>{S.step=0;renderSondeo();};
+  $("#fDatos").onsubmit=e=>{e.preventDefault();S.alias=$("#fAlias").value.trim();S.grupo=$("#fGrupo").value.trim();S.ans=new Array(INST[S.inst].q.length).fill(null);S.qi=0;S.step=2;renderSondeo();};
+ }
+ if(S.step===2)renderQ();
+ if(S.step===3)renderRes();
+}
+function renderQ(){const I=INST[S.inst],n=I.q.length,[q,opts]=I.q[S.qi];const A=$("#sondeoArea");const L="ABC";
+ const done=S.ans.filter(x=>x!==null).length;
+ A.innerHTML=`<div class="qbox"><div class="meta">${I.t} · Pregunta ${S.qi+1} de ${n}</div><div class="prog" aria-hidden="true"><i style="width:${done/n*100}%"></i></div>
+  <div class="qn"><span class="num">${S.qi+1}</span><h3 id="qText">${q}</h3></div>
+  <div role="radiogroup" aria-labelledby="qText">${opts.map((o,k)=>`<button class="opt${S.ans[S.qi]===k?" sel":""}" role="radio" aria-checked="${S.ans[S.qi]===k}" data-k="${k}"><span class="l">${L[k]}</span><span>${o[0]}</span></button>`).join("")}</div>
+  <div class="qnav"><button class="btn o" id="qPrev"><i class="fa-solid fa-chevron-left"></i> ${S.qi?"Anterior":"Volver"}</button>
+  <button class="btn o" id="qSpeak" title="Leer en voz alta"><i class="fa-solid fa-volume-high"></i> Escuchar</button>
+  <button class="btn${S.qi===n-1?" g":""}" id="qNext" ${S.ans[S.qi]===null?"disabled":""}>${S.qi===n-1?"Ver tendencia <i class='fa-solid fa-chart-simple'></i>":"Siguiente <i class='fa-solid fa-chevron-right'></i>"}</button></div>
+  <p class="meta" style="margin-bottom:0">Atajo: teclas ${opts.length===3?"A, B o C":"A o B"} para elegir y Enter para avanzar.</p></div>`;
+ A.querySelectorAll(".opt").forEach(b=>b.onclick=()=>choose(+b.dataset.k));
+ $("#qPrev").onclick=()=>{if(S.qi)S.qi--;else S.step=1;renderSondeo();};
+ $("#qNext").onclick=next;
+ $("#qSpeak").onclick=()=>{const was=tts;tts=true;speakCurrent();tts=was;};
+ speakCurrent();}
+function speakCurrent(){if(S.step!==2||!$("#v-sondeo").classList.contains("on"))return;const[q,opts]=INST[S.inst].q[S.qi];speak(q+". "+opts.map((o,k)=>"Opción "+"ABC"[k]+": "+o[0]).join(". "));}
+function choose(k){S.ans[S.qi]=k;const n=INST[S.inst].q.length;
+ if(S.qi<n-1){renderQ();setTimeout(()=>{if(S.step===2&&S.ans[S.qi]===k){S.qi++;renderQ();}},320);}else renderQ();}
+function next(){const n=INST[S.inst].q.length;if(S.ans[S.qi]===null)return;if(S.qi<n-1){S.qi++;renderQ();}else{S.res=score(S.inst,S.ans);S.step=3;renderSondeo();}}
+document.addEventListener("keydown",e=>{if(S.step!==2||!$("#v-sondeo").classList.contains("on"))return;if(/input|textarea/i.test(document.activeElement.tagName))return;
+ const k="abc".indexOf(e.key.toLowerCase());const nOpt=INST[S.inst].q[S.qi][1].length;if(k>=0&&k<nOpt){e.preventDefault();choose(k);}if(e.key==="Enter"){e.preventDefault();next();}});
+
+function score(instKey,ans){const I=INST[instKey];const n=I.q.length;
+ if(I.type==="vak"){const c={V:0,A:0,K:0};ans.forEach((a,i)=>c[I.q[i][1][a][1]]++);
+  const max=Math.max(c.V,c.A,c.K);const top=["V","A","K"].filter(x=>c[x]===max);
+  const share=max/n;const nivel=top.length>1?"combinada":share>=.6?"marcada":"leve";
+  const label=top.length>1?"Combinada: "+top.map(x=>CH[x].n).join(" y "):CH[top[0]].n;
+  return {type:"vak",counts:c,top,nivel,label,n};}
+ const c={I:0,D:0};ans.forEach((a,i)=>c[I.q[i][1][a][1]]++);
+ const max=Math.max(c.I,c.D),share=max/n;const side=c.I>=c.D?"I":"D";
+ let nivel,top,label;
+ if(share>=.85){nivel="marcada";top=[side];label=CH[side].n;}
+ else if(share>=.6){nivel="cierta";top=[side];label=CH[side].n;}
+ else{nivel="equilibrio";top=["E"];label="Equilibrio entre ambos hemisferios";}
+ return {type:"hemi",counts:c,top,nivel,label,n};}
+
+function nivelTxt(r){if(r.type==="vak")return {marcada:"Tendencia marcada",leve:"Tendencia leve",combinada:"Tendencia combinada"}[r.nivel];
+ return {marcada:"Tendencia marcada",cierta:"Cierta tendencia",equilibrio:"Equilibrio"}[r.nivel];}
+function barsHtml(r){const ks=r.type==="vak"?["V","A","K"]:["I","D"];
+ return `<div class="bars">${ks.map(k=>`<div class="bar"><b>${r.type==="vak"?CH[k].n:(k==="I"?"Izquierdo":"Derecho")}</b><div class="tr" role="img" aria-label="${r.counts[k]} de ${r.n}"><i style="width:${r.counts[k]/r.n*100}%;background:${CH[k].c}"></i></div><span>${r.counts[k]} de ${r.n}</span></div>`).join("")}</div>`;}
+function tipsHtml(r){return r.top.map(k=>{const T=TIPS[k],ch=CH[k]||{n:"Equilibrio",c:C.gold,i:"scale-balanced"};
+ return `<div class="card ${k==="A"||k==="D"?"gr":"b"}"><div style="display:flex;gap:12px;align-items:center"><span class="ic" style="background:${ch.c}"><i class="fa-solid fa-${ch.i}"></i></span><h3 style="margin:0">${ch.n}</h3></div>
+ <p>${T.que}</p><b>En el aula y el taller</b><ul>${T.aula.map(x=>`<li>${x}</li>`).join("")}</ul><p style="margin-bottom:0"><b>Para ampliar canales:</b> ${T.ampliar}</p></div>`;}).join("");}
+function renderRes(){const r=S.res,I=INST[S.inst];const A=$("#sondeoArea");
+ const who=S.alias?esc(S.alias):"Esta persona";
+ A.innerHTML=`<div class="card"><div class="res-head"><span class="ic" style="background:${(CH[r.top[0]]||{c:C.gold}).c};width:72px;height:72px;font-size:30px"><i class="fa-solid fa-${(CH[r.top[0]]||{i:"scale-balanced"}).i}"></i></span>
+  <div><div class="meta">${I.t}${S.grupo?" · "+esc(S.grupo):""}</div><h2 style="margin:.1em 0">${r.label}</h2><span class="chip" style="background:var(--navy)">${nivelTxt(r)}</span></div></div>
+  ${barsHtml(r)}
+  <p>${who} muestra, en este sondeo, una <b>${nivelTxt(r).toLowerCase()}</b>${r.nivel==="equilibrio"?" entre ambos modos de pensar":" hacia "+r.label.replace("Combinada: ","").toLowerCase()}. ${r.type==="vak"?"Todas las personas usamos los tres canales: el resultado señala cuál aparece más en este momento.":"Ambos hemisferios trabajan siempre juntos: el resultado señala una preferencia."}</p></div>
+  <h3 style="margin-top:24px">Sugerencias para acompañar</h3><div class="grid g2">${tipsHtml(r)}</div>
+  <div class="key g">Conversá el resultado con quien respondió: ¿se reconoce en esta tendencia?</div>
+  <div class="qnav no-print"><button class="btn g" id="rAdd"><i class="fa-solid fa-user-plus"></i> Sumar al registro del grupo</button>
+  <button class="btn o" id="rCopy"><i class="fa-regular fa-copy"></i> Copiar resultado</button>
+  <button class="btn o" id="rOtra"><i class="fa-solid fa-rotate"></i> Nuevo sondeo (mismo instrumento)</button>
+  <button class="btn o" id="rInst"><i class="fa-solid fa-list"></i> Elegir otro instrumento</button></div>`;
+ $("#rAdd").onclick=e=>{addReg();e.currentTarget.disabled=true;e.currentTarget.innerHTML='<i class="fa-solid fa-check"></i> Sumado al registro';};
+ $("#rCopy").onclick=async()=>{const ks=Object.keys(r.counts);const t=`${I.t}\n${S.alias||"Sin nombre"}${S.grupo?" · "+S.grupo:""}\nTendencia: ${r.label} (${nivelTxt(r)})\n${ks.map(k=>(r.type==="vak"?CH[k].n:(k==="I"?"Izquierdo":"Derecho"))+": "+r.counts[k]+"/"+r.n).join(" · ")}`;
+  try{await navigator.clipboard.writeText(t);toast("Resultado copiado");}catch(_){toast("No se pudo copiar en esta vista");}};
+ $("#rOtra").onclick=()=>{S.alias="";S.step=1;renderSondeo();};
+ $("#rInst").onclick=()=>{S.alias="";S.step=0;renderSondeo();};
+ speak("Tendencia: "+r.label);
+}
+
+/* ================== Registro del grupo ================== */
+let REG=store.get("regSondeo",[]);
+function addReg(){const r=S.res;REG.push({id:Date.now(),fecha:new Date().toLocaleDateString("es-AR"),alias:S.alias||"Sin nombre",grupo:S.grupo,inst:S.inst,label:r.label,nivel:nivelTxt(r),counts:r.counts,top:r.top,n:r.n});store.set("regSondeo",REG);toast("Resultado sumado al registro del grupo");}
+function renderReg(){const A=$("#regArea");
+ if(!REG.length){A.innerHTML=`<div class="card" style="text-align:center"><span class="ic bg-lblue"><i class="fa-solid fa-people-group"></i></span><h3>Todavía no hay resultados</h3><p>Hacé un sondeo y tocá <b>Sumar al registro del grupo</b>.</p><a class="btn" href="#sondeo">Ir al sondeo</a></div>`;return;}
+ const grupos=[...new Set(REG.map(x=>x.grupo||"Sin grupo"))];
+ let html=`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px"><label class="f" for="gSel" style="margin:0">Ver grupo:</label><select class="f" id="gSel" style="width:auto"><option value="">Todos</option>${grupos.map(g=>`<option>${esc(g)}</option>`).join("")}</select></div><div id="regIn"></div>`;
+ A.innerHTML=html;const sel=$("#gSel");sel.value=store.get("regG","");if(![...sel.options].some(o=>o.value===sel.value))sel.value="";
+ sel.onchange=()=>{store.set("regG",sel.value);drawReg();};drawReg();}
+function drawReg(){const g=$("#gSel").value;const rows=REG.filter(x=>!g||(x.grupo||"Sin grupo")===g);const A=$("#regIn");
+ const sum=key=>{const R=rows.filter(x=>INST[x.inst].type===key);if(!R.length)return"";
+  const ks=key==="vak"?["V","A","K","M"]:["I","D","E"];const cnt={};ks.forEach(k=>cnt[k]=0);
+  R.forEach(x=>{if(key==="vak"){x.top.length>1?cnt.M++:cnt[x.top[0]]++;}else cnt[x.top[0]]++;});
+  const nm={V:"Visual",A:"Auditivo",K:"Kinestésico",M:"Combinada",I:"Izquierdo",D:"Derecho",E:"Equilibrio"},cl={V:C.navy,A:C.green,K:C.red,M:C.lblue,I:C.navy,D:C.green,E:C.gold};
+  return `<div class="card"><h3 style="margin-top:0">${key==="vak"?"Tendencias VAK":"Tendencias hemisféricas"} <span class="meta">(${R.length} ${R.length===1?"persona":"personas"})</span></h3>
+  <div class="bars">${ks.map(k=>`<div class="bar"><b>${nm[k]}</b><div class="tr"><i style="width:${cnt[k]/R.length*100}%;background:${cl[k]}"></i></div><span>${cnt[k]}</span></div>`).join("")}</div></div>`;};
+ A.innerHTML=`<div class="grid g2">${sum("vak")}${sum("hemi")}</div>
+ <div class="key">${rows.length>1?"El grupo es diverso: planificá con varias formas de presentar el contenido y de mostrar lo aprendido (DUA).":"Sumá más resultados para ver la diversidad del grupo."}</div>
+ <div class="tw"><table class="t"><tr><th>Fecha</th><th>Nombre o alias</th><th>Grupo</th><th>Instrumento</th><th>Tendencia</th><th>Puntajes</th><th class="no-print"></th></tr>
+ ${rows.map(x=>`<tr><td>${x.fecha}</td><td>${esc(x.alias)}</td><td>${esc(x.grupo||"—")}</td><td>${INST[x.inst].t}</td><td><b>${esc(x.label)}</b><br><span class="meta">${x.nivel}</span></td><td>${Object.entries(x.counts).map(([k,v])=>`${k}: ${v}`).join(" · ")}</td><td class="no-print"><button class="btn o" style="padding:4px 10px" data-del="${x.id}" aria-label="Quitar a ${esc(x.alias)}"><i class="fa-solid fa-xmark"></i></button></td></tr>`).join("")}
+ </table></div>
+ <div class="qnav no-print"><button class="btn" id="cpReg"><i class="fa-regular fa-copy"></i> Copiar tabla (para pegar en una planilla)</button><button class="btn r" id="clReg"><i class="fa-solid fa-trash"></i> Borrar todo el registro</button></div>`;
+ A.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{REG=REG.filter(x=>x.id!=b.dataset.del);store.set("regSondeo",REG);renderReg();});
+ $("#cpReg").onclick=async()=>{const t=["Fecha\tNombre o alias\tGrupo\tInstrumento\tTendencia\tNivel\tPuntajes"].concat(rows.map(x=>[x.fecha,x.alias,x.grupo,INST[x.inst].t,x.label,x.nivel,Object.entries(x.counts).map(([k,v])=>k+": "+v).join(" ")].join("\t"))).join("\n");
+  try{await navigator.clipboard.writeText(t);toast("Tabla copiada: pegala en una planilla");}catch(_){toast("No se pudo copiar en esta vista");}};
+ $("#clReg").onclick=()=>confirmDlg("¿Borrar todos los resultados del registro? Esta acción no se puede deshacer.",()=>{REG=[];store.set("regSondeo",REG);renderReg();});}
+function confirmDlg(msg,yes){const d=$("#dlg");$("#dlgMsg").textContent=msg;d.style.display="flex";$("#dlgNo").onclick=()=>d.style.display="none";$("#dlgYes").onclick=()=>{d.style.display="none";yes();};$("#dlgNo").focus();}
+
+renderSondeo();route();
+</script>
+</body>
+</html>
