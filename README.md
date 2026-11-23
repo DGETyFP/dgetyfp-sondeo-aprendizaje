@@ -1,4 +1,4 @@
-# Sondeo de detección de estilos de aprendizaje
+# Red de Inclusión DGETyFP
 
 Herramienta del Equipo de Inclusión de la Dirección General de Educación Técnica y Formación Profesional (DGETyFP), Ministerio de Educación de la Provincia de Córdoba.
 
@@ -12,6 +12,8 @@ Herramienta del Equipo de Inclusión de la Dirección General de Educación Téc
 - **Administración** (`#admin`): moderación, respuestas, novedades, sugerencias y configuración
 
 ## Cómo funciona
+
+- Es una app instalable (PWA): `manifest.webmanifest`, íconos en `icons/` y `sw.js`, que guarda la app para usarla sin conexión. El botón "Instalar app" usa la instalación del navegador o muestra las instrucciones de cada sistema.
 
 - La página está en `index.html`. Cada cambio que se sube a `main` se publica solo en Netlify.
 - Los datos de Comunidad, Novedades y Sugerencias se guardan en Netlify Blobs a través de la función `netlify/functions/api.mjs` (lógica en `netlify/functions/lib/core.mjs`).

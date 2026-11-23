@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sondeo de detección de estilos de aprendizaje · DGETyFP</title>
+<title>Red de Inclusión DGETyFP</title>
+<meta name="description" content="Comunidad, novedades, sondeo de estilos de aprendizaje y material sobre inclusión educativa. Equipo de Inclusión · DGETyFP · Ministerio de Educación de Córdoba.">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#00427F">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Red Inclusión">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <script>
@@ -338,7 +347,7 @@ footer.bot div{padding-bottom:64px}
 <header class="top">
   <div class="top-in">
     <div class="brand">
-      <div><b>Sondeo de detección de estilos de aprendizaje</b><span>Equipo de Inclusión · DGETyFP · Ministerio de Educación de Córdoba</span></div>
+      <img class="brand-mark" src="/icons/icon-192.png" alt="" width="42" height="42" style="border-radius:10px;border:2px solid rgba(255,255,255,.85);background:#00427F"><div><b>Red de Inclusión DGETyFP</b><span>Equipo de Inclusión · Ministerio de Educación de Córdoba</span></div>
     </div>
     <nav class="tabs" aria-label="Secciones">
       <a href="#inicio" data-v="inicio">Inicio</a>
@@ -349,6 +358,7 @@ footer.bot div{padding-bottom:64px}
       <a href="#comunidad" data-v="comunidad">Comunidad</a>
       <a href="#novedades" data-v="novedades">Novedades</a>
       <a href="#admin" data-v="admin" hidden>Administración</a>
+      <button class="share-btn" id="installOpen" hidden style="background:#fff"><i class="fa-solid fa-download"></i> Instalar app</button>
       <button class="share-btn" id="shareOpen" aria-haspopup="dialog"><i class="fa-solid fa-share-nodes"></i> Compartir</button>
     </nav>
   </div>
@@ -385,11 +395,11 @@ footer.bot div{padding-bottom:64px}
     <div id="heroRib" class="rib" aria-hidden="true"></div>
     <div id="heroSun" class="sun" aria-hidden="true"></div>
     <div class="inner">
-      <div class="kick">Herramienta de la Dirección General de Educación Técnica y Formación Profesional</div>
-      <h1>Sondeo de detección de estilos de aprendizaje</h1>
-      <p>Abierta a toda la comunidad educativa y a quien la necesite: docentes, equipos de apoyo, estudiantes y familias. Sirve para detectar tendencias en la forma de aprender y planificar propuestas con más puertas de entrada.</p>
+      <div class="kick">Equipo de Inclusión · Dirección General de Educación Técnica y Formación Profesional</div>
+      <h1>Red de Inclusión DGETyFP</h1>
+      <p>Abierta a toda la comunidad educativa y a quien la necesite: docentes, equipos de apoyo, estudiantes y familias. Compartí inquietudes y soluciones, enterate de las novedades y usá el sondeo de estilos de aprendizaje para planificar propuestas con más puertas de entrada.</p>
     </div>
-    <div class="band">Inclusión educativa · Modelos PNL (V.A.K.) y Hemisferios cerebrales</div>
+    <div class="band">Comunidad · Novedades · Sondeo de estilos de aprendizaje · Material de consulta</div>
   </div>
   <div id="homeNews" hidden style="margin-top:22px"></div>
 
@@ -426,15 +436,15 @@ footer.bot div{padding-bottom:64px}
         <p style="margin-top:0">Escaneá el código con la cámara del celular o compartí el enlace:</p>
         <div class="url">https://dgetyfp-sondeo-aprendizaje.netlify.app</div>
         <div class="acts">
-          <a class="btn wa" href="https://wa.me/?text=Sondeo%20de%20detecci%C3%B3n%20de%20estilos%20de%20aprendizaje%20%C2%B7%20Herramienta%20de%20la%20DGETyFP%2C%20abierta%20a%20toda%20la%20comunidad%20educativa%3A%20https%3A//dgetyfp-sondeo-aprendizaje.netlify.app" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Compartir por WhatsApp</a>
+          <a class="btn wa" href="https://wa.me/?text=Red%20de%20Inclusi%C3%B3n%20DGETyFP%20%C2%B7%20Comunidad%2C%20novedades%20y%20sondeo%20de%20estilos%20de%20aprendizaje%2C%20abierta%20a%20toda%20la%20comunidad%20educativa%3A%20https%3A%2F%2Fdgetyfp-sondeo-aprendizaje.netlify.app" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Compartir por WhatsApp</a>
           <button class="btn o" data-copy="https://dgetyfp-sondeo-aprendizaje.netlify.app"><i class="fa-regular fa-copy"></i> Copiar enlace</button>
           <button class="btn o" data-native-share><i class="fa-solid fa-share-nodes"></i> Otras apps</button>
         </div>
         <div class="acts">
           <a class="btn g" href="data:image/png;base64,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" download="QR-sondeo-estilos-aprendizaje.png"><i class="fa-solid fa-qrcode"></i> Descargar QR</a>
-          <a class="btn" href="index.html" download="sondeo-estilos-aprendizaje.html" data-dl-app><i class="fa-solid fa-download"></i> Descargar la herramienta</a>
+          <button class="btn" data-install><i class="fa-solid fa-download"></i> Instalar la app</button>
         </div>
-        <p class="meta">“Descargar la herramienta” guarda la página completa para usarla sin internet.</p>
+        <p class="meta">“Instalar la app” la agrega a la pantalla del celular o al escritorio de la computadora, con su ícono.</p>
       </div>
     </div>
   </div>
@@ -717,27 +727,27 @@ footer.bot div{padding-bottom:64px}
   <label for="rdRate" class="sr">Velocidad</label><select id="rdRate"><option value=".75">Lenta</option><option value="1" selected>Normal</option><option value="1.25">Rápida</option></select>
 </div></div>
 <div class="dlg" id="shareDlg" role="dialog" aria-modal="true" aria-labelledby="shareT"><div class="card">
-  <div style="display:flex;justify-content:space-between;align-items:center"><h3 id="shareT" style="margin:0"><i class="fa-solid fa-share-nodes"></i> Compartir el sondeo</h3><button class="btn o" id="shareClose" aria-label="Cerrar" style="padding:6px 12px"><i class="fa-solid fa-xmark"></i></button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center"><h3 id="shareT" style="margin:0"><i class="fa-solid fa-share-nodes"></i> Compartir la Red de Inclusión</h3><button class="btn o" id="shareClose" aria-label="Cerrar" style="padding:6px 12px"><i class="fa-solid fa-xmark"></i></button></div>
   <div class="share">
       <img class="qr" src="data:image/png;base64,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" alt="Código QR para abrir el sondeo: https://dgetyfp-sondeo-aprendizaje.netlify.app">
       <div>
         <p style="margin-top:0">Escaneá el código con la cámara del celular o compartí el enlace:</p>
         <div class="url">https://dgetyfp-sondeo-aprendizaje.netlify.app</div>
         <div class="acts">
-          <a class="btn wa" href="https://wa.me/?text=Sondeo%20de%20detecci%C3%B3n%20de%20estilos%20de%20aprendizaje%20%C2%B7%20Herramienta%20de%20la%20DGETyFP%2C%20abierta%20a%20toda%20la%20comunidad%20educativa%3A%20https%3A//dgetyfp-sondeo-aprendizaje.netlify.app" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Compartir por WhatsApp</a>
+          <a class="btn wa" href="https://wa.me/?text=Red%20de%20Inclusi%C3%B3n%20DGETyFP%20%C2%B7%20Comunidad%2C%20novedades%20y%20sondeo%20de%20estilos%20de%20aprendizaje%2C%20abierta%20a%20toda%20la%20comunidad%20educativa%3A%20https%3A%2F%2Fdgetyfp-sondeo-aprendizaje.netlify.app" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Compartir por WhatsApp</a>
           <button class="btn o" data-copy="https://dgetyfp-sondeo-aprendizaje.netlify.app"><i class="fa-regular fa-copy"></i> Copiar enlace</button>
           <button class="btn o" data-native-share><i class="fa-solid fa-share-nodes"></i> Otras apps</button>
         </div>
         <div class="acts">
           <a class="btn g" href="data:image/png;base64,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" download="QR-sondeo-estilos-aprendizaje.png"><i class="fa-solid fa-qrcode"></i> Descargar QR</a>
-          <a class="btn" href="index.html" download="sondeo-estilos-aprendizaje.html" data-dl-app><i class="fa-solid fa-download"></i> Descargar la herramienta</a>
+          <button class="btn" data-install><i class="fa-solid fa-download"></i> Instalar la app</button>
         </div>
-        <p class="meta">“Descargar la herramienta” guarda la página completa para usarla sin internet.</p>
+        <p class="meta">“Instalar la app” la agrega a la pantalla del celular o al escritorio de la computadora, con su ícono.</p>
       </div>
     </div>
 </div></div>
 
-<button class="fab no-print" id="sugOpen" aria-haspopup="dialog"><i class="fa-solid fa-lightbulb"></i> Sugerir<span class="lbl-long"> mejoras</span></button>
+<button class="fab no-print" id="sugOpen" aria-haspopup="dialog"><i class="fa-solid fa-lightbulb"></i> Sugerir<span class="lbl-long">mejoras</span></button>
 <div class="dlg" id="sugDlg" role="dialog" aria-modal="true" aria-labelledby="sugT"><div class="card">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 id="sugT" style="margin:0"><i class="fa-solid fa-lightbulb"></i> ¿Qué podemos mejorar?</h3><button class="btn o" id="sugClose" aria-label="Cerrar" style="padding:6px 12px"><i class="fa-solid fa-xmark"></i></button></div>
   <form id="sugForm" novalidate>
@@ -761,6 +771,10 @@ footer.bot div{padding-bottom:64px}
 <form name="nuevo-tema" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input name="bot-field"><input name="titulo"><input name="categoria"><input name="autor"><input name="rol"><textarea name="mensaje"></textarea><input name="enlace"><input name="estado">
 </form>
+<div class="dlg" id="instDlg" role="dialog" aria-modal="true" aria-labelledby="instT"><div class="card" style="max-width:520px;width:calc(100% - 32px)">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 id="instT" style="margin:0;display:flex;align-items:center;gap:10px"><img src="/icons/icon-192.png" alt="" width="36" height="36" style="border-radius:8px"> Instalar la Red de Inclusión</h3><button class="btn o" id="instClose" aria-label="Cerrar" style="padding:6px 12px"><i class="fa-solid fa-xmark"></i></button></div>
+  <div id="instBody"></div>
+</div></div>
 <div class="toast" id="toast" role="status"></div>
 <div class="dlg" id="dlg" role="dialog" aria-modal="true"><div class="card"><p id="dlgMsg"></p><div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn o" id="dlgNo">Cancelar</button><button class="btn r" id="dlgYes">Sí, borrar</button></div></div></div>
 
@@ -1184,7 +1198,7 @@ function drawReg(){const g=$("#gSel").value;const rows=REG.filter(x=>!g||(x.grup
 function confirmDlg(msg,yes){const d=$("#dlg");$("#dlgMsg").textContent=msg;d.style.display="flex";$("#dlgNo").onclick=()=>d.style.display="none";$("#dlgYes").onclick=()=>{d.style.display="none";yes();};$("#dlgNo").focus();}
 
 /* Compartir y descargar */
-const SHARE_URL="https://dgetyfp-sondeo-aprendizaje.netlify.app",SHARE_MSG="Sondeo de detección de estilos de aprendizaje · Herramienta de la DGETyFP, abierta a toda la comunidad educativa: https://dgetyfp-sondeo-aprendizaje.netlify.app";
+const SHARE_URL="https://dgetyfp-sondeo-aprendizaje.netlify.app",SHARE_MSG="Red de Inclusión DGETyFP · Comunidad, novedades y sondeo de estilos de aprendizaje, abierta a toda la comunidad educativa: https://dgetyfp-sondeo-aprendizaje.netlify.app";
 function openShare(){$("#shareDlg").style.display="flex";$("#shareClose").focus();}
 function closeShare(){$("#shareDlg").style.display="none";}
 $("#shareOpen").onclick=openShare;$("#shareClose").onclick=closeShare;
@@ -1192,9 +1206,7 @@ $("#shareDlg").addEventListener("click",e=>{if(e.target.id==="shareDlg")closeSha
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#shareDlg").style.display==="flex")closeShare();});
 document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);toast("Enlace copiado");}catch(_){toast("Copiá el enlace: "+b.dataset.copy);}});
 document.querySelectorAll("[data-native-share]").forEach(b=>{if(!navigator.share){b.style.display="none";return;}
-  b.onclick=async()=>{try{await navigator.share({title:"Sondeo de detección de estilos de aprendizaje",text:SHARE_MSG,url:SHARE_URL});}catch(_){}};});
-document.querySelectorAll("[data-dl-app]").forEach(a=>a.addEventListener("click",e=>{if(location.protocol==="https:"&&location.hostname.endsWith("netlify.app"))return;
-  e.preventDefault();toast("La descarga funciona desde "+SHARE_URL);}));
+  b.onclick=async()=>{try{await navigator.share({title:"Red de Inclusión DGETyFP",text:SHARE_MSG,url:SHARE_URL});}catch(_){}};});
 
 /* ================== Comunidad, Novedades, Sugerencias y Administración ================== */
 const ADM={key:sessionStorage.getItem("admKey")||store.get("admKey",""),name:sessionStorage.getItem("admName")||store.get("admName","")};
@@ -1472,6 +1484,29 @@ async function routeCommunity(v,sub){
 async function homeNews(){const box=$("#homeNews");if(!box)return;try{await loadNews();}catch(_){box.hidden=true;return;}
   const n=NEWS[0];if(!n){box.hidden=true;return;}box.hidden=false;
   box.innerHTML=`<div class="ncard"><div class="top"><span class="tag"><i class="fa-solid fa-bullhorn"></i> Última novedad · ${esc(n.tag||"Novedad")}</span><span>${fecha(n.created)}</span></div><div class="in"><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p><a class="btn" href="#novedades/${n.id}">Leer, comentar o consultar <i class="fa-solid fa-arrow-right"></i></a></div></div>`;}
+
+/* ================== Instalar como app ================== */
+let instEvt=null;
+const isStandalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+function syncInstall(){const show=!isStandalone();$("#installOpen").hidden=!show;document.querySelectorAll("[data-install]").forEach(b=>b.hidden=!show);}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();instEvt=e;syncInstall();});
+window.addEventListener("appinstalled",()=>{instEvt=null;syncInstall();closeDlg("#instDlg");toast("¡Listo! La Red de Inclusión quedó instalada");});
+async function doInstall(){
+  if(instEvt){instEvt.prompt();const r=await instEvt.userChoice.catch(()=>({}));instEvt=null;if(r&&r.outcome==="accepted")toast("Instalando…");return;}
+  const ua=navigator.userAgent,step=(n,t)=>`<li style="margin:8px 0"><b>${n}.</b> ${t}</li>`;let html;
+  if(isIOS)html=`<p>En iPhone o iPad, desde <b>Safari</b>:</p><ol style="list-style:none;padding:0">${step(1,"Tocá el botón <b>Compartir</b> (el cuadrado con una flecha hacia arriba), abajo o arriba de la pantalla.")}${step(2,"Elegí <b>Agregar a inicio</b>. Si no lo ves, deslizá la lista hacia abajo.")}${step(3,"Tocá <b>Agregar</b>. El ícono aparece en tu pantalla de inicio.")}</ol>`;
+  else if(/android/i.test(ua))html=`<p>En Android, desde <b>Chrome</b>:</p><ol style="list-style:none;padding:0">${step(1,"Tocá el menú <b>⋮</b> (arriba a la derecha).")}${step(2,"Elegí <b>Instalar app</b> o <b>Agregar a la pantalla principal</b>.")}${step(3,"Confirmá con <b>Instalar</b>. El ícono aparece junto a tus otras apps.")}</ol>`;
+  else if(/firefox/i.test(ua)&&!/android/i.test(ua))html=`<p>Firefox en computadora no instala apps web. Abrí este enlace en <b>Chrome</b> o <b>Edge</b> y tocá <b>Instalar app</b>:</p><p class="url" style="font-weight:700;color:var(--navy);word-break:break-all">${SHARE_URL}</p>`;
+  else if(/safari/i.test(ua)&&!/chrome|chromium|edg/i.test(ua))html=`<p>En Mac, desde <b>Safari</b>:</p><ol style="list-style:none;padding:0">${step(1,"Abrí el menú <b>Archivo</b>.")}${step(2,"Elegí <b>Agregar al Dock</b>.")}${step(3,"Confirmá con <b>Agregar</b>.")}</ol>`;
+  else html=`<p>En la computadora, desde <b>Chrome</b> o <b>Edge</b>:</p><ol style="list-style:none;padding:0">${step(1,"Mirá la barra de direcciones: a la derecha aparece un ícono de <b>instalar</b> (una pantalla con una flecha). Tocalo.")}${step(2,"Si no está, abrí el menú <b>⋮</b> o <b>…</b> → <b>Transmitir, guardar y compartir</b> → <b>Instalar página como app</b> (en Edge: <b>Aplicaciones</b> → <b>Instalar este sitio como aplicación</b>).")}${step(3,"Confirmá con <b>Instalar</b>. Queda en el escritorio y en el menú de inicio, con su ícono.")}</ol>`;
+  $("#instBody").innerHTML=html+`<p class="meta">La app se actualiza sola y el sondeo y el material funcionan aunque no haya internet. La Comunidad y las Novedades necesitan conexión.</p>`;
+  openDlg("#instDlg");}
+$("#installOpen").onclick=doInstall;document.querySelectorAll("[data-install]").forEach(b=>b.onclick=doInstall);
+$("#instClose").onclick=()=>closeDlg("#instDlg");$("#instDlg").addEventListener("click",e=>{if(e.target.id==="instDlg")closeDlg("#instDlg");});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#instDlg").style.display==="flex")closeDlg("#instDlg");});
+syncInstall();
+if("serviceWorker" in navigator&&location.protocol==="https:")window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));
 
 applyA();renderSondeo();route();
 </script>
