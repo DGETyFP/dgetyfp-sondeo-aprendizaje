@@ -421,7 +421,7 @@ footer.bot div{padding-bottom:64px}
   <h2 class="sec"><span class="pill g">¿Qué ofrece esta herramienta?</span></h2>
   <div class="grid g3">
     <a class="card" href="#presentacion" style="text-decoration:none;color:inherit"><span class="ic bg-navy"><i class="fa-solid fa-person-chalkboard"></i></span><h3>Presentación</h3><p>Las diapositivas de la jornada: aulas heterogéneas, barreras, modelo VAK y hemisferios cerebrales.</p></a>
-    <a class="card" href="#sondeo" style="text-decoration:none;color:inherit"><span class="ic bg-red"><i class="fa-solid fa-clipboard-question"></i></span><h3>Sondeo</h3><p>Tres instrumentos para responder en pantalla, con el resultado al instante y sugerencias para el aula y el taller.</p></a>
+    <a class="card" href="#sondeo" style="text-decoration:none;color:inherit"><span class="ic bg-red"><i class="fa-solid fa-clipboard-question"></i></span><h3>Sondeo</h3><p>Cuatro instrumentos para responder en pantalla, con el resultado al instante y sugerencias para el aula y el taller.</p></a>
     <a class="card" href="#registro" style="text-decoration:none;color:inherit"><span class="ic bg-green"><i class="fa-solid fa-people-group"></i></span><h3>Registro del grupo</h3><p>Reúne los resultados de un curso para ver su diversidad y planificar con múltiples formas de presentar y de mostrar lo aprendido.</p></a>
     <a class="card" href="#material" style="text-decoration:none;color:inherit"><span class="ic bg-gold"><i class="fa-solid fa-book-open"></i></span><h3>Material de consulta</h3><p>Qué es un estilo de aprendizaje, los modelos, estrategias de enseñanza y cuidados al sondear.</p></a>
     <a class="card" href="#comunidad" style="text-decoration:none;color:inherit"><span class="ic bg-lblue"><i class="fa-solid fa-comments"></i></span><h3>Comunidad</h3><p>Contá una inquietud sobre inclusión y encontrá propuestas de otras personas que vivieron algo parecido.</p></a>
@@ -453,7 +453,7 @@ footer.bot div{padding-bottom:64px}
   <div class="card">
     <ol style="margin:0;padding-left:22px;line-height:1.9">
       <li>Explicá al grupo qué es un sondeo y que <b>no hay respuestas correctas ni incorrectas</b>.</li>
-      <li>Elegí el instrumento: <b>VAK (PNL)</b> o <b>hemisférico</b> para estudiantes, o la <b>versión docente</b> para el equipo.</li>
+      <li>Elegí el instrumento: <b>VAK (PNL)</b> o <b>hemisférico</b> para estudiantes, o las <b>versiones docentes</b> (VAK y cuadrantes cerebrales) para el equipo.</li>
       <li>Cada persona responde en la pantalla. Si alguien lo necesita, activá la <b>lectura en voz alta</b> o el texto grande.</li>
       <li>Compartí el resultado con quien respondió: es una <b>tendencia</b>, no una etiqueta.</li>
       <li>Sumá el resultado al <b>registro del grupo</b> y usalo para diversificar la planificación.</li>
@@ -464,7 +464,7 @@ footer.bot div{padding-bottom:64px}
 <!-- ================= PRESENTACIÓN ================= -->
 <section class="view" id="v-presentacion">
   <h2 class="sec"><span class="pill">Presentación de la jornada</span></h2>
-  <p class="lead">Diapositivas 1 a 15. La parte de actividades se hace con el <a href="#sondeo">sondeo interactivo</a> de esta herramienta.</p>
+  <p class="lead">Presentación completa de la jornada: aulas heterogéneas, estilos de aprendizaje, sondeo V.A.K., sondeo docente de cuadrantes cerebrales y DUA. Los sondeos también se pueden responder en pantalla con el <a href="#sondeo">sondeo interactivo</a>.</p>
   <div class="deck">
     <div class="stage" id="stage">
       <div class="slide" id="slide" role="region" aria-roledescription="diapositiva" aria-live="polite"></div>
@@ -860,7 +860,7 @@ function route(){const [h,sub]=location.hash.slice(1).split("/");const v=VIEWS.i
 window.addEventListener("hashchange",route);
 document.querySelectorAll(".toc a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.getElementById(a.dataset.go).scrollIntoView({behavior:"smooth"});}));
 
-/* ================== Diapositivas 1–15 ================== */
+/* ================== Diapositivas de la jornada ================== */
 const FOOT=`<div class="s-foot">Inclusión educativa · DGETyFP</div>`;
 const corner=()=>`<div class="s-corner">${ribbons(420,300,170,120,50,.05,.75)}</div>`;
 function content(title,body,n){return `<div class="s-hdr"></div>${corner()}<div class="s-title">${title}</div><div class="s-body">${body}</div>${FOOT}<div class="s-num">${n}</div>`;}
@@ -891,7 +891,7 @@ const SLIDES=[
   notes:"Presentación del Equipo de Inclusión de la DGETyFP. Ejes: aulas heterogéneas, estilos de aprendizaje y Diseño Universal para el Aprendizaje (DUA)."},
  {t:"Bienvenida a la diversidad",html:n=>content("Damos la bienvenida a la diversidad",`
    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;height:30cqw">
-   ${[["puzzle-piece","Enriquece el aprendizaje","Más miradas, más soluciones a los problemas.",C.navy],["handshake","Amplía la empatía","Aprendemos reciprocidad y trabajo colaborativo.",C.green],["scale-balanced","Es un derecho","Todas y todos tenemos derecho a aprender en nuestra localidad.",C.red]]
+   ${[["puzzle-piece","Enriquece el aprendizaje","Más miradas, más soluciones a los problemas.",C.navy],["handshake","Amplía la empatía","Aprendemos reciprocidad y trabajo colaborativo.",C.green],["scale-balanced","Es un derecho","Todas y todos tenemos derecho a aprender.",C.red]]
    .map(([i,t,d,c])=>`<div class="s-card" style="padding:2.6cqw 3cqw">${ic(i,c,8.6,3.6)}<div style="font-size:2.3cqw;font-weight:700;color:${C.navy};margin:2cqw 0 1cqw">${t}</div><div style="font-size:1.7cqw">${d}</div></div>`).join("")}
    </div><div class="s-phrase">Porque la diversidad nos hace mejores</div>`,n)},
  {t:"Cuatro formas de mirar la escuela",html:n=>content("Cuatro formas de mirar la escuela",`
@@ -904,7 +904,7 @@ const SLIDES=[
    <div style="display:grid;grid-template-columns:1fr 4.5cqw 1fr;gap:1cqw 0;align-items:center">
      <div class="s-card ns" style="background:${C.lblue};color:#fff;text-align:center;font-weight:700;font-size:2cqw;letter-spacing:.2cqw;padding:1cqw">INTEGRACIÓN</div><div></div>
      <div class="s-card ns" style="background:${C.green};color:#fff;text-align:center;font-weight:700;font-size:2cqw;letter-spacing:.2cqw;padding:1cqw">INCLUSIÓN</div>
-     ${[["El estudiante se adapta a la escuela","La escuela se adapta a la diversidad"],["El “problema” está en la persona","El “problema” está en las barreras del contexto"],["Apoyos externos, fuera del aula","Apoyos dentro del aula, para todos"],["Adaptaciones puntuales para casos específicos","Currículum flexible, accesible para todos"]].map(([a,b])=>`
+     ${[["Estudiante se adapta a la escuela","La escuela se adapta a la diversidad"],["El “problema” está en la persona","El “problema” está en las barreras del contexto"],["Apoyos externos, fuera del aula","Apoyos dentro del aula, para todos"],["Adaptaciones puntuales para casos específicos","Currículum flexible, accesible para todos"]].map(([a,b])=>`
      <div class="s-card ns" style="padding:1.6cqw 2.2cqw;font-size:1.75cqw;min-height:6.9cqw;display:flex;align-items:center">${a}</div>
      <div style="text-align:center;color:${C.red};font-size:3cqw"><i class="fa-solid fa-arrow-right"></i></div>
      <div class="s-card ns" style="background:#D2E7D1;padding:1.6cqw 2.2cqw;font-size:1.75cqw;font-weight:700;color:${C.navy};min-height:6.9cqw;display:flex;align-items:center">${b}</div>`).join("")}
@@ -941,13 +941,13 @@ const SLIDES=[
     ${it.map(x=>`<div style="background:#fff;border-radius:.7cqw;padding:1.3cqw 1.8cqw;font-size:1.9cqw;margin-top:1.4cqw">${x}</div>`).join("")}</div>`).join("")}
     <div style="grid-column:2;grid-row:1;display:flex;justify-content:center">${ic("brain",C.gold,9.8,4.4)}</div>
    </div>${key("Ambos hemisferios trabajan juntos, solo que hay una “tendencia”.")}`,n)},
- {t:"Parte práctica",html:()=>`<div style="position:absolute;inset:0;background:${C.green}"></div>
+ {t:"Parte práctica",html:n=>`<div style="position:absolute;inset:0;background:${C.green}"></div>
    <div style="position:absolute;right:0;top:0;width:30cqw;height:100%">${ribbons(800,1500,300,-220,130,.25,.6)}</div>
    <div style="position:absolute;left:6cqw;top:12cqw;width:58cqw;color:#fff">
      <div style="font-size:1.9cqw;font-weight:700;letter-spacing:.2cqw;text-transform:uppercase;color:${C.navy}">Parte práctica</div>
      <div style="font-size:5.4cqw;font-weight:900;line-height:1.05;margin:1.6cqw 0 2cqw">¿Cómo aprendemos?</div>
      <div style="font-size:2.4cqw;line-height:1.3">Estilos de aprendizaje: qué son y cómo detectarlos en el aula y en el taller</div>
-   </div><div class="s-num" style="color:#fff">10</div>`},
+   </div><div class="s-num" style="color:#fff">${n}</div>`},
  {t:"Estilo de aprendizaje… ¿qué es?",html:n=>content("Estilo de aprendizaje… ¿qué es?",`
    <div style="display:grid;grid-template-columns:42cqw 1fr;gap:4cqw;height:100%">
     <div style="padding-top:1.5cqw">${ic("quote-left",C.gold,6.8,2.8)}<div style="font-size:4.2cqw;font-weight:700;color:${C.navy};line-height:1.15;margin-top:2.5cqw">Cada persona aprende a su manera.</div></div>
@@ -961,10 +961,10 @@ const SLIDES=[
    </div>${key("Relativamente estables: son tendencias, no etiquetas.",1)}`,n)},
  {t:"Algunos modelos",html:n=>content("Estilos de aprendizaje: algunos modelos",`
    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.2cqw 3cqw">
-   ${[["earth-americas","Programación neurolingüística (V.A.K.)",1],["brain","Hemisferios cerebrales",1],["chart-pie","Cuadrantes cerebrales",0],["shapes","Inteligencias múltiples",0]].map(([i,t,h])=>`
+   ${[["earth-americas","Programación neurolingüística (V.A.K.)",1],["brain","Hemisferios cerebrales",1],["chart-pie","Cuadrantes cerebrales",1],["shapes","Inteligencias múltiples",0]].map(([i,t,h])=>`
    <div class="s-card" style="background:${h?C.navy:"#CBE2F3"};display:flex;gap:2.4cqw;align-items:center;padding:2cqw 2.6cqw;height:15.4cqw">${ic(i,h?"#fff":C.lblue,7.9,3.4,h?C.navy:"#fff")}
    <div><div style="font-size:2.3cqw;font-weight:700;color:${h?"#fff":C.navy};line-height:1.2">${t}</div>${h?`<span style="display:inline-block;margin-top:1.3cqw;background:${C.gold};color:${C.navy};font-weight:700;border-radius:99cqw;padding:.5cqw 1.8cqw;font-size:1.55cqw">Hoy lo practicamos</span>`:""}</div></div>`).join("")}
-   </div>`,n),notes:"Hoy trabajamos dos modelos en la práctica: VAK (programación neurolingüística) y hemisferios cerebrales. Los cuadrantes cerebrales y las inteligencias múltiples quedan como referencia en el material de consulta."},
+   </div>`,n),notes:"Hoy practicamos el modelo VAK (programación neurolingüística) con el sondeo de estudiantes, y los cuadrantes cerebrales con el sondeo docente. Los hemisferios se trabajan en la presentación y en el sondeo interactivo; las inteligencias múltiples quedan como referencia."},
  {t:"Modelo de los hemisferios",html:n=>content("Modelo de los hemisferios cerebrales",`
    <div style="display:grid;grid-template-columns:1fr 9.6cqw 1fr;align-items:center;height:30.4cqw">
    ${[["Hemisferio izquierdo","Está más especializado en el manejo de los símbolos de cualquier tipo. Es más analítico y lineal. Procede de forma lógica.",V.I,"list-check"],["Hemisferio derecho","Es más efectivo en la percepción del espacio. Es más global, sintético e intuitivo. Es imaginativo y emocional.",V.D,"lightbulb"]].map(([t,d,c,i],k)=>`
@@ -980,6 +980,197 @@ const SLIDES=[
      ${["Intuición","Imaginación","Sentido artístico","Sentido musical","Percepción tridimensional","Control de la mano izquierda"].map(t=>`<div class="s-card ns" style="background:#D2E7D1;margin-top:1cqw;padding:0 2.2cqw;height:4.35cqw;display:flex;align-items:center;font-size:1.75cqw">${t}</div>`).join("")}</div>
    </div>`,n)},
 ];
+/* ================== Diapositivas: orden de la jornada, sondeos y DUA ================== */
+const VAKQ=[
+ ["¿Cuál de estas actividades disfrutás más?",[["Escuchar música","A"],["Ver películas","V"],["Bailar con buena música","K"]]],
+ ["¿Qué programa de televisión preferís?",[["Reportajes de descubrimientos y lugares","V"],["Cómico y de entretenimiento","K"],["Noticias del mundo","A"]]],
+ ["Cuando conversás con otra persona, vos…",[["La escuchás atentamente","A"],["La observás","V"],["Tendés a tocarla","K"]]],
+ ["¿Qué tipo de examen se te facilita más?",[["Examen oral","A"],["Examen escrito","V"],["Examen de opción múltiple","K"]]],
+ ["¿Cómo te orientás más fácilmente?",[["Mediante el uso de un mapa","V"],["Pidiendo indicaciones","A"],["A través de la intuición","K"]]],
+ ["¿Qué te halaga más?",[["Que te digan que tenés buen aspecto","V"],["Que te digan que tenés un trato muy agradable","K"],["Que te digan que tenés una conversación interesante","A"]]],
+ ["¿De qué manera se te facilita aprender algo?",[["Repitiéndolo en voz alta","A"],["Escribiéndolo varias veces","V"],["Relacionándolo con algo divertido","K"]]],
+ ["¿De qué manera te formás una opinión de otras personas?",[["Por la sinceridad en su voz","A"],["Por la forma de estrecharte la mano","K"],["Por su aspecto","V"]]],
+ ["Si no encontrás las llaves en un bolso…",[["Las buscás mirando","V"],["Sacudís el bolso para oír el ruido","A"],["Las buscás al tacto","K"]]],
+ ["Cuando tratás de recordar algo, ¿cómo lo hacés?",[["A través de imágenes","V"],["A través de emociones","K"],["A través de sonidos","A"]]],
+ ["¿Cuál de estos entretenimientos preferís?",[["Tocar un instrumento musical","A"],["Sacar fotografías","V"],["Hacer actividades manuales","K"]]],
+ ["¿Qué es lo que más disfrutás de un amanecer?",[["La emoción de vivir un nuevo día","K"],["Los colores del cielo","V"],["El canto de los pájaros","A"]]],
+];
+const CUADQ=[
+ ["Mi personalidad",[["Soy más bien racional: me gusta encontrarle una explicación lógica a todo.","CI"],["Soy muy imaginativo/a. ¡Siempre tengo ideas nuevas!","CD"],["Me cuesta hacer amistades, pero soy fiel a mis amigos.","LI"],["Me relaciono con facilidad: me gusta la gente y hablo con todos sin problema.","LD"]]],
+ ["Mi relación con estudiantes",[["No me guío por la primera impresión: uso pruebas y diagnósticos para ayudarlos a avanzar.","CI"],["Desde el inicio les marco el método de trabajo: saben qué tienen que hacer y así no hay problemas.","LI"],["Priorizo el vínculo: lo más importante es que se sientan bien.","LD"],["A veces me falta orden, pero explico bien lo difícil con imágenes, ejemplos o historias.","CD"]]],
+ ["Mi relación con los colegas",[["Para mí, trabajar en equipo es una necesidad.","LD"],["Creo que el equipo docente tiene que coordinarse. Prefiero trabajar con colegas puntuales y organizados.","LI"],["No me gusta trabajar en grupo: siento que se dispersa y queda superficial.","CI"],["Cuando trabajo con colegas, los sorprendo con ideas inesperadas.","CD"]]],
+ ["Cómo preparo las clases",[["Me gusta preparar clases sobre temas distintos o poco habituales, para no aburrirme.","LD"],["En mis clases dejo mucho lugar a la improvisación.","CD"],["Preparo cada clase al detalle, con pasos y tiempos precisos: los estudiantes solo tienen que seguirlos.","LI"],["Antes de armar el material, necesito pensar un desarrollo lógico y ordenado.","CI"]]],
+ ["El programa",[["El programa me resulta pesado: trabajo solo los temas principales.","CD"],["Avanzo según cómo responden los estudiantes; si hace falta, voy más despacio.","LD"],["A principio de año armo mi planificación y, aunque haya imprevistos, siempre la termino.","LI"],["Cada año armo un esquema preciso para dar todos los temas del programa.","CI"]]],
+ ["Cómo armo las evaluaciones",[["Doy muchas aclaraciones y pistas en las consignas para ayudar a los estudiantes.","LD"],["Hago preguntas muy generales y me doy cuenta de que les resultan confusas.","CD"],["Hago preguntas claras y precisas, con el mismo tiempo para todos y un formato de entrega que hay que respetar.","LI"],["Equilibro teoría y práctica, y me importa que aprendan los contenidos.","CI"]]],
+ ["Qué valoro al corregir",[["Sobre todo el contenido: no me gustan las respuestas vagas ni las demasiado cortas que esconden lo que no saben.","CI"],["La prolijidad, la letra y que se respeten las consignas.","LI"],["Las ideas originales y las soluciones fuera de lo común.","CD"],["Los avances de cada estudiante: reconozco su esfuerzo y los animo.","LD"]]],
+ ["Recursos y materiales",[["Estoy al día con las novedades: me encanta innovar.","CD"],["Uso materiales variados, dejo que los estudiantes los manejen y acepto un poco de desorden.","LD"],["Uso ejercicios y materiales ya probados que funcionan: no innovo por innovar.","LI"],["Valoro las herramientas confiables y sé usar la informática y la tecnología.","CI"]]],
+ ["Reuniones docentes",[["Hablo mucho para defender a mis estudiantes e intento convencer a mis colegas.","LD"],["Intervengo si me lo piden; suelen consultarme porque tengo todo ordenado.","LI"],["Ante un caso difícil, presento datos concretos y analizo la información para decidir con objetividad.","CI"],["A veces me distraigo, pero tengo buena intuición con los estudiantes y a veces tienen en cuenta mi opinión.","CD"]]],
+ ["Cómo doy la clase",[["Busco que tomen apuntes rápido. Escribo poco en el pizarrón y me importa que entiendan la teoría.","CI"],["Me cuesta no irme del tema; a veces me distraigo y cometo errores.","CD"],["Antes de empezar ya tengo todo listo: el plan en el pizarrón y el material preparado. Seguimos normas que todos conocen.","LI"],["Lo importante para mí es conectar con el grupo y trabajar en un clima relajado.","LD"]]],
+];
+const QC={CI:{n:"Cortical Izquierdo",a:"El experto",c:C.navy,bg:"#CBE2F3",i:"calculator",w:["Lógico","Analítico","Basado en hechos","Cuantitativo"]},
+ CD:{n:"Cortical Derecho",a:"El estratega",c:C.gold,bg:"#F6E7C9",i:"lightbulb",w:["Holístico","Intuitivo","Integrador","Sintetizador"]},
+ LI:{n:"Límbico Izquierdo",a:"El organizador",c:C.green,bg:"#D2E7D1",i:"list-check",w:["Organizado","Secuencial","Planificador","Detallista"]},
+ LD:{n:"Límbico Derecho",a:"El comunicador",c:C.red,bg:"#F6D3DA",i:"comments",w:["Interpersonal","Sentimientos","Estético","Emocional"]}};
+const QK=["CI","CD","LI","LD"];
+const sec=(kick,title,sub,n,bg=C.green,center)=>`<div style="position:absolute;inset:0;background:${bg}"></div>
+   <div style="position:absolute;right:0;top:0;width:30cqw;height:100%">${ribbons(800,1500,300,-220,130,.25,.6)}</div>
+   <div style="position:absolute;${center?"left:6cqw;right:32cqw;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center":"left:6cqw;top:12cqw;width:58cqw"};color:#fff">
+     ${kick?`<div style="font-size:1.9cqw;font-weight:700;letter-spacing:.2cqw;text-transform:uppercase;color:${bg===C.navy?C.gold:C.navy}">${kick}</div>`:""}
+     <div style="font-size:${center?6:5.2}cqw;font-weight:900;line-height:1.08;margin:1.6cqw 0 2cqw">${title}</div>
+     ${sub?`<div style="font-size:2.3cqw;line-height:1.35">${sub}</div>`:""}
+   </div><div class="s-num" style="color:#fff">${n}</div>`;
+const letterDot=(l,c)=>`<span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:4.4cqw;height:4.4cqw;border-radius:50%;background:${c};color:#fff;font-weight:900;font-size:2.2cqw">${l}</span>`;
+const qHead=(num,txt,c=C.navy)=>`<div class="s-card ns" style="background:${C.navy};color:#fff;display:flex;align-items:center;gap:2cqw;padding:1.6cqw 2.4cqw">${letterDot(num,C.red)}<div style="font-size:2.6cqw;font-weight:700;line-height:1.2">${txt}</div></div>`;
+
+const NEW7={t:"Estilo de aprendizaje: ¿qué es?",html:n=>sec("","Estilo de aprendizaje: ¿qué es?","",n,C.green,true)};
+
+const VAK_SLIDES=VAKQ.map(([q,opts],k)=>({t:`Sondeo V.A.K. · Pregunta ${k+1} de 12`,html:n=>content(`Sondeo V.A.K. (PNL) · <span style="font-weight:400;margin-left:1cqw">Pregunta ${k+1} de 12</span>`,`
+   ${qHead(k+1,q)}
+   <div style="display:flex;flex-direction:column;gap:1.6cqw;margin-top:2.2cqw">${opts.map((o,j)=>`
+    <div class="s-card" style="display:flex;align-items:center;gap:2cqw;padding:1.3cqw 2.4cqw;font-size:2.3cqw">${letterDot("abc"[j]+")",[C.lblue,C.green,C.gold][j])}<span>${o[0]}</span></div>`).join("")}</div>
+   ${key("Anotá en tu hoja la letra que más te represente: a), b) o c).",1)}`,n),
+  notes:k===0?"Sondeo de estilo de aprendizaje según el modelo V.A.K. (Programación Neurolingüística). Son 12 preguntas: cada persona anota en su hoja la letra elegida. Al final usamos la tabla de resultados. También puede hacerse en pantalla desde la sección Sondeo.":null}));
+
+const VAK_TABLE={t:"Tabla de resultados V.A.K.",html:n=>{
+  const tb=from=>`<table style="width:100%;border-collapse:separate;border-spacing:.4cqw;font-size:1.75cqw;text-align:center">
+   <tr>${["Pregunta","Visual","Auditivo","Kinestésico"].map((h,i)=>`<th style="background:${[C.navy,V.V,V.A,V.K][i]};color:#fff;border-radius:.6cqw;padding:.7cqw">${h}</th>`).join("")}</tr>
+   ${VAKQ.slice(from,from+6).map(([q,o],k)=>`<tr><td style="background:#CBE2F3;border-radius:.6cqw;padding:.55cqw;font-weight:700;color:${C.navy}">${from+k+1}</td>${["V","A","K"].map(ch=>`<td style="background:#EEF3F8;border-radius:.6cqw;padding:.55cqw;font-weight:700">${"abc"[o.findIndex(x=>x[1]===ch)]}</td>`).join("")}</tr>`).join("")}</table>`;
+  return content("Tabla de resultados V.A.K.",`<div style="font-size:1.9cqw;margin-bottom:1.2cqw">Rodeá en cada fila la letra que elegiste y después contá cuántas marcaste en cada columna.</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3cqw">${tb(0)}${tb(6)}</div>
+   ${key("La columna con más letras marca tu tendencia. Si dos columnas empatan, la tendencia es combinada.",1)}`,n);},
+  notes:"Cada columna corresponde a un canal. La que suma más letras muestra la tendencia del momento, no una etiqueta."};
+
+const CUAD_SLIDES=[
+ {t:"Sondeo docente: cuadrantes cerebrales",html:n=>sec("Sondeo de detección · para docentes","¿Cómo enseñamos?","Estilos de enseñanza docente según el modelo de los cuadrantes cerebrales<br><span style='display:inline-block;margin-top:2.4cqw;background:"+C.gold+";color:"+C.navy+";font-weight:700;border-radius:99cqw;padding:.7cqw 2.2cqw;font-size:1.9cqw'>Necesitamos: una hoja y un lápiz</span>",n,C.navy),
+  notes:"Sondeo para docentes de escuelas secundarias técnicas. Se basa en el modelo de los cuadrantes cerebrales de Ned Herrmann."},
+ {t:"¿Para qué hacemos este sondeo?",html:n=>content("¿Para qué hacemos este sondeo?",`
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;height:29cqw">
+   ${[["user-check","Conocernos","Identificar qué estilo predomina en nuestra forma de enseñar: cómo planificamos, explicamos, evaluamos y nos vinculamos.",C.navy],["door-open","Ampliar el repertorio","Ejercitar las vías que usamos menos, para que en el aula y en el taller más estudiantes encuentren una puerta de entrada.",C.gold],["people-group","Pensar en equipo","Compartir resultados con colegas y parejas pedagógicas: los estilos distintos se complementan.",C.red]]
+   .map(([i,t,d,c])=>`<div class="s-card" style="padding:2.4cqw 2.8cqw">${ic(i,c,8,3.4)}<div style="font-size:2.3cqw;font-weight:700;color:${C.navy};margin:1.8cqw 0 1cqw">${t}</div><div style="font-size:1.75cqw;line-height:1.4">${d}</div></div>`).join("")}
+   </div>${key("No es una evaluación de desempeño: es una herramienta de autoconocimiento.")}`,n)},
+ {t:"El modelo de los cuadrantes cerebrales",html:n=>content("El modelo de los cuadrantes cerebrales",`
+   <div style="font-size:1.8cqw;margin-bottom:1.4cqw">Ned Herrmann cruza los hemisferios izquierdo y derecho con el cerebro cortical y el límbico: resultan cuatro formas de pensar, crear, aprender y enseñar.</div>
+   <div style="display:grid;grid-template-columns:4cqw 1fr 1fr;grid-template-rows:auto auto auto;gap:1.4cqw 2cqw;align-items:stretch">
+   ${[["CORTICAL","CI","CD"],["LÍMBICO","LI","LD"]].map(([row,a,b])=>`<div style="writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-weight:700;color:${C.navy};font-size:1.5cqw;letter-spacing:.2cqw">${row}</div>
+    ${[a,b].map(k=>{const q=QC[k];return `<div class="s-card ns" style="background:${q.bg};display:flex;gap:2cqw;align-items:center;padding:1.6cqw 2.2cqw">${ic(q.i,q.c,7,3)}<div><div style="font-size:2.1cqw;font-weight:700;color:${C.navy}">${q.n} (${k})</div><div style="font-size:1.75cqw;font-style:italic;color:${C.navy}">${q.a}</div><div style="font-size:1.6cqw;margin-top:.5cqw">${q.w.join(" · ")}</div></div></div>`;}).join("")}`).join("")}
+    <div></div><div style="text-align:center;font-weight:700;color:${C.navy};font-size:1.5cqw;letter-spacing:.2cqw">IZQUIERDO</div><div style="text-align:center;font-weight:700;color:${C.navy};font-size:1.5cqw;letter-spacing:.2cqw">DERECHO</div>
+   </div>`,n),notes:"El propio Herrmann presentó el modelo como una metáfora: el cerebro trabaja siempre de manera integrada. Los cuadrantes ofrecen un lenguaje sencillo para describir preferencias."},
+ {t:"¿Cómo enseña cada cuadrante?",html:n=>content("¿Cómo enseña cada cuadrante?",`
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw 2.4cqw">
+   ${[["CI","Profundiza en su asignatura, demuestra y fundamenta. Le molesta la imprecisión y cuida la palabra correcta. Prioriza el contenido."],["CD","Avanza de forma global, relaciona y se anima a salirse del tema. Inspira, propone proyectos y se aburre si repite la misma clase."],["LI","Prepara clases muy estructuradas, sigue el plan previsto y termina el programa. Cuida la forma, el orden y la organización."],["LD","Se ocupa de cómo reciben el contenido sus estudiantes. Usa juegos, debates y trabajo en equipo; busca un buen clima de clase."]].map(([k,d])=>{const q=QC[k];return `
+    <div class="s-card ns" style="background:${q.bg};padding:1.4cqw 2.2cqw"><div style="display:flex;gap:1.4cqw;align-items:center">${ic(q.i,q.c,5,2.2)}<div style="font-size:2cqw;font-weight:700;color:${C.navy}">${q.n} · ${q.a}</div></div><div style="font-size:1.7cqw;margin-top:1cqw;line-height:1.35">${d}</div></div>`;}).join("")}
+   </div>${key("Todos tenemos los cuatro cuadrantes: el sondeo muestra cuál predomina.",1)}`,n)},
+ {t:"Los cuadrantes en la escuela técnica",html:n=>content("Los cuadrantes en la escuela técnica",`
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw 2.4cqw">
+   ${[["CI","Fundamentos teóricos sólidos, cálculo, normas técnicas y precisión en el vocabulario.","Sumar ejemplos concretos y esquemas claros para quienes no parten de la teoría."],["CD","Proyectos integradores, resolución de problemas abiertos, innovación y diseño.","Dar estructura y consignas precisas para que nadie se pierda en el camino."],["LI","Secuencias de trabajo, normas de seguridad, orden del taller y procedimientos paso a paso.","Dejar lugar a la iniciativa, a preguntas abiertas y a ejercicios con varias soluciones."],["LD","Trabajo en equipo, clima de confianza, acompañamiento y evaluación de los progresos.","Sostener el ritmo del programa y equilibrar lo vincular con la exigencia técnica."]].map(([k,a,f])=>{const q=QC[k];return `
+    <div class="s-card ns" style="background:${q.bg};padding:1.2cqw 2cqw"><div style="display:flex;gap:1.4cqw;align-items:center">${ic(q.i,q.c,4.6,2)}<div style="font-size:2cqw;font-weight:700;color:${C.navy}">${q.n}</div></div>
+    <div style="font-size:1.5cqw;margin-top:.7cqw;line-height:1.3"><b style="color:${C.navy}">Aporta:</b> ${a}<br><b style="color:${C.red}">Para fortalecer:</b> ${f}</div></div>`;}).join("")}
+   </div>${key("Ningún estilo es mejor que otro: en la escuela técnica los cuatro son necesarios.")}`,n)},
+ {t:"Consignas para responder",html:n=>content("Consignas para responder",`
+   <div style="display:flex;flex-direction:column;gap:1.1cqw">
+   ${[["list","Son 10 preguntas, cada una con cuatro opciones: a), b), c) y d).",C.navy],["pen","Anote en su hoja la letra de la frase que le parezca más próxima a su comportamiento.",C.red],["check","Puede marcar dos frases solo si elegir una le resulta realmente imposible.",C.gold],["person-chalkboard","Responda pensando en su práctica real en el aula y en el taller, no en lo que “debería” hacer.",C.green]].map(([i,t,c])=>`
+    <div class="s-card" style="display:flex;align-items:center;gap:2.2cqw;padding:1cqw 2.4cqw;font-size:2cqw">${ic(i,c,5,2.2)}<span>${t}</span></div>`).join("")}
+   </div>${key("No hay respuestas correctas ni incorrectas.",1)}`,n)},
+ ...CUADQ.map(([t,opts],k)=>({t:`Sondeo docente · Pregunta ${k+1} de 10`,html:n=>content(`Sondeo de detección docente · <span style="font-weight:400;margin-left:1cqw">Pregunta ${k+1} de 10</span>`,`
+   ${qHead(k+1,t)}
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw 2.2cqw;margin-top:2cqw">${opts.map((o,j)=>`
+    <div class="s-card" style="display:flex;align-items:center;gap:1.8cqw;padding:1.4cqw 2cqw;font-size:1.9cqw;line-height:1.3;min-height:10.5cqw">${letterDot("abcd"[j]+")",[C.lblue,C.green,C.gold,C.red][j])}<span>${o[0]}</span></div>`).join("")}</div>`,n)})),
+ {t:"Planilla de resultados",html:n=>content("Planilla de resultados",`
+   <div style="font-size:1.75cqw;margin-bottom:.8cqw">Rodee en cada fila la sigla que corresponde a la letra que eligió.</div>
+   <table style="width:100%;border-collapse:separate;border-spacing:.3cqw;font-size:1.5cqw;text-align:center">
+   <tr>${["Rasgo","a","b","c","d"].map((h,i)=>`<th style="background:${C.navy};color:#fff;border-radius:.5cqw;padding:.45cqw;${i?"width:9cqw":"text-align:left;padding-left:1.4cqw"}">${h}</th>`).join("")}</tr>
+   ${CUADQ.map(([t,o],k)=>`<tr><td style="background:#CBE2F3;border-radius:.5cqw;padding:.32cqw 1.4cqw;text-align:left;font-weight:700;color:${C.navy}">${k+1}) ${t}</td>${o.map(x=>`<td style="background:${QC[x[1]].bg};border-radius:.5cqw;padding:.32cqw;font-weight:700;color:${C.navy}">${x[1]}</td>`).join("")}</tr>`).join("")}
+   </table><div style="font-size:1.3cqw;margin-top:.8cqw;color:var(--gray)">CI: Cortical Izquierdo · CD: Cortical Derecho · LI: Límbico Izquierdo · LD: Límbico Derecho</div>`,n)},
+ {t:"¿Cómo calculo mi puntaje?",html:n=>content("¿Cómo calculo mi puntaje?",`
+   <div style="font-size:1.9cqw;margin-bottom:1.4cqw">Cuente cuántas veces rodeó cada sigla y multiplique por 20.</div>
+   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw">${QK.map(k=>{const q=QC[k];return `<div class="s-card ns" style="background:${q.bg};text-align:center;padding:1.5cqw"><div style="font-size:3.6cqw;font-weight:900;color:${q.c}">${k}</div><div style="font-size:2.2cqw;font-weight:700;color:${C.navy};margin:.6cqw 0">___ × 20 = ___</div><div style="font-size:1.5cqw">${q.n}</div></div>`;}).join("")}</div>
+   <div style="display:flex;flex-direction:column;gap:1cqw;margin-top:2cqw">${[["Más de 66 puntos","Preferencia neta",C.red],["Entre 33 y 66 puntos","Preferencia intermedia",C.lblue],["Menos de 33 puntos","No preferencia",C.green]].map(([a,b,c])=>`<div style="display:flex;gap:2cqw;align-items:center"><span style="background:${c};color:#fff;font-weight:700;border-radius:99cqw;padding:.5cqw 2cqw;font-size:1.6cqw;width:22cqw;text-align:center">${a}</span><b style="font-size:1.9cqw;color:${C.navy}">${b}</b></div>`).join("")}</div>
+   <div style="font-size:1.45cqw;margin-top:auto;font-style:italic">Ejemplo: si rodeó CI 6 veces → 6 × 20 = 120 puntos en Cortical Izquierdo (preferencia neta).</div>`,n)},
+ {t:"Del resultado a la práctica",html:n=>content("Del resultado a la práctica",`
+   <div style="font-size:1.8cqw;color:${C.red};font-weight:700;margin-bottom:1cqw">Si predomina en usted… pruebe incorporar</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5cqw 2.4cqw">
+   ${[["CI",["Ejemplos concretos y representaciones gráficas claras.","Que otro estudiante reformule lo que no se entendió.","Valorar la originalidad y la intuición al evaluar."]],["CD",["Un plan visible de la clase y consignas precisas.","Indicaciones que faciliten la comprensión paso a paso.","Verificar con más frecuencia lo que se aprendió."]],["LI",["Preguntas abiertas y ejercicios con varias soluciones.","Más participación e iniciativa de los estudiantes.","Renovar actividades y trabajar en equipo con colegas."]],["LD",["Una planificación que asegure el avance del programa.","Criterios de evaluación sobre los conocimientos, además de la actitud.","Momentos de trabajo individual y silencioso."]]].map(([k,it])=>{const q=QC[k];return `
+    <div class="s-card ns" style="background:${q.bg};padding:1.4cqw 2.2cqw"><div style="display:flex;gap:1.4cqw;align-items:center">${ic(q.i,q.c,4.4,1.9)}<div style="font-size:2cqw;font-weight:700;color:${C.navy}">${q.n}</div></div>
+    <ul style="font-size:1.5cqw;margin:.6cqw 0 0;padding-left:2cqw;line-height:1.35">${it.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;}).join("")}
+   </div><div style="font-size:1.2cqw;margin-top:.8cqw;color:var(--gray)">Basado en los cursos de acción del Manual de Estilos de Aprendizaje (2004).</div>`,n)},
+ {t:"Un equipo docente diverso",html:n=>sec("Para conversar en grupo","Un equipo docente diverso enseña mejor a estudiantes diversos","¿Qué cuadrante predomina en nuestro equipo? ¿Cuál falta en el aula o en el taller? ¿Cómo nos complementamos en las parejas pedagógicas?<div style='font-size:1.3cqw;margin-top:3cqw;opacity:.85'>Fuente del cuestionario: Manual de Estilos de Aprendizaje, DGB/DCA, 2004 (Modelo de Cuadrantes Cerebrales, Herrmann).</div>",n,C.navy)},
+];
+
+const DUA_C={i:{n:"Implicación",c:C.red,bg:"#F6D3DA",ic:"heart"},r:{n:"Representación",c:C.navy,bg:"#CBE2F3",ic:"brain"},a:{n:"Acción y expresión",c:C.green,bg:"#D2E7D1",ic:"gear"}};
+const DUA_SLIDES=[
+ {t:"Del sondeo a la secuencia didáctica",html:n=>content("Del sondeo a la secuencia didáctica",`
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;height:29cqw">
+   ${[["people-group","1. Compartimos","En grupos: ¿qué canal y qué hemisferio predominaron?",C.red],["magnifying-glass","2. Miramos la diversidad","Mismo grupo, formas muy distintas de aprender.",C.navy],["puzzle-piece","3. Diseñamos","Elegí una actividad de tu taller y pensala con tres puertas de entrada.",C.gold]]
+   .map(([i,t,d,c])=>`<div class="s-card" style="padding:2.6cqw 3cqw;text-align:center">${ic(i,c,8.6,3.6)}<div style="font-size:2.4cqw;font-weight:700;color:${C.navy};margin:2cqw 0 1cqw">${t}</div><div style="font-size:1.85cqw">${d}</div></div>`).join("")}
+   </div>${key("Detectar para diseñar, no para etiquetar.",1)}`,n)},
+ {t:"Todas las personas pueden aprender",html:n=>sec("","Todas las personas pueden aprender","si les presentamos la información de la forma en que resulta más accesible.<div style='display:flex;gap:1.6cqw;margin-top:3cqw;flex-wrap:wrap'>"+["Detectar barreras","Diseñar con DUA","Ofrecer varias puertas de entrada"].map((t,i)=>`<span style="background:${[C.red,C.gold,C.lblue][i]};color:#fff;font-weight:700;border-radius:.8cqw;padding:1.2cqw 2.2cqw;font-size:1.9cqw">${t}</span>`).join("")+"</div>",n,C.navy)},
+ {t:"Diseño Universal para el Aprendizaje (DUA)",html:n=>sec("Diseño Universal para el Aprendizaje","DUA: más oportunidades, menos barreras","Planificar desde el inicio para que todas las personas puedan aprender, participar y demostrar lo que saben.",n,C.green)},
+ {t:"¿Qué es el DUA?",html:n=>content("¿Qué es el DUA?",`
+   <div class="s-card ns" style="background:#D2E7D1;padding:2.6cqw 3.2cqw;font-size:2.3cqw;line-height:1.45;color:${C.navy}">Es un enfoque pedagógico que propone <b>planificar la enseñanza considerando, desde el inicio, la diversidad de estudiantes</b> que conforman un aula, para favorecer el aprendizaje, la participación y la autonomía de todas las personas.</div>
+   <div class="s-card ns" style="background:#CBE2F3;display:flex;gap:2.4cqw;align-items:center;padding:2.2cqw 3cqw;margin-top:2.4cqw">${ic("door-open",C.red,7.5,3.2)}<div style="font-size:2.3cqw;font-weight:700;color:${C.navy}">Su propósito es eliminar o reducir las barreras para el aprendizaje y la participación.</div></div>`,n)},
+ {t:"La secuencia didáctica desde el DUA",html:n=>content("La secuencia didáctica desde el DUA",`
+   <div style="display:flex;flex-direction:column;gap:1.6cqw">
+   ${[["lightbulb","Inicio","Activar saberes previos y generar interés","i"],["layer-group","Desarrollo","Contenido en varios formatos y práctica guiada","r"],["star","Cierre","Distintas formas de mostrar lo aprendido","a"]].map(([i,t,d,p])=>`
+    <div class="s-card ns" style="background:${DUA_C[p].bg};display:grid;grid-template-columns:7cqw 16cqw 1fr 19cqw;align-items:center;gap:1.5cqw;padding:1.5cqw 2.2cqw">${ic(i,DUA_C[p].c,6,2.6)}<div style="font-size:2.4cqw;font-weight:700;color:${C.navy}">${t}</div><div style="font-size:1.9cqw">${d}</div><span class="s-tag" style="font-size:1.6cqw;background:${DUA_C[p].c}">${DUA_C[p].n}</span></div>`).join("")}
+   </div>${key("En cada paso: ¿qué barrera puede aparecer y cómo la anticipo?")}`,n)},
+ {t:"Los tres principios del DUA",html:n=>content("Los tres principios del DUA",`
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqw">
+   ${[["i","Múltiples formas de implicación","El porqué del aprendizaje","Busca despertar el interés, sostener la motivación y promover la participación.","Permitir elegir entre actividades, conectar con intereses, proponer desafíos, favorecer el trabajo colaborativo."],["r","Múltiples formas de representación","El qué del aprendizaje","Ofrece distintas maneras de presentar la información para facilitar su comprensión.","Textos, imágenes, esquemas, videos, mapas conceptuales, demostraciones, materiales concretos."],["a","Múltiples formas de acción y expresión","El cómo del aprendizaje","Ofrece distintas posibilidades para que cada estudiante participe, resuelva tareas y demuestre lo aprendido.","Oral, escrito, maqueta, presentación, audio, actividad práctica."]].map(([p,t,s,d,e],k)=>{const P=DUA_C[p];return `
+    <div class="s-card ns" style="background:${P.bg};padding:1.8cqw 2cqw;display:flex;flex-direction:column">
+     <div style="display:flex;gap:1.4cqw;align-items:center">${ic(P.ic,P.c,5.6,2.4)}<span style="font-size:3cqw;font-weight:900;color:${P.c}">${k+1}</span></div>
+     <div style="font-size:2.05cqw;font-weight:700;color:${C.navy};margin-top:1cqw;line-height:1.2">${t}</div><div style="font-size:1.6cqw;font-style:italic;color:${P.c};margin:.4cqw 0 1cqw">${s}</div>
+     <div style="font-size:1.6cqw;line-height:1.4">${d}</div>
+     <div style="background:#fff;border-radius:.7cqw;padding:1cqw 1.4cqw;font-size:1.45cqw;margin-top:1.2cqw;line-height:1.4"><b>Ejemplos:</b> ${e}</div></div>`;}).join("")}
+   </div>`,n)},
+ {t:"¿Cómo se aplica el DUA en el aula?",html:n=>content("¿Cómo se aplica el DUA en el aula?",`
+   <div style="font-size:2cqw;margin-bottom:1.8cqw;color:${C.navy}">El objetivo de aprendizaje puede ser el mismo para todo el grupo, aunque se ofrezcan diferentes caminos para alcanzarlo.</div>
+   <div style="display:grid;grid-template-columns:1fr 3cqw 1fr 3cqw 1fr;align-items:stretch">
+   ${[["i","Analizar una conversación cotidiana, un meme o una situación cercana al grupo para introducir un tema."],["r","Presentar el contenido mediante una explicación oral, un esquema visual y ejemplos escritos."],["a","Permitir que el aprendizaje se demuestre mediante un texto, un esquema o una explicación oral."]].map(([p,d],k)=>{const P=DUA_C[p];return (k?`<div style="display:flex;align-items:center;justify-content:center;color:${C.red};font-size:2.6cqw"><i class="fa-solid fa-arrow-right"></i></div>`:"")+`
+    <div class="s-card ns" style="background:${P.bg};padding:2cqw 2.2cqw"><div style="display:flex;gap:1.4cqw;align-items:center">${ic(P.ic,P.c,5.6,2.4)}<div style="font-size:2.2cqw;font-weight:700;color:${C.navy}">${k+1}. ${P.n}</div></div>
+    <div style="font-size:1.7cqw;font-weight:700;margin-top:1.8cqw;color:${P.c}">Ejemplo práctico</div><div style="font-size:1.8cqw;margin-top:.6cqw;line-height:1.4">${d}</div></div>`;}).join("")}
+   </div>`,n)},
+ {t:"Ejemplo en una escuela secundaria técnica",html:n=>content("Ejemplo en una escuela secundaria técnica",`
+   <div style="font-size:2.1cqw;font-weight:700;color:${C.navy};margin-bottom:1.4cqw">Tema: El circuito de la comunicación</div>
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqw">
+   ${[["i","users",["Analizar un meme o una noticia.","Proponer una situación cercana al grupo (redes, radio, video)."],"Se conecta con sus intereses y experiencias."],["r","eye",["Explicación oral.","Esquema visual.","Texto breve y ejemplos de la vida real.","Video o podcast."],"Se combinan distintos lenguajes y formatos."],["a","pen",["Escribir un texto.","Elaborar un esquema.","Grabar un audio o video.","Realizar una presentación grupal."],"Cada estudiante elige cómo demostrar lo que aprendió."]].map(([p,i,it,f])=>{const P=DUA_C[p];return `
+    <div class="s-card ns" style="background:${P.bg};padding:1.6cqw 2.2cqw;display:flex;flex-direction:column;height:28cqw"><div style="display:flex;gap:1.4cqw;align-items:center">${ic(i,P.c,5.6,2.4)}<div style="font-size:2.2cqw;font-weight:700;color:${C.navy}">${P.n}</div></div>
+    <ul style="font-size:1.75cqw;padding-left:2.2cqw;margin:1.6cqw 0;line-height:1.5">${it.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <div style="margin-top:auto;background:#fff;border-radius:.7cqw;padding:1cqw 1.4cqw;font-size:1.65cqw;font-weight:700;color:${C.navy};text-align:center">${f}</div></div>`;}).join("")}
+   </div>`,n)},
+ {t:"¿Cómo se vincula con la educación inclusiva?",html:n=>content("¿Cómo se vincula con la educación inclusiva?",`
+   <div style="display:grid;grid-template-columns:1fr 24cqw;gap:2.4cqw;align-items:center">
+    <div class="s-card ns" style="background:#E6DDF2;padding:1.8cqw 2.4cqw;font-size:1.85cqw;line-height:1.45">Desde una perspectiva de derechos, el DUA invita a revisar las propuestas de enseñanza y las condiciones del entorno, en lugar de atribuir las dificultades exclusivamente a las características individuales de cada estudiante.</div>
+    <div style="text-align:center;font-size:2.3cqw;font-weight:900;color:${C.navy};line-height:1.35">Diversidad<br><span style="color:${C.red}">+</span><br>Oportunidades<br><span style="color:${C.red}">=</span><br><span style="color:${C.green}">Inclusión</span></div></div>
+   <div style="font-size:1.9cqw;font-weight:700;color:${C.navy};margin:1.4cqw 0 1cqw">Es importante distinguir que:</div>
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.8cqw">
+   ${[["El DUA permite anticipar la diversidad en la planificación para todo el grupo.","#CBE2F3"],["Los ajustes razonables y las configuraciones de apoyo pueden ser necesarios cuando hay barreras específicas.","#E6DDF2"],["El PPI puede organizar apoyos, estrategias y decisiones pedagógicas particulares cuando corresponda.","#D2E7D1"]].map(([t,b])=>`<div class="s-card ns" style="background:${b};padding:1.4cqw 1.8cqw;font-size:1.65cqw;line-height:1.4">${t}</div>`).join("")}
+   </div>${key("El DUA no reemplaza los apoyos individuales: contribuye a construir propuestas más accesibles desde el inicio.",1)}`,n)},
+ {t:"Ideas para la práctica docente",html:n=>content("Ideas para la práctica docente",`
+   <div style="display:flex;flex-direction:column;gap:1.2cqw">
+   ${[["Conocer a tus estudiantes:","sus intereses, fortalezas, formas de aprender.",C.navy],["Diversificar los recursos:","usar distintos materiales y formatos.",C.green],["Ofrecer opciones:","en la forma de presentar, de participar y de demostrar lo aprendido.",C.gold],["Crear un entorno accesible:","lenguaje claro, apoyos visuales, organización del tiempo y del espacio.",C.lblue],["Trabajar en equipo:","con colegas, familias y otros profesionales.",C.red]].map(([a,b,c])=>`
+    <div style="display:flex;gap:1.8cqw;align-items:center;font-size:2.05cqw">${ic("check",c,4.2,2)}<span><b style="color:${C.navy}">${a}</b> ${b}</span></div>`).join("")}
+   </div>${key("La inclusión se construye con planificación, flexibilidad y una mirada pedagógica centrada en las personas.",1)}`,n)},
+ {t:"Herramientas y recursos útiles",html:n=>content("Herramientas y recursos útiles",`
+   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.8cqw">
+   ${[["layer-group","Materiales multiformato",C.red],["circle-nodes","Organizadores gráficos",C.navy],["universal-access","Tecnologías de apoyo",C.green],["users","Trabajo colaborativo",C.gold],["list-check","Rúbricas flexibles",C.lblue]].map(([i,t,c])=>`
+    <div class="s-card" style="text-align:center;padding:2cqw 1cqw">${ic(i,c,7,3)}<div style="font-size:1.85cqw;font-weight:700;color:${C.navy};margin-top:1.4cqw">${t}</div></div>`).join("")}
+   </div>
+   <div class="s-card ns" style="background:#F6E7C9;display:flex;gap:2cqw;align-items:flex-start;padding:2cqw 2.6cqw;margin-top:2.6cqw">${ic("star",C.gold,5.6,2.5)}<div><div style="font-size:2.2cqw;font-weight:700;color:${C.navy}">Recordá</div><div style="font-size:1.85cqw;line-height:1.45;margin-top:.6cqw">El DUA no significa preparar actividades diferentes para cada estudiante, sino diseñar propuestas flexibles desde el comienzo, contemplando la variabilidad humana y reduciendo las barreras que pueden limitar el aprendizaje.</div></div></div>`,n)},
+ {t:"Cierre",html:n=>`<div style="position:absolute;inset:0;background:${C.navy}"></div>
+   <div style="position:absolute;left:0;top:0;width:26cqw;height:100%">${ribbons(700,1500,120,260,120)}</div>
+   <div style="position:absolute;right:-8cqw;top:-10cqw;width:28cqw;height:28cqw;opacity:.95">${sun()}</div>
+   <div style="position:absolute;left:31.5cqw;top:10cqw;width:58cqw;color:#fff">
+     <div style="font-size:4.8cqw;font-weight:900;line-height:1.12">Más accesibilidad,<br>más participación,<br>más aprendizaje</div>
+     <div style="font-size:2.2cqw;color:#CBE2F3;line-height:1.35;margin-top:2.4cqw">El DUA nos invita a enseñar con una mirada amplia, diversa y justa.</div>
+     <div style="display:inline-block;margin-top:2.4cqw;background:${C.gold};color:${C.navy};font-weight:700;border-radius:99cqw;padding:.8cqw 2.4cqw;font-size:1.9cqw">Porque cada persona aprende de una manera única.</div>
+   </div>
+   <div style="position:absolute;left:0;right:0;bottom:0;height:6.5cqw;background:${C.green};display:flex;align-items:center;justify-content:flex-end;padding:0 4.5cqw;color:#fff;font-weight:700;font-size:1.6cqw">Ministerio de Educación · Provincia de Córdoba</div><div class="s-num" style="color:#fff;bottom:7.6cqw">${n}</div>`},
+];
+
+/* Orden final: 1–6, nueva 7, 12, 13, 7, 11, 8, 9, 14, 15, 10, sondeo V.A.K., sondeo docente, cierre de cuadrantes y DUA */
+(()=>{const O=SLIDES.slice();
+ SLIDES.splice(0,SLIDES.length,O[0],O[1],O[2],O[3],O[4],O[5],NEW7,O[11],O[12],O[6],O[10],O[7],O[8],O[13],O[14],O[9],...VAK_SLIDES,VAK_TABLE,...CUAD_SLIDES,...DUA_SLIDES);})();
+
 let cur=0;
 function showSlide(i){cur=Math.max(0,Math.min(SLIDES.length-1,i));const s=SLIDES[cur];
   $("#slide").innerHTML=s.html(cur+1);$("#slide").setAttribute("aria-label",`Diapositiva ${cur+1}: ${s.t}`);
@@ -1012,22 +1203,13 @@ showSlide(0);
 
 /* ================== Instrumentos ================== */
 const CH={V:{n:"Visual",c:V.V,i:"eye",s:"Aprende mirando"},A:{n:"Auditivo",c:V.A,i:"ear-listen",s:"Aprende escuchando"},K:{n:"Kinestésico",c:V.K,i:"hand",s:"Aprende haciendo"},
+ CI:{n:"Cortical Izquierdo · El experto",c:C.navy,i:"calculator",s:"Lógico, analítico, basado en hechos"},CD:{n:"Cortical Derecho · El estratega",c:C.gold,i:"lightbulb",s:"Holístico, intuitivo, integrador"},
+ LI:{n:"Límbico Izquierdo · El organizador",c:C.green,i:"list-check",s:"Organizado, secuencial, planificador"},LD:{n:"Límbico Derecho · El comunicador",c:C.red,i:"comments",s:"Interpersonal, emocional, comunicador"},
  I:{n:"Hemisferio izquierdo (lógico)",c:V.I,i:"list-check",s:"Analítico, lineal, paso a paso"},D:{n:"Hemisferio derecho (holístico)",c:V.D,i:"lightbulb",s:"Global, intuitivo, en imágenes"}};
 const INST={
  vak:{t:"Sondeo VAK · modelo PNL",who:"Para estudiantes (y para practicar entre docentes)",icon:"eye",col:C.red,type:"vak",
   intro:"Elegí la opción con la que más te identifiques en cada pregunta. No hay respuestas correctas ni incorrectas.",
-  q:[
-   ["¿Cuál de estas actividades disfrutás más?",[["Escuchar música","A"],["Ver películas","V"],["Bailar con buena música","K"]]],
-   ["¿Qué programa de televisión preferís?",[["Reportajes de descubrimientos y lugares","V"],["Cómico y de entretenimiento","K"],["Noticias del mundo","A"]]],
-   ["Cuando conversás con otra persona, vos…",[["La escuchás atentamente","A"],["La observás","V"],["Tendés a tocarla","K"]]],
-   ["¿Qué tipo de examen se te facilita más?",[["Examen oral","A"],["Examen escrito","V"],["Examen de opción múltiple","K"]]],
-   ["¿Cómo te orientás más fácilmente?",[["Mediante el uso de un mapa","V"],["Pidiendo indicaciones","A"],["A través de la intuición","K"]]],
-   ["¿Qué te halaga más?",[["Que te digan que tenés buen aspecto","V"],["Que te digan que tenés un trato muy agradable","K"],["Que te digan que tenés una conversación interesante","A"]]],
-   ["¿De qué manera se te facilita aprender algo?",[["Repitiéndolo en voz alta","A"],["Escribiéndolo varias veces","V"],["Relacionándolo con algo divertido","K"]]],
-   ["¿De qué manera te formás una opinión de otras personas?",[["Por la sinceridad en su voz","A"],["Por la forma de estrecharte la mano","K"],["Por su aspecto","V"]]],
-   ["Si no encontrás las llaves en un bolso…",[["Las buscás mirando","V"],["Sacudís el bolso para oír el ruido","A"],["Las buscás al tacto","K"]]],
-   ["Cuando tratás de recordar algo, ¿cómo lo hacés?",[["A través de imágenes","V"],["A través de emociones","K"],["A través de sonidos","A"]]],
-  ]},
+  q:VAKQ},
  hemi:{t:"Sondeo hemisférico · modelo de los hemisferios",who:"Para estudiantes (y para practicar entre docentes)",icon:"brain",col:C.gold,type:"hemi",
   intro:"Leé cada pregunta y elegí la opción que más se acerca a tu forma de actuar. No hay respuestas correctas ni incorrectas.",
   q:[
@@ -1058,6 +1240,9 @@ const INST={
    ["Cuando explicás algo a otra persona, ¿cómo lo hacés generalmente?",[["Con ejemplos y situaciones que hayas vivido o experimentado","K"],["Con un esquema, diagrama o ilustración","V"],["Con una explicación oral clara y ordenada","A"]]],
    ["Cuando planificás tus clases o actividades, ¿qué es lo primero que hacés?",[["Pensás en dinámicas, juegos o actividades que involucren el movimiento y la acción","K"],["Buscás imágenes, videos o recursos visuales atractivos","V"],["Preparás la explicación oral o buscás audios y podcasts relacionados","A"]]],
   ]},
+ cuad:{t:"Sondeo docente · cuadrantes cerebrales",who:"Para docentes: cómo enseño (modelo de Herrmann)",icon:"chart-pie",col:C.green,type:"cuad",
+  intro:"Elija en cada pregunta la frase más próxima a su comportamiento en el aula y en el taller. Responda pensando en su práctica real, no en lo que “debería” hacer. No es una evaluación de desempeño: es una herramienta de autoconocimiento.",
+  q:CUADQ.map(([t,o])=>[t,o])},
 };
 
 /* Sugerencias pedagógicas por tendencia */
@@ -1077,6 +1262,18 @@ const TIPS={
  D:{que:"Tendencia holística: necesita ver el todo para entender las partes. Piensa en imágenes y sensaciones, y le importa más el proceso que el resultado.",
     aula:["Mostrar primero el objetivo o el producto terminado","Actividades abiertas y creativas","Imágenes, metáforas y relaciones entre las partes"],
     ampliar:"Para estimular el otro hemisferio: ayudarlo a ordenar el proceso en pasos, con listas de control y tiempos."},
+ CI:{que:"Como docente profundiza en su asignatura, demuestra y fundamenta. Cuida la precisión y la palabra correcta, y prioriza el contenido. Es riguroso, claro y confiable.",
+    aula:["Aporta fundamentos sólidos: cálculo, normas, planos y mediciones","Definir los términos técnicos y no dar nada por obvio","Sumar ejemplos concretos y esquemas claros, no demasiado abstractos","Pedir que otro estudiante reformule lo que no se entendió"],
+    ampliar:"Generar un clima más cálido, interesarse por todos los estudiantes (no solo por los que van adelante) e incluir la originalidad y la intuición entre los criterios de evaluación."},
+ CD:{que:"Como docente avanza de forma global, relaciona e inspira. Propone proyectos, se anima a salirse del tema y se aburre si repite la misma clase.",
+    aula:["Aporta proyectos integradores, problemas abiertos, innovación y diseño","Mostrar un plan visible de la clase y consignas precisas","Dar indicaciones que faciliten la comprensión paso a paso","Verificar con más frecuencia lo que se aprendió"],
+    ampliar:"Dar estructura para que nadie se pierda en el camino y ordenar los tiempos para sostener el avance del programa."},
+ LI:{que:"Como docente prepara clases muy estructuradas, sigue el plan previsto y termina el programa. Es responsable, metódico y da seguridad: con su clase se sabe a dónde se va.",
+    aula:["Aporta orden al taller: secuencias de trabajo, normas de seguridad y procedimientos","Formular preguntas abiertas y ejercicios con varias soluciones","Favorecer la participación y la iniciativa de los estudiantes","Diversificar actividades y trabajar en equipo con colegas"],
+    ampliar:"Ser más flexible, atender más al fondo que a la forma y dejar espacio para la resolución creativa de problemas y para lo imprevisto."},
+ LD:{que:"Como docente se ocupa de cómo sus estudiantes reciben los contenidos. Usa juegos, debates y trabajo en equipo, cuida el clima de clase y reconoce los progresos.",
+    aula:["Aporta vínculo y acompañamiento a las trayectorias con más dificultades","Usar grillas o rúbricas para evaluar los conocimientos, además de la actitud","Armar una planificación que asegure el avance del programa","Incluir momentos de trabajo individual y silencioso"],
+    ampliar:"Estructurar el curso, preparar con más detalle los materiales y equilibrar lo vincular con la exigencia técnica."},
  E:{que:"Equilibrio: usa ambos modos de pensar de forma pareja.",aula:["Alternar momentos de visión global y de trabajo paso a paso","Combinar consignas escritas con propuestas abiertas"],ampliar:"Sostener el equilibrio con actividades que estimulen ambos hemisferios."},
 };
 
@@ -1087,7 +1284,7 @@ function renderSondeo(){setSteps();const A=$("#sondeoArea");
  if(S.step===0){
   A.innerHTML=`<p class="lead">Elegí el instrumento. Cada uno lleva unos 5 minutos.</p><div class="grid g3">${Object.entries(INST).map(([k,v])=>`
    <button class="card inst${S.inst===k?" sel":""}" data-k="${k}"><span class="ic" style="background:${v.col}"><i class="fa-solid fa-${v.icon}"></i></span><h3>${v.t}</h3><div class="meta">${v.q.length} preguntas · ${v.who}</div>
-   <p style="margin-bottom:0">${v.type==="vak"?"Detecta la tendencia entre los canales visual, auditivo y kinestésico.":"Detecta la tendencia entre el modo lógico (izquierdo) y el holístico (derecho)."}</p></button>`).join("")}</div>
+   <p style="margin-bottom:0">${v.type==="vak"?"Detecta la tendencia entre los canales visual, auditivo y kinestésico.":v.type==="cuad"?"Detecta qué cuadrante predomina en la forma de enseñar: experto, estratega, organizador o comunicador.":"Detecta la tendencia entre el modo lógico (izquierdo) y el holístico (derecho)."}</p></button>`).join("")}</div>
    <div class="key g">Recordá: es un sondeo. Muestra una tendencia en este momento, no define a la persona.</div>`;
   A.querySelectorAll(".inst").forEach(b=>b.onclick=()=>{S.inst=b.dataset.k;S.step=1;renderSondeo();});
  }
@@ -1104,7 +1301,7 @@ function renderSondeo(){setSteps();const A=$("#sondeoArea");
  if(S.step===2)renderQ();
  if(S.step===3)renderRes();
 }
-function renderQ(){const I=INST[S.inst],n=I.q.length,[q,opts]=I.q[S.qi];const A=$("#sondeoArea");const L="ABC";
+function renderQ(){const I=INST[S.inst],n=I.q.length,[q,opts]=I.q[S.qi];const A=$("#sondeoArea");const L="ABCD";
  const done=S.ans.filter(x=>x!==null).length;
  A.innerHTML=`<div class="qbox"><div class="meta">${I.t} · Pregunta ${S.qi+1} de ${n}</div><div class="prog" aria-hidden="true"><i style="width:${done/n*100}%"></i></div>
   <div class="qn"><span class="num">${S.qi+1}</span><h3 id="qText">${q}</h3></div>
@@ -1112,18 +1309,18 @@ function renderQ(){const I=INST[S.inst],n=I.q.length,[q,opts]=I.q[S.qi];const A=
   <div class="qnav"><button class="btn o" id="qPrev"><i class="fa-solid fa-chevron-left"></i> ${S.qi?"Anterior":"Volver"}</button>
   <button class="btn o" id="qSpeak" title="Leer en voz alta"><i class="fa-solid fa-volume-high"></i> Escuchar</button>
   <button class="btn${S.qi===n-1?" g":""}" id="qNext" ${S.ans[S.qi]===null?"disabled":""}>${S.qi===n-1?"Ver tendencia <i class='fa-solid fa-chart-simple'></i>":"Siguiente <i class='fa-solid fa-chevron-right'></i>"}</button></div>
-  <p class="meta" style="margin-bottom:0">Atajo: teclas ${opts.length===3?"A, B o C":"A o B"} para elegir y Enter para avanzar.</p></div>`;
+  <p class="meta" style="margin-bottom:0">Atajo: teclas ${opts.length===4?"A, B, C o D":opts.length===3?"A, B o C":"A o B"} para elegir y Enter para avanzar.</p></div>`;
  A.querySelectorAll(".opt").forEach(b=>b.onclick=()=>choose(+b.dataset.k));
  $("#qPrev").onclick=()=>{if(S.qi)S.qi--;else S.step=1;renderSondeo();};
  $("#qNext").onclick=next;
- $("#qSpeak").onclick=()=>{const[q,opts]=INST[S.inst].q[S.qi];sayNow(q+". "+opts.map((o,k)=>"Opción "+"ABC"[k]+": "+o[0]).join(". "));};
+ $("#qSpeak").onclick=()=>{const[q,opts]=INST[S.inst].q[S.qi];sayNow(q+". "+opts.map((o,k)=>"Opción "+"ABCD"[k]+": "+o[0]).join(". "));};
  speakCurrent();}
-function speakCurrent(){if(S.step!==2||!$("#v-sondeo").classList.contains("on"))return;const[q,opts]=INST[S.inst].q[S.qi];speak(q+". "+opts.map((o,k)=>"Opción "+"ABC"[k]+": "+o[0]).join(". "));}
+function speakCurrent(){if(S.step!==2||!$("#v-sondeo").classList.contains("on"))return;const[q,opts]=INST[S.inst].q[S.qi];speak(q+". "+opts.map((o,k)=>"Opción "+"ABCD"[k]+": "+o[0]).join(". "));}
 function choose(k){S.ans[S.qi]=k;const n=INST[S.inst].q.length;
  if(S.qi<n-1&&A.auto){renderQ();setTimeout(()=>{if(S.step===2&&S.ans[S.qi]===k){S.qi++;renderQ();}},320);}else renderQ();}
 function next(){const n=INST[S.inst].q.length;if(S.ans[S.qi]===null)return;if(S.qi<n-1){S.qi++;renderQ();}else{S.res=score(S.inst,S.ans);S.step=3;renderSondeo();}}
 document.addEventListener("keydown",e=>{if(S.step!==2||!$("#v-sondeo").classList.contains("on"))return;if(/input|textarea/i.test(document.activeElement.tagName))return;
- const k="abc".indexOf(e.key.toLowerCase());const nOpt=INST[S.inst].q[S.qi][1].length;if(k>=0&&k<nOpt){e.preventDefault();choose(k);}if(e.key==="Enter"){e.preventDefault();next();}});
+ const k="abcd".indexOf(e.key.toLowerCase());const nOpt=INST[S.inst].q[S.qi][1].length;if(k>=0&&k<nOpt){e.preventDefault();choose(k);}if(e.key==="Enter"){e.preventDefault();next();}});
 
 function score(instKey,ans){const I=INST[instKey];const n=I.q.length;
  if(I.type==="vak"){const c={V:0,A:0,K:0};ans.forEach((a,i)=>c[I.q[i][1][a][1]]++);
@@ -1131,6 +1328,11 @@ function score(instKey,ans){const I=INST[instKey];const n=I.q.length;
   const share=max/n;const nivel=top.length>1?"combinada":share>=.6?"marcada":"leve";
   const label=top.length>1?"Combinada: "+top.map(x=>CH[x].n).join(" y "):CH[top[0]].n;
   return {type:"vak",counts:c,top,nivel,label,n};}
+ if(I.type==="cuad"){const c={CI:0,CD:0,LI:0,LD:0};ans.forEach((a,i)=>c[I.q[i][1][a][1]]++);
+  const pts={};QK.forEach(k=>pts[k]=c[k]*20);const max=Math.max(...QK.map(k=>pts[k]));const top=QK.filter(k=>pts[k]===max);
+  const nivel=max>66?"neta":max>=33?"intermedia":"ninguna";
+  const label=top.length>1?"Combinado: "+top.map(k=>CH[k].n.split(" · ")[1]).join(" y "):CH[top[0]].n;
+  return {type:"cuad",counts:c,pts,top,nivel,label,n};}
  const c={I:0,D:0};ans.forEach((a,i)=>c[I.q[i][1][a][1]]++);
  const max=Math.max(c.I,c.D),share=max/n;const side=c.I>=c.D?"I":"D";
  let nivel,top,label;
@@ -1139,27 +1341,29 @@ function score(instKey,ans){const I=INST[instKey];const n=I.q.length;
  else{nivel="equilibrio";top=["E"];label="Equilibrio entre ambos hemisferios";}
  return {type:"hemi",counts:c,top,nivel,label,n};}
 
-function nivelTxt(r){if(r.type==="vak")return {marcada:"Tendencia marcada",leve:"Tendencia leve",combinada:"Tendencia combinada"}[r.nivel];
+function nivelTxt(r){if(r.type==="cuad")return {neta:"Preferencia neta",intermedia:"Preferencia intermedia",ninguna:"Sin preferencia marcada"}[r.nivel];
+ if(r.type==="vak")return {marcada:"Tendencia marcada",leve:"Tendencia leve",combinada:"Tendencia combinada"}[r.nivel];
  return {marcada:"Tendencia marcada",cierta:"Cierta tendencia",equilibrio:"Equilibrio"}[r.nivel];}
-function barsHtml(r){const ks=r.type==="vak"?["V","A","K"]:["I","D"];
+function barsHtml(r){if(r.type==="cuad")return `<div class="bars">${QK.map(k=>`<div class="bar"><b>${CH[k].n.split(" · ")[0]}</b><div class="tr" role="img" aria-label="${r.pts[k]} puntos"><i data-k="${k}" style="width:${r.pts[k]/200*100}%;background:${CH[k].c}"></i></div><span>${r.pts[k]} pts</span></div>`).join("")}</div><p class="meta">Puntaje: cantidad de elecciones × 20. Más de 66: preferencia neta · entre 33 y 66: intermedia · menos de 33: no preferencia.</p>`;
+ const ks=r.type==="vak"?["V","A","K"]:["I","D"];
  return `<div class="bars">${ks.map(k=>`<div class="bar"><b>${r.type==="vak"?CH[k].n:(k==="I"?"Izquierdo":"Derecho")}</b><div class="tr" role="img" aria-label="${r.counts[k]} de ${r.n}"><i data-k="${k}" style="width:${r.counts[k]/r.n*100}%;background:${CH[k].c}"></i></div><span>${r.counts[k]} de ${r.n}</span></div>`).join("")}</div>`;}
 function tipsHtml(r){return r.top.map(k=>{const T=TIPS[k],ch=CH[k]||{n:"Equilibrio",c:V.E,i:"scale-balanced"};
  return `<div class="card ${k==="A"||k==="D"?"gr":"b"}"><div style="display:flex;gap:12px;align-items:center"><span class="ic" style="background:${ch.c}"><i class="fa-solid fa-${ch.i}"></i></span><h3 style="margin:0">${ch.n}</h3></div>
- <p>${T.que}</p><b>En el aula y el taller</b><ul>${T.aula.map(x=>`<li>${x}</li>`).join("")}</ul><p style="margin-bottom:0"><b>Para ampliar canales:</b> ${T.ampliar}</p></div>`;}).join("");}
+ <p>${T.que}</p><b>En el aula y el taller</b><ul>${T.aula.map(x=>`<li>${x}</li>`).join("")}</ul><p style="margin-bottom:0"><b>${QK.includes(k)?"Para ampliar el repertorio":"Para ampliar canales"}:</b> ${T.ampliar}</p></div>`;}).join("");}
 function renderRes(){const r=S.res,I=INST[S.inst];const A=$("#sondeoArea");
  const who=S.alias?esc(S.alias):"Esta persona";
  A.innerHTML=`<div class="card"><div class="res-head"><span class="ic" style="background:${(CH[r.top[0]]||{c:V.E}).c};width:72px;height:72px;font-size:30px"><i class="fa-solid fa-${(CH[r.top[0]]||{i:"scale-balanced"}).i}"></i></span>
   <div><div class="meta">${I.t}${S.grupo?" · "+esc(S.grupo):""}</div><h2 style="margin:.1em 0">${r.label}</h2><span class="chip" style="background:var(--navy)">${nivelTxt(r)}</span></div></div>
   ${barsHtml(r)}
-  <p>${who} muestra, en este sondeo, una <b>${nivelTxt(r).toLowerCase()}</b>${r.nivel==="equilibrio"?" entre ambos modos de pensar":" hacia "+r.label.replace("Combinada: ","").toLowerCase()}. ${r.type==="vak"?"Todas las personas usamos los tres canales: el resultado señala cuál aparece más en este momento.":"Ambos hemisferios trabajan siempre juntos: el resultado señala una preferencia."}</p></div>
-  <h3 style="margin-top:24px">Sugerencias para acompañar</h3><div class="grid g2">${tipsHtml(r)}</div>
-  <div class="key g">Conversá el resultado con quien respondió: ¿se reconoce en esta tendencia?</div>
+  <p>${who} muestra, en este sondeo, una <b>${nivelTxt(r).toLowerCase()}</b>${r.nivel==="equilibrio"?" entre ambos modos de pensar":" hacia "+r.label.replace("Combinada: ","").toLowerCase()}. ${r.type==="vak"?"Todas las personas usamos los tres canales: el resultado señala cuál aparece más en este momento.":r.type==="cuad"?"Todos tenemos los cuatro cuadrantes: el resultado muestra cuál predomina hoy en la forma de enseñar. Ningún estilo es mejor que otro: en la escuela técnica los cuatro son necesarios.":"Ambos hemisferios trabajan siempre juntos: el resultado señala una preferencia."}</p></div>
+  <h3 style="margin-top:24px">${r.type==="cuad"?"Para enriquecer la práctica":"Sugerencias para acompañar"}</h3><div class="grid g2">${tipsHtml(r)}</div>
+  <div class="key g">${r.type==="cuad"?"Compartí el resultado con tu equipo y tu pareja pedagógica: un equipo docente diverso enseña mejor a estudiantes diversos.":"Conversá el resultado con quien respondió: ¿se reconoce en esta tendencia?"}</div>
   <div class="qnav no-print"><button class="btn g" id="rAdd"><i class="fa-solid fa-user-plus"></i> Sumar al registro del grupo</button>
   <button class="btn o" id="rCopy"><i class="fa-regular fa-copy"></i> Copiar resultado</button>
   <button class="btn o" id="rOtra"><i class="fa-solid fa-rotate"></i> Nuevo sondeo (mismo instrumento)</button>
   <button class="btn o" id="rInst"><i class="fa-solid fa-list"></i> Elegir otro instrumento</button></div>`;
  $("#rAdd").onclick=e=>{addReg();e.currentTarget.disabled=true;e.currentTarget.innerHTML='<i class="fa-solid fa-check"></i> Sumado al registro';};
- $("#rCopy").onclick=async()=>{const ks=Object.keys(r.counts);const t=`${I.t}\n${S.alias||"Sin nombre"}${S.grupo?" · "+S.grupo:""}\nTendencia: ${r.label} (${nivelTxt(r)})\n${ks.map(k=>(r.type==="vak"?CH[k].n:(k==="I"?"Izquierdo":"Derecho"))+": "+r.counts[k]+"/"+r.n).join(" · ")}`;
+ $("#rCopy").onclick=async()=>{const ks=Object.keys(r.counts);const t=`${I.t}\n${S.alias||"Sin nombre"}${S.grupo?" · "+S.grupo:""}\nTendencia: ${r.label} (${nivelTxt(r)})\n${r.type==="cuad"?QK.map(k=>CH[k].n.split(" · ")[0]+": "+r.pts[k]+" pts").join(" · "):ks.map(k=>(r.type==="vak"?CH[k].n:(k==="I"?"Izquierdo":"Derecho"))+": "+r.counts[k]+"/"+r.n).join(" · ")}`;
   try{await navigator.clipboard.writeText(t);toast("Resultado copiado");}catch(_){toast("No se pudo copiar en esta vista");}};
  $("#rOtra").onclick=()=>{S.alias="";S.step=1;renderSondeo();};
  $("#rInst").onclick=()=>{S.alias="";S.step=0;renderSondeo();};
@@ -1177,12 +1381,12 @@ function renderReg(){const A=$("#regArea");
  sel.onchange=()=>{store.set("regG",sel.value);drawReg();};drawReg();}
 function drawReg(){const g=$("#gSel").value;const rows=REG.filter(x=>!g||(x.grupo||"Sin grupo")===g);const A=$("#regIn");
  const sum=key=>{const R=rows.filter(x=>INST[x.inst].type===key);if(!R.length)return"";
-  const ks=key==="vak"?["V","A","K","M"]:["I","D","E"];const cnt={};ks.forEach(k=>cnt[k]=0);
-  R.forEach(x=>{if(key==="vak"){x.top.length>1?cnt.M++:cnt[x.top[0]]++;}else cnt[x.top[0]]++;});
-  const nm={V:"Visual",A:"Auditivo",K:"Kinestésico",M:"Combinada",I:"Izquierdo",D:"Derecho",E:"Equilibrio"},cl=V;
-  return `<div class="card"><h3 style="margin-top:0">${key==="vak"?"Tendencias VAK":"Tendencias hemisféricas"} <span class="meta">(${R.length} ${R.length===1?"persona":"personas"})</span></h3>
+  const ks=key==="vak"?["V","A","K","M"]:key==="cuad"?["CI","CD","LI","LD","M"]:["I","D","E"];const cnt={};ks.forEach(k=>cnt[k]=0);
+  R.forEach(x=>{if(key!=="hemi"){x.top.length>1?cnt.M++:cnt[x.top[0]]++;}else cnt[x.top[0]]++;});
+  const nm={V:"Visual",A:"Auditivo",K:"Kinestésico",M:"Combinada",I:"Izquierdo",D:"Derecho",E:"Equilibrio",CI:"Cortical Izq.",CD:"Cortical Der.",LI:"Límbico Izq.",LD:"Límbico Der."},cl=Object.assign({CI:C.navy,CD:C.gold,LI:C.green,LD:C.red},V);
+  return `<div class="card"><h3 style="margin-top:0">${key==="vak"?"Tendencias VAK":key==="cuad"?"Estilos docentes (cuadrantes)":"Tendencias hemisféricas"} <span class="meta">(${R.length} ${R.length===1?"persona":"personas"})</span></h3>
   <div class="bars">${ks.map(k=>`<div class="bar"><b>${nm[k]}</b><div class="tr"><i data-k="${k}" style="width:${cnt[k]/R.length*100}%;background:${cl[k]}"></i></div><span>${cnt[k]}</span></div>`).join("")}</div></div>`;};
- A.innerHTML=`<div class="grid g2">${sum("vak")}${sum("hemi")}</div>
+ A.innerHTML=`<div class="grid g2">${sum("vak")}${sum("hemi")}${sum("cuad")}</div>
  <div class="key">${rows.length>1?"El grupo es diverso: planificá con varias formas de presentar el contenido y de mostrar lo aprendido (DUA).":"Sumá más resultados para ver la diversidad del grupo."}</div>
  <div class="tw"><table class="t"><tr><th>Fecha</th><th>Nombre o alias</th><th>Grupo</th><th>Instrumento</th><th>Tendencia</th><th>Puntajes</th><th class="no-print"></th></tr>
  ${rows.map(x=>`<tr><td>${x.fecha}</td><td>${esc(x.alias)}</td><td>${esc(x.grupo||"—")}</td><td>${INST[x.inst].t}</td><td><b>${esc(x.label)}</b><br><span class="meta">${x.nivel}</span></td><td>${Object.entries(x.counts).map(([k,v])=>`${k}: ${v}`).join(" · ")}</td><td class="no-print"><button class="btn o" style="padding:4px 10px" data-del="${x.id}" aria-label="Quitar a ${esc(x.alias)}"><i class="fa-solid fa-xmark"></i></button></td></tr>`).join("")}
