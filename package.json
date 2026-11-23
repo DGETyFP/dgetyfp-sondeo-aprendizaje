@@ -1,0 +1,8 @@
+{
+  "name": "dgetyfp-sondeo-aprendizaje",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^8.2.0"
+  }
+}
