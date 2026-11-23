@@ -2,8 +2,8 @@
 
 Herramienta del Equipo de Inclusión de la Dirección General de Educación Técnica y Formación Profesional (DGETyFP), Ministerio de Educación de la Provincia de Córdoba.
 
-- Presentación de la jornada (diapositivas 1 a 15)
-- Sondeos: VAK (modelo PNL), hemisférico y VAK para docentes
+- Presentación de la jornada: aulas heterogéneas, estilos de aprendizaje, sondeo V.A.K. (12 preguntas), sondeo docente de cuadrantes cerebrales (10 preguntas) y DUA
+- Sondeos: VAK (modelo PNL), hemisférico, VAK para docentes y cuadrantes cerebrales para docentes (Herrmann)
 - Registro del grupo (los datos quedan solo en el navegador de quien lo usa)
 - Material de consulta
 - **Comunidad**: foro de inquietudes y soluciones, con respuestas, "Me pasa lo mismo" y "Me sirve"
