@@ -126,7 +126,24 @@ function spamCheck(body) {
 }
 
 /* ---------------- manejador principal ---------------- */
-export async function handle(req, { store, adminKey, ip }) {
+const CORS = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "GET,POST,DELETE,OPTIONS",
+  "access-control-allow-headers": "content-type,x-sala-key",
+  "access-control-max-age": "86400",
+};
+export async function handle(req, ctx) {
+  const url = new URL(req.url);
+  const isSala = /\/api\/salas(\/|$)/.test(url.pathname);
+  if (isSala && req.method.toUpperCase() === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
+  const res = await handleInner(req, ctx);
+  if (!isSala) return res;
+  const hd = new Headers(res.headers);
+  for (const [k, v] of Object.entries(CORS)) hd.set(k, v);
+  return new Response(res.body, { status: res.status, headers: hd });
+}
+
+async function handleInner(req, { store, adminKey, ip }) {
   const url = new URL(req.url);
   const parts = url.pathname.replace(/^\/(\.netlify\/functions\/)?api\/?/, "").split("/").filter(Boolean);
   const method = req.method.toUpperCase();
@@ -344,6 +361,67 @@ export async function handle(req, { store, adminKey, ip }) {
             return json({ item: pubNews(n, admin) });
           }
         }
+      }
+    }
+
+    /* ---- salas compartidas del sondeo ----
+       Quien coordina crea una sala y recibe un código (para compartir) y una clave (para ver los resultados).
+       Cada participante envía su resultado con el código. Las salas se borran solas a los 30 días. */
+    if (col === "salas") {
+      const code = String(id || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
+      const metaKey = "salas/" + code + "/meta";
+      const getSala = async () => {
+        const s = code ? await store.get(metaKey, { type: "json" }) : null;
+        if (s && Date.now() - Date.parse(s.created) > 30 * 864e5) return null;
+        return s;
+      };
+      const keyOk = (s) => { const k = req.headers.get("x-sala-key") || url.searchParams.get("k") || ""; return !!k && sha(k) === s.keyHash; };
+      if (!id && method === "POST") {
+        if (spamCheck(body)) return err("No se pudo crear la sala.");
+        if (!(await rateLimit(store, ip, 20))) return err("Creaste muchas salas seguidas. Esperá unos minutos.", 429);
+        const ABC = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+        let c = "";
+        for (let t = 0; t < 8; t++) {
+          c = Array.from(randomBytes(5), (b) => ABC[b % ABC.length]).join("");
+          if (!(await store.get("salas/" + c + "/meta", { type: "json" }))) break;
+        }
+        const key = randomBytes(12).toString("hex");
+        const s = { code: c, nombre: clip(body.nombre, 80) || "Sala sin nombre", created: now(), keyHash: sha(key) };
+        await store.setJSON("salas/" + c + "/meta", s);
+        return json({ code: c, key, nombre: s.nombre, created: s.created });
+      }
+      const s = await getSala();
+      if (!s) return err("No encontramos esa sala. Revisá el código o pedile uno nuevo a quien coordina.", 404);
+      if (!sub && method === "GET") {
+        const pub = { code: s.code, nombre: s.nombre, created: s.created };
+        if (!keyOk(s)) return json({ sala: pub });
+        const rs = await list(store, "salas/" + code + "/r/");
+        rs.sort((a, b) => a.created.localeCompare(b.created));
+        return json({ sala: pub, resultados: rs });
+      }
+      if (!sub && method === "DELETE") {
+        if (!keyOk(s)) return err("Solo quien creó la sala puede cerrarla.", 401);
+        const { blobs } = await store.list({ prefix: "salas/" + code + "/" });
+        await Promise.all(blobs.map((b) => store.delete(b.key)));
+        return json({ ok: true });
+      }
+      if (sub === "resultados" && method === "POST") {
+        if (!(await rateLimit(store, ip, 60))) return err("Se enviaron muchos resultados seguidos desde esta conexión. Esperá unos minutos.", 429);
+        const inst = clip(body.inst, 20), type = clip(body.type, 10);
+        if (!["vak", "hemi", "cuad"].includes(type)) return err("Resultado inválido.");
+        const counts = {};
+        if (body.counts && typeof body.counts === "object") for (const [k, v] of Object.entries(body.counts).slice(0, 8)) counts[clip(k, 4)] = Math.max(0, Math.min(200, Number(v) || 0));
+        const top = Array.isArray(body.top) ? body.top.slice(0, 4).map((x) => clip(x, 4)) : [];
+        const existing = await store.list({ prefix: "salas/" + code + "/r/" });
+        if (existing.blobs.length >= 300) return err("La sala ya tiene 300 resultados. Pedile a quien coordina que abra otra.");
+        const r = { id: newId(), alias: clip(body.alias, 60) || "Sin nombre", inst, type, label: clip(body.label, 120), nivel: clip(body.nivel, 40), counts, top, n: Math.max(0, Math.min(200, Number(body.n) || 0)), created: now() };
+        await store.setJSON("salas/" + code + "/r/" + r.id, r);
+        return json({ ok: true });
+      }
+      if (sub === "resultados" && subId && method === "DELETE") {
+        if (!keyOk(s)) return err("Solo quien creó la sala puede quitar resultados.", 401);
+        await store.delete("salas/" + code + "/r/" + clip(subId, 40));
+        return json({ ok: true });
       }
     }
 

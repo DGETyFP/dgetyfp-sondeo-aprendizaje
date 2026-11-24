@@ -19,3 +19,7 @@ Herramienta del Equipo de Inclusión de la Dirección General de Educación Téc
 - Los datos de Comunidad, Novedades y Sugerencias se guardan en Netlify Blobs a través de la función `netlify/functions/api.mjs` (lógica en `netlify/functions/lib/core.mjs`).
 - La clave de las administradoras es la variable de entorno `ADMIN_KEY` en Netlify (Site configuration → Environment variables). Después de cambiarla hay que volver a publicar el sitio.
 - Cada tema nuevo envía el formulario oculto `nuevo-tema` de Netlify Forms; las notificaciones por email se configuran en Netlify → Forms.
+
+## Salas compartidas del sondeo
+
+Quien coordina crea una sala en **Registro del grupo** y comparte el código o el QR. Cada participante responde el sondeo en su celular con ese código y su resultado aparece en vivo en la pantalla de quien coordina. Los datos se guardan en Netlify Blobs (`/api/salas`) y las salas se borran solas a los 30 días o cuando quien coordina las cierra.
