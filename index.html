@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Red de Inclusión DGETyFP</title>
 <meta name="description" content="Comunidad, novedades, sondeo de estilos de aprendizaje y material sobre inclusión educativa. Equipo de Inclusión · DGETyFP · Ministerio de Educación de Córdoba.">
-<link rel="manifest" href="/manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#00427F">
-<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Red Inclusión">
@@ -347,7 +347,7 @@ footer.bot div{padding-bottom:64px}
 <header class="top">
   <div class="top-in">
     <div class="brand">
-      <img class="brand-mark" src="/icons/icon-192.png" alt="" width="42" height="42" style="border-radius:10px;border:2px solid rgba(255,255,255,.85);background:#00427F"><div><b>Red de Inclusión DGETyFP</b><span>Equipo de Inclusión · Ministerio de Educación de Córdoba</span></div>
+      <img class="brand-mark" src="icons/icon-192.png" alt="" width="42" height="42" style="border-radius:10px;border:2px solid rgba(255,255,255,.85);background:#00427F"><div><b>Red de Inclusión DGETyFP</b><span>Equipo de Inclusión · Ministerio de Educación de Córdoba</span></div>
     </div>
     <nav class="tabs" aria-label="Secciones">
       <a href="#inicio" data-v="inicio">Inicio</a>
@@ -772,7 +772,7 @@ footer.bot div{padding-bottom:64px}
   <input name="bot-field"><input name="titulo"><input name="categoria"><input name="autor"><input name="rol"><textarea name="mensaje"></textarea><input name="enlace"><input name="estado">
 </form>
 <div class="dlg" id="instDlg" role="dialog" aria-modal="true" aria-labelledby="instT"><div class="card" style="max-width:520px;width:calc(100% - 32px)">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 id="instT" style="margin:0;display:flex;align-items:center;gap:10px"><img src="/icons/icon-192.png" alt="" width="36" height="36" style="border-radius:8px"> Instalar la Red de Inclusión</h3><button class="btn o" id="instClose" aria-label="Cerrar" style="padding:6px 12px"><i class="fa-solid fa-xmark"></i></button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 id="instT" style="margin:0;display:flex;align-items:center;gap:10px"><img src="icons/icon-192.png" alt="" width="36" height="36" style="border-radius:8px"> Instalar la Red de Inclusión</h3><button class="btn o" id="instClose" aria-label="Cerrar" style="padding:6px 12px"><i class="fa-solid fa-xmark"></i></button></div>
   <div id="instBody"></div>
 </div></div>
 <div class="toast" id="toast" role="status"></div>
@@ -1421,7 +1421,7 @@ const T0={};
 
 async function api(path,opts={}){
   const h={"content-type":"application/json"};if(ADM.key)h["x-admin-key"]=ADM.key;
-  let r;try{r=await fetch("/api/"+path,{method:opts.method||"GET",headers:h,body:opts.body?JSON.stringify(opts.body):undefined});}
+  let r;try{r=await fetch("api/"+path,{method:opts.method||"GET",headers:h,body:opts.body?JSON.stringify(opts.body):undefined});}
   catch(_){throw new Error("No hay conexión. Revisá internet y probá de nuevo.");}
   let d={};try{d=await r.json();}catch(_){}
   if(r.status===401&&ADM.key&&path!=="login"){admLogout(true);}
@@ -1710,7 +1710,7 @@ $("#installOpen").onclick=doInstall;document.querySelectorAll("[data-install]").
 $("#instClose").onclick=()=>closeDlg("#instDlg");$("#instDlg").addEventListener("click",e=>{if(e.target.id==="instDlg")closeDlg("#instDlg");});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#instDlg").style.display==="flex")closeDlg("#instDlg");});
 syncInstall();
-if("serviceWorker" in navigator&&location.protocol==="https:")window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));
+if("serviceWorker" in navigator&&location.protocol==="https:")window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 
 applyA();renderSondeo();route();
 </script>

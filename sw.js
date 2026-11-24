@@ -1,7 +1,7 @@
 // Red de Inclusión DGETyFP: guarda la app para abrirla rápido y sin conexión.
 // La Comunidad y las Novedades (/api) siempre se piden a internet.
-const CACHE = "red-inclusion-v1";
-const CORE = ["/", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png"];
+const CACHE = "red-inclusion-v2";
+const CORE = ["./", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -17,13 +17,13 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
-  if (url.origin === location.origin && url.pathname.startsWith("/api/")) return;
+  if (url.origin === location.origin && url.pathname.includes("/api/")) return;
 
   // Página: primero internet (siempre la versión nueva), si no hay conexión, la guardada
   if (req.mode === "navigate") {
     e.respondWith(
-      fetch(req).then((r) => { const cp = r.clone(); caches.open(CACHE).then((c) => c.put("/", cp)); return r; })
-        .catch(() => caches.match("/"))
+      fetch(req).then((r) => { const cp = r.clone(); caches.open(CACHE).then((c) => c.put("./", cp)); return r; })
+        .catch(() => caches.match("./"))
     );
     return;
   }
